@@ -1,0 +1,5 @@
+CREATE TABLE roli_stafit (
+    id_rolit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    emri_roli VARCHAR(80) NOT NULL UNIQUE,
+    pershkrimi TEXT
+);
