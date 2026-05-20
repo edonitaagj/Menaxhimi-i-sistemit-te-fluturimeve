@@ -1,0 +1,10 @@
+INSERT INTO llojet_avioneve (prodhuesi, modeli, kodi_iata, kapaciteti_ekonomik, kapaciteti_biznes, rrezja_km, shpejtesia_kmh) VALUES
+('Airbus', 'A320neo', '32N', 165, 12, 6300, 833),
+('Airbus', 'A319', '319', 124, 8, 6850, 828),
+('Airbus', 'A321neo', '32Q', 194, 16, 7400, 833),
+('Boeing', '737-800', '738', 162, 8, 5765, 842),
+('Boeing', '737 MAX 8', '7M8', 162, 12, 6570, 839),
+('ATR', 'ATR 72-600', 'AT7', 68, 0, 1528, 510),
+('Airbus', 'A220-300', '223', 130, 8, 6300, 871),
+('Embraer', 'E190', 'E90', 96, 8, 4537, 870),
+('Boeing', '787-9', '789', 256, 42, 14140, 903);

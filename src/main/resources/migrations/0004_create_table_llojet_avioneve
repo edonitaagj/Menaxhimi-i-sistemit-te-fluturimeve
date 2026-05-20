@@ -1,0 +1,11 @@
+CREATE TABLE llojet_avioneve (
+    id_llojit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    prodhuesi VARCHAR(100) NOT NULL,
+    modeli VARCHAR(100) NOT NULL,
+    kodi_iata CHAR(3),
+    kapaciteti_ekonomik SMALLINT UNSIGNED NOT NULL,
+    kapaciteti_biznes SMALLINT UNSIGNED DEFAULT 0,
+    kapaciteti_first SMALLINT UNSIGNED DEFAULT 0,
+    rrezja_km SMALLINT UNSIGNED,
+    shpejtesia_kmh SMALLINT UNSIGNED
+);
