@@ -3,6 +3,5 @@ CREATE TABLE vendet (
     kodi_iso CHAR(2) NOT NULL UNIQUE,
     emri_shqip VARCHAR(100) NOT NULL,
     emri_anglisht VARCHAR(100) NOT NULL,
-    kodi_telefon VARCHAR(10),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    kodi_telefon VARCHAR(10)
 );

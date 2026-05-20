@@ -1,0 +1,14 @@
+INSERT INTO vendet (kodi_iso, emri_shqip, emri_anglisht, kodi_telefon) VALUES
+('XK', 'Kosovë', 'Kosovo', '+383'),
+('AL', 'Shqipëri', 'Albania', '+355'),
+('AT', 'Austri', 'Austria', '+43'),
+('DE', 'Gjermani', 'Germany', '+49'),
+('GB', 'Britani e Madhe', 'United Kingdom', '+44'),
+('CH', 'Zvicër', 'Switzerland', '+41'),
+('IT', 'Itali', 'Italy', '+39'),
+('TR', 'Turqi', 'Turkey', '+90'),
+('FR', 'Francë', 'France', '+33'),
+('RS', 'Serbi', 'Serbia', '+381'),
+('SE', 'Suedi', 'Sweden', '+46'),
+('SI', 'Slloveni', 'Slovenia', '+386'),
+('HU', 'Hungari', 'Hungary', '+36');
