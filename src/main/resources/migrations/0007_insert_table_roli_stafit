@@ -1,0 +1,10 @@
+INSERT INTO roli_stafit (emri_roli, pershkrimi) VALUES
+('Kapiten', 'Komandant i avionit'),
+('Ko-pilot', 'Piloti i dytë'),
+('Kryesteward', 'Kreu i kabinetit'),
+('Steward/Stewardesa', 'Staf kabineti'),
+('Agent Check-in', 'Punonjës i sportelit të check-in'),
+('Kontrollor Trafiku', 'Kontrollor i trafikut ajror'),
+('Mekanik Avionesh', 'Teknik mirëmbajtjeje avionesh'),
+('Menaxher Operacionesh', 'Menaxher i operacioneve aeroportuale'),
+('Siguria Aeroportuale', 'Staf i sigurisë');
