@@ -1,0 +1,18 @@
+CREATE TABLE stafi (
+    id_stafit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_rolit INT UNSIGNED NOT NULL,
+    id_kompanise INT UNSIGNED,
+    id_aeroportit INT UNSIGNED,
+    emri VARCHAR(80) NOT NULL,
+    mbiemri VARCHAR(80) NOT NULL,
+    numri_punonjesit VARCHAR(20) NOT NULL UNIQUE,
+    email_punes VARCHAR(150) UNIQUE,
+    telefoni VARCHAR(30),
+    datelindja DATE,
+    data_fillimit DATE NOT NULL,
+    data_mbarimit DATE,
+    eshte_aktiv BOOLEAN DEFAULT TRUE,
+    CONSTRAINT fk_stafi_roli FOREIGN KEY (id_rolit) REFERENCES roli_stafit(id_rolit),
+    CONSTRAINT fk_stafi_kompania FOREIGN KEY (id_kompanise) REFERENCES kompanite_ajrore(id_kompanise),
+    CONSTRAINT fk_stafi_aeroporti FOREIGN KEY (id_aeroportit) REFERENCES aeroportet(id_aeroportit)
+);
