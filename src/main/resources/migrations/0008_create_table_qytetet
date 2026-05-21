@@ -1,0 +1,8 @@
+CREATE TABLE qytetet (
+    id_qytetit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_vendit INT UNSIGNED NOT NULL,
+    emri_shqip VARCHAR(100) NOT NULL,
+    emri_anglisht VARCHAR(100) NOT NULL,
+    zona_kohore VARCHAR(50) NOT NULL DEFAULT 'UTC',
+    CONSTRAINT fk_qytetet_vendi FOREIGN KEY (id_vendit) REFERENCES vendet(id_vendi)
+);

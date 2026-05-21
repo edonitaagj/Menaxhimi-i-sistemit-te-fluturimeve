@@ -1,0 +1,17 @@
+INSERT INTO qytetet (id_vendit, emri_shqip, emri_anglisht, zona_kohore) VALUES
+(1, 'Prishtinë', 'Pristina', 'Europe/Belgrade'),
+(2, 'Tiranë', 'Tirana', 'Europe/Tirane'),
+(3, 'Vjenë', 'Vienna', 'Europe/Vienna'),
+(4, 'Frankfurth', 'Frankfurt', 'Europe/Berlin'),
+(4, 'Munich', 'Munich', 'Europe/Berlin'),
+(4, 'Stuttgart', 'Stuttgart', 'Europe/Berlin'),
+(5, 'Londër', 'London', 'Europe/London'),
+(6, 'Cyrih', 'Zurich', 'Europe/Zurich'),
+(7, 'Milano', 'Milan', 'Europe/Rome'),
+(7, 'Romë', 'Rome', 'Europe/Rome'),
+(8, 'Istanbul', 'Istanbul', 'Europe/Istanbul'),
+(9, 'Paris', 'Paris', 'Europe/Paris'),
+(10, 'Beograd', 'Belgrade', 'Europe/Belgrade'),
+(11, 'Stokholm', 'Stockholm', 'Europe/Stockholm'),
+(12, 'Lubjanë', 'Ljubljana', 'Europe/Ljubljana'),
+(13, 'Budapest', 'Budapest', 'Europe/Budapest');
