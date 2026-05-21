@@ -1,0 +1,9 @@
+CREATE TABLE terminalet (
+    id_terminalit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_aeroportit INT UNSIGNED NOT NULL,
+    kodi_terminalit VARCHAR(10) NOT NULL,
+    emri VARCHAR(100),
+    kapaciteti_max INT UNSIGNED,
+    UNIQUE KEY uq_terminal (id_aeroportit, kodi_terminalit),
+    CONSTRAINT fk_terminal_aeroporti FOREIGN KEY (id_aeroportit) REFERENCES aeroportet(id_aeroportit)
+);

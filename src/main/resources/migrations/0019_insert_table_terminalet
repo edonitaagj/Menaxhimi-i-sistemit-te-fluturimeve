@@ -1,0 +1,2 @@
+INSERT INTO terminalet (id_aeroportit, kodi_terminalit, emri, kapaciteti_max) VALUES
+(1, 'T1', 'Terminali Kryesor', 3000);
