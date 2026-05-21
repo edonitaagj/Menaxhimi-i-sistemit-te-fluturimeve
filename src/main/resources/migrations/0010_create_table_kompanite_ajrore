@@ -1,0 +1,13 @@
+CREATE TABLE kompanite_ajrore (
+    id_kompanise INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_vendit INT UNSIGNED NOT NULL,
+    kodi_iata CHAR(2) NOT NULL UNIQUE,
+    kodi_icao CHAR(3) NOT NULL UNIQUE,
+    emri VARCHAR(150) NOT NULL,
+    emri_i_shkurter VARCHAR(50),
+    faqja_web VARCHAR(200),
+    telefoni VARCHAR(30),
+    eshte_aktive BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_kompani_vendi FOREIGN KEY (id_vendit) REFERENCES vendet(id_vendi)
+);

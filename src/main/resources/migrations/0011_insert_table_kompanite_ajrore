@@ -1,0 +1,13 @@
+INSERT INTO kompanite_ajrore (id_vendit, kodi_iata, kodi_icao, emri, emri_i_shkurter, faqja_web) VALUES
+(3, 'OS', 'AUA', 'Austrian Airlines', 'Austrian', 'https://www.austrian.com'),
+(4, 'LH', 'DLH', 'Lufthansa', 'Lufthansa', 'https://www.lufthansa.com'),
+(5, 'BA', 'BAW', 'British Airways', 'British', 'https://www.britishairways.com'),
+(6, 'LX', 'SWR', 'Swiss Air Lines', 'Swiss', 'https://www.swiss.com'),
+(7, 'AZ', 'AZA', 'ITA Airways', 'ITA', 'https://www.itaairways.com'),
+(8, 'TK', 'THY', 'Turkish Airlines', 'Turkish', 'https://www.turkishairlines.com'),
+(9, 'AF', 'AFR', 'Air France', 'Air France', 'https://www.airfrance.com'),
+(1, 'XK', 'XKS', 'Kosovo Airlines', 'Kosovo Air', 'https://www.kosovoairlines.com'),
+(2, 'AB', 'ABN', 'Air Albania', 'Air Albania', 'https://www.airalbania.com.al'),
+(4, 'W6', 'WZZ', 'Wizz Air', 'Wizz Air', 'https://www.wizzair.com'),
+(5, 'FR', 'RYR', 'Ryanair', 'Ryanair', 'https://www.ryanair.com'),
+(3, 'V9', 'VPA', 'People\'s Viennaline', 'PVL', 'https://www.viennaline.at');
