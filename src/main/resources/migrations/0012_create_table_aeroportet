@@ -1,0 +1,14 @@
+CREATE TABLE aeroportet (
+    id_aeroportit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_qytetit INT UNSIGNED NOT NULL,
+    kodi_iata CHAR(3) NOT NULL UNIQUE,
+    kodi_icao CHAR(4) NOT NULL UNIQUE,
+    emri_shqip VARCHAR(150) NOT NULL,
+    emri_anglisht VARCHAR(150) NOT NULL,
+    latituda DECIMAL(9,6),
+    longituda DECIMAL(9,6),
+    lartesia_m SMALLINT,
+    numri_terminaleve TINYINT UNSIGNED DEFAULT 1,
+    eshte_nderkombetare BOOLEAN DEFAULT TRUE,
+    CONSTRAINT fk_aeroportet_qyteti FOREIGN KEY (id_qytetit) REFERENCES qytetet(id_qytetit)
+);
