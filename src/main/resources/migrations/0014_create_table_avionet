@@ -1,0 +1,11 @@
+CREATE TABLE avionet (
+    id_avionit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_kompanise INT UNSIGNED NOT NULL,
+    id_llojit INT UNSIGNED NOT NULL,
+    numri_regjistrit VARCHAR(20) NOT NULL UNIQUE,
+    viti_prodhimit YEAR,
+    statusi ENUM('aktiv','mirembajtje','jashte_sherbimit') DEFAULT 'aktiv',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT fk_avion_kompani FOREIGN KEY (id_kompanise) REFERENCES kompanite_ajrore(id_kompanise),
+    CONSTRAINT fk_avion_lloji FOREIGN KEY (id_llojit) REFERENCES llojet_avioneve(id_llojit)
+);

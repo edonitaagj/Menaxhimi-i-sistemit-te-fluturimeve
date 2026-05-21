@@ -1,0 +1,15 @@
+INSERT INTO avionet (id_kompanise, id_llojit, numri_regjistrit, viti_prodhimit, statusi) VALUES
+(1, 1, 'OE-LWA', 2019, 'aktiv'),
+(1, 2, 'OE-LQB', 2018, 'aktiv'),
+(2, 1, 'D-AINX', 2020, 'aktiv'),
+(2, 4, 'D-ABKR', 2016, 'aktiv'),
+(3, 3, 'G-TTNA', 2018, 'aktiv'),
+(4, 2, 'HB-IYY', 2017, 'aktiv'),
+(5, 1, 'EI-DDL', 2019, 'aktiv'),
+(6, 4, 'TC-JRA', 2017, 'aktiv'),
+(7, 1, 'F-GKXA', 2020, 'aktiv'),
+(10, 4, 'HA-LWN', 2015, 'aktiv'),
+(10, 1, 'HA-LYA', 2018, 'aktiv'),
+(11, 5, 'EI-FRZ', 2019, 'aktiv'),
+(8, 1, 'Z6-AAA', 2022, 'aktiv'),
+(9, 2, 'ZA-ABB', 2020, 'aktiv');
