@@ -1,0 +1,11 @@
+INSERT INTO stafi (id_rolit, id_kompanise, id_aeroportit, emri, mbiemri, numri_punonjesit, email_punes, data_fillimit) VALUES
+(1, 1, NULL, 'Karl', 'Bauer', 'EMP-001', 'k.bauer@austrian.com', '2010-03-01'),
+(2, 1, NULL, 'Anna', 'Weiss', 'EMP-002', 'a.weiss@austrian.com', '2015-06-15'),
+(3, 1, NULL, 'Thomas', 'Huber', 'EMP-003', 't.huber@austrian.com', '2012-09-01'),
+(5, NULL, 1, 'Arianit', 'Bajrami', 'PRN-001', 'a.bajrami@prn-airport.com', '2018-01-15'),
+(5, NULL, 1, 'Shqipe', 'Kelmendi', 'PRN-002', 's.kelmendi@prn-airport.com', '2019-03-20'),
+(6, NULL, 1, 'Blend', 'Haliti', 'PRN-003', 'b.haliti@prn-airport.com', '2020-07-01'),
+(7, NULL, 1, 'Fisnik', 'Rexha', 'PRN-004', 'f.rexha@prn-airport.com', '2016-11-10'),
+(8, NULL, 1, 'Rina', 'Gjakova', 'PRN-005', 'r.gjakova@prn-airport.com', '2014-04-01'),
+(9, NULL, 1, 'Alban', 'Mustafa', 'PRN-006', 'a.mustafa@prn-airport.com', '2021-02-28'),
+(1, 2, NULL, 'Werner', 'Koch', 'EMP-010', 'w.koch@lufthansa.com', '2008-05-20');
