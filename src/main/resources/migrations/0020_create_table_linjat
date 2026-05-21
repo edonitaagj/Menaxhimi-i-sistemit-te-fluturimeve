@@ -1,0 +1,11 @@
+CREATE TABLE linjat (
+    id_linjes INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_aeroportit_nisjes INT UNSIGNED NOT NULL,
+    id_aeroportit_mbrrritjes INT UNSIGNED NOT NULL,
+    distanca_km SMALLINT UNSIGNED,
+    koha_fluturimit_min SMALLINT UNSIGNED,
+    eshte_aktive BOOLEAN DEFAULT TRUE,
+    UNIQUE KEY uq_linja (id_aeroportit_nisjes, id_aeroportit_mbrrritjes),
+    CONSTRAINT fk_linja_nisja FOREIGN KEY (id_aeroportit_nisjes) REFERENCES aeroportet(id_aeroportit),
+    CONSTRAINT fk_linja_mbrrritja FOREIGN KEY (id_aeroportit_mbrrritjes) REFERENCES aeroportet(id_aeroportit)
+);
