@@ -1,0 +1,16 @@
+INSERT INTO pasagjerit (numri_pasaportes, id_vendit_shtetesise, emri, mbiemri, datelindja, gjinia, email, telefoni) VALUES
+('XK1234567', 1, 'Ardian', 'Krasniqi', '1990-03-15', 'M', 'ardian.krasniqi@email.com', '+38344100200'),
+('XK2345678', 1, 'Vjosa', 'Morina', '1985-07-22', 'F', 'vjosa.morina@email.com', '+38344200300'),
+('XK3456789', 1, 'Besnik', 'Gashi', '1978-11-08', 'M', 'besnik.gashi@email.com', '+38345300400'),
+('AT1234001', 3, 'Hans', 'Müller', '1982-04-10', 'M', 'hans.mueller@email.at', '+4369912345'),
+('DE1234002', 4, 'Klara', 'Schmidt', '1995-09-30', 'F', 'klara.schmidt@email.de', '+4917612345'),
+('GB1234003', 5, 'James', 'Wilson', '1988-01-25', 'M', 'james.wilson@email.uk', '+447911123456'),
+('CH1234004', 6, 'Emma', 'Fischer', '1992-06-14', 'F', 'emma.fischer@email.ch', '+41791234567'),
+('TR1234005', 8, 'Mehmet', 'Yilmaz', '1975-12-05', 'M', 'mehmet.yilmaz@email.tr', '+905551234567'),
+('XK4567890', 1, 'Flaka', 'Berisha', '2000-02-20', 'F', 'flaka.berisha@email.com', '+38349400500'),
+('XK5678901', 1, 'Kujtim', 'Hyseni', '1969-08-17', 'M', 'kujtim.hyseni@email.com', '+38348500600'),
+('AL1234006', 2, 'Arta', 'Leka', '1993-05-11', 'F', 'arta.leka@email.al', '+355671234567'),
+('IT1234007', 7, 'Marco', 'Rossi', '1980-10-28', 'M', 'marco.rossi@email.it', '+393381234567'),
+('XK6789012', 1, 'Burim', 'Syla', '1997-03-03', 'M', 'burim.syla@email.com', '+38344600700'),
+('XK7890123', 1, 'Liridona', 'Osmani', '2002-07-19', 'F', 'liridona.osmani@email.com', '+38345700800'),
+('DE1234008', 4, 'Peter', 'Wagner', '1971-09-09', 'M', 'peter.wagner@email.de', '+4917687654321');
