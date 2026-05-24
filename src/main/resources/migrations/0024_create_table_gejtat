@@ -1,0 +1,9 @@
+CREATE TABLE gejtat (
+    id_gejtit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_terminalit INT UNSIGNED NOT NULL,
+    kodi_gejtit VARCHAR(10) NOT NULL,
+    lloji ENUM('largim','mberritje','te_dyja') DEFAULT 'te_dyja',
+    eshte_aktive BOOLEAN DEFAULT TRUE,
+    UNIQUE KEY uq_gejt (id_terminalit, kodi_gejtit),
+    CONSTRAINT fk_gejt_terminali FOREIGN KEY (id_terminalit) REFERENCES terminalet(id_terminalit)
+);

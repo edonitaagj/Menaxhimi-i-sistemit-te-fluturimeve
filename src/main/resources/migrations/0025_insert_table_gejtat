@@ -1,0 +1,8 @@
+INSERT INTO gejtat (id_terminalit, kodi_gejtit, lloji) VALUES
+(1, 'A1', 'largim'),
+(1, 'A2', 'largim'),
+(1, 'A3', 'largim'),
+(1, 'B1', 'mbërritje'),
+(1, 'B2', 'mbërritje'),
+(1, 'C1', 'të_dyja'),
+(1, 'C2', 'të_dyja');
