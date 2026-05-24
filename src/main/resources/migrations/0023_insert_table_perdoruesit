@@ -1,0 +1,9 @@
+INSERT INTO perdoruesit
+(id_stafit, emri, mbiemri, email, password_hash, salt, roli, gjuha_preferuar)
+VALUES
+(NULL, 'Administrator', 'Sistemit', 'admin@prn-airport.com',
+ SHA2(CONCAT('salt_admin_123', 'admin123'), 256), 'salt_admin_123', 'admin', 'sq'),
+(1, 'Arianit', 'Bajrami', 'arianit.bajrami@prn-airport.com',
+ SHA2(CONCAT('salt_staff_456', 'stafi123'), 256), 'salt_staff_456', 'staf', 'sq'),
+(NULL, 'Viewer', 'Test', 'viewer.test@email.com',
+ SHA2(CONCAT('salt_client_789', 'viewer123'), 256), 'salt_client_789', 'klient', 'en');
