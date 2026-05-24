@@ -1,0 +1,17 @@
+CREATE TABLE oraret (
+    id_orarit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_kompanise INT UNSIGNED NOT NULL,
+    id_linjes INT UNSIGNED NOT NULL,
+    numri_fluturimit VARCHAR(10) NOT NULL,
+    dita_javes VARCHAR(100) NOT NULL,
+    ora_nisjes TIME NOT NULL,
+    ora_mbrrritjes TIME NOT NULL,
+    kalimi_nate TINYINT UNSIGNED DEFAULT 0,
+    id_avionit_default INT UNSIGNED,
+    vlefshme_nga DATE NOT NULL,
+    vlefshme_deri DATE,
+    eshte_aktive BOOLEAN DEFAULT TRUE,
+    CONSTRAINT fk_orari_kompania FOREIGN KEY (id_kompanise) REFERENCES kompanite_ajrore(id_kompanise),
+    CONSTRAINT fk_orari_linja FOREIGN KEY (id_linjes) REFERENCES linjat(id_linjes),
+    CONSTRAINT fk_orari_avioni FOREIGN KEY (id_avionit_default) REFERENCES avionet(id_avionit)
+);
