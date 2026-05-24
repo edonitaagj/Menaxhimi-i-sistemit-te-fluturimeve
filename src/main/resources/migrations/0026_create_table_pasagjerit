@@ -1,0 +1,15 @@
+CREATE TABLE pasagjerit (
+    id_pasagjerit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    numri_pasaportes VARCHAR(20) NOT NULL UNIQUE,
+    id_vendit_shtetesise INT UNSIGNED NOT NULL,
+    emri VARCHAR(80) NOT NULL,
+    mbiemri VARCHAR(80) NOT NULL,
+    datelindja DATE NOT NULL,
+    gjinia ENUM('M','F','Tjeter') NOT NULL,
+    email VARCHAR(150) UNIQUE,
+    telefoni VARCHAR(30),
+    adresa VARCHAR(255),
+    pasaporta_skadimi DATE,
+    INDEX idx_mbiemri_emri (mbiemri, emri),
+    CONSTRAINT fk_pasagjeri_vendi FOREIGN KEY (id_vendit_shtetesise) REFERENCES vendet(id_vendi)
+);
