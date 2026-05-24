@@ -1,0 +1,18 @@
+CREATE TABLE perdoruesit (
+    id_perdoruesit   INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_stafit        INT UNSIGNED,            -- NULL nese eshte klient
+    emri             VARCHAR(80)  NOT NULL,
+    mbiemri          VARCHAR(80)  NOT NULL,
+    email            VARCHAR(150) NOT NULL UNIQUE,
+    password_hash    VARCHAR(255) NOT NULL,   -- BCrypt $2a$...
+    salt             VARCHAR(100) NOT NULL,
+    roli             ENUM('admin','staf','klient') DEFAULT 'klient',
+    gjuha_preferuar  ENUM('sq','en') DEFAULT 'sq',
+    eshte_aktiv      BOOLEAN DEFAULT TRUE,
+    tentativa_login  TINYINT DEFAULT 0,       -- lockout pas 5
+    last_login       TIMESTAMP,
+
+    CONSTRAINT fk_perdoruesi_stafi
+        FOREIGN KEY (id_stafit) REFERENCES stafi (id_stafit)
+        ON DELETE SET NULL ON UPDATE CASCADE
+);
