@@ -1,0 +1,11 @@
+CREATE TABLE bordet_checkin (
+    id_bordit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_aeroportit INT UNSIGNED NOT NULL,
+    id_terminalit INT UNSIGNED NOT NULL,
+    numri_bordit VARCHAR(10) NOT NULL,
+    lloji ENUM('manual','automatik','self_service') DEFAULT 'manual',
+    eshte_aktive BOOLEAN DEFAULT TRUE,
+    UNIQUE KEY uq_bordi (id_aeroportit, numri_bordit),
+    CONSTRAINT fk_bordi_aeroporti FOREIGN KEY (id_aeroportit) REFERENCES aeroportet(id_aeroportit),
+    CONSTRAINT fk_bordi_terminali FOREIGN KEY (id_terminalit) REFERENCES terminalet(id_terminalit)
+);
