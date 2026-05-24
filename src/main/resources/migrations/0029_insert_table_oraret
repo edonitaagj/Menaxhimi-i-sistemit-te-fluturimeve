@@ -1,0 +1,15 @@
+INSERT INTO oraret (id_kompanise, id_linjes, numri_fluturimit, dita_javes, ora_nisjes, ora_mbrrritjes, id_avionit_default, vlefshme_nga, vlefshme_deri) VALUES
+(1, 1, 'OS 741', 'Monday,Wednesday,Friday,Saturday', '06:30', '08:00', 1, '2025-03-30', '2025-10-26'),
+(1, 1, 'OS 743', 'Tuesday,Thursday,Sunday', '14:15', '15:45', 2, '2025-03-30', '2025-10-26'),
+(1, 2, 'OS 742', 'Monday,Wednesday,Friday,Saturday', '08:45', '10:15', 1, '2025-03-30', '2025-10-26'),
+(2, 3, 'LH 1497', 'Monday,Tuesday,Wednesday,Thursday,Friday', '07:00', '09:10', 3, '2025-03-30', '2025-10-26'),
+(2, 4, 'LH 1496', 'Monday,Tuesday,Wednesday,Thursday,Friday', '10:00', '12:10', 3, '2025-03-30', '2025-10-26'),
+(10, 5, 'W6 2201', 'Wednesday,Saturday', '09:45', '11:45', 10, '2025-03-30', '2025-10-26'),
+(10, 6, 'W6 2202', 'Wednesday,Saturday', '12:30', '14:30', 10, '2025-03-30', '2025-10-26'),
+(11, 9, 'FR 4455', 'Thursday,Sunday', '11:00', '13:55', 12, '2025-03-30', '2025-10-26'),
+(11, 10, 'FR 4456', 'Thursday,Sunday', '14:45', '17:40', 12, '2025-03-30', '2025-10-26'),
+(4, 11, 'LX 1581', 'Monday,Wednesday,Friday', '08:00', '10:00', 6, '2025-03-30', '2025-10-26'),
+(6, 17, 'TK 1056', 'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday', '05:30', '07:35', 8, '2025-03-30', '2025-10-26'),
+(6, 18, 'TK 1057', 'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday', '08:30', '10:35', 8, '2025-03-30', '2025-10-26'),
+(8, 23, 'XK 101', 'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday', '10:00', '10:40', 13, '2025-03-30', '2025-10-26'),
+(9, 24, 'AB 201', 'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday', '12:00', '12:40', 14, '2025-03-30', '2025-10-26');
