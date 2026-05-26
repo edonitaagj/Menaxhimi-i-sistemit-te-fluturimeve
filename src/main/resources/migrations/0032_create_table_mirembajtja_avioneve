@@ -1,0 +1,14 @@
+CREATE TABLE mirembajtja_avioneve (
+    id_mirembajtjes INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_avionit INT UNSIGNED NOT NULL,
+    lloji_sherbimit ENUM('kontroll_rutinë', 'riparim_emergjent', 'ndërrim_pjesësh', 'inspektim_vjetor') NOT NULL,
+    data_fillimit DATETIME NOT NULL,
+    data_mbarimit DATETIME,
+    pershkrimi_punes TEXT,
+    kostoja DECIMAL(10,2),
+    id_stafit_pergjegjes INT UNSIGNED NOT NULL, -- Mekaniku ose inxhinieri
+    statusi ENUM('në_proces', 'e_përfunduar', 'e_anuluar') DEFAULT 'në_proces',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT fk_maint_avioni FOREIGN KEY (id_avionit) REFERENCES avionet(id_avionit),
+    CONSTRAINT fk_maint_stafi FOREIGN KEY (id_stafit_pergjegjes) REFERENCES stafi(id_stafit)
+);

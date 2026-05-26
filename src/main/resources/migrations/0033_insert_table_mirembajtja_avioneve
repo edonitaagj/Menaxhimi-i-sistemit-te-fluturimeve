@@ -1,0 +1,6 @@
+INSERT INTO mirembajtja_avioneve
+(id_avionit, lloji_sherbimit, data_fillimit, data_mbarimit, pershkrimi_punes, kostoja, id_stafit_pergjegjes, statusi)
+VALUES
+(1, 'kontroll_rutinë', '2026-04-20 08:00:00', '2026-04-20 14:00:00', 'Kontrolli i sistemit të frenimit dhe gomave', 1200.50, 1, 'e_përfunduar'),
+(2, 'riparim_emergjent', '2026-05-07 10:00:00', NULL, 'Riparimi i sensorit të presionit në motorin e majtë', 4500.00, 1, 'në_proces'),
+(3, 'inspektim_vjetor', '2026-05-10 09:00:00', '2026-05-15 17:00:00', 'Inspektimi i plotë strukturor (C-Check)', 15000.00, 1, 'në_proces');
