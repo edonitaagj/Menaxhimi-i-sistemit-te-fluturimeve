@@ -1,0 +1,10 @@
+CREATE TABLE caktimi_bordeve (
+    id_caktimit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_fluturimit INT UNSIGNED NOT NULL,
+    id_bordit INT UNSIGNED NOT NULL,
+    hapur_nga DATETIME,
+    mbyllur_ne DATETIME,
+    UNIQUE KEY uq_caktim (id_fluturimit, id_bordit),
+    CONSTRAINT fk_caktim_fluturimi FOREIGN KEY (id_fluturimit) REFERENCES fluturimet(id_fluturimit),
+    CONSTRAINT fk_caktim_bordi FOREIGN KEY (id_bordit) REFERENCES bordet_checkin(id_bordit)
+);
