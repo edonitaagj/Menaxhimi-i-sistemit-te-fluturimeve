@@ -1,0 +1,16 @@
+CREATE TABLE rezervimet (
+    id_rezervimit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    kodi_rezervimit VARCHAR(8) NOT NULL UNIQUE,
+    id_pasagjerit INT UNSIGNED NOT NULL,
+    id_fluturimit INT UNSIGNED NOT NULL,
+    klasa ENUM('ekonomike','biznes','first') DEFAULT 'ekonomike',
+    cmimi_total DECIMAL(10,2) NOT NULL,
+    monedha CHAR(3) DEFAULT 'EUR',
+    statusi ENUM('konfirmuar','anuluar','wait_list','checked_in','bordinguar') DEFAULT 'konfirmuar',
+    data_rezervimit DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_anulimit DATETIME,
+    shenimet TEXT,
+    INDEX idx_kodi (kodi_rezervimit),
+    CONSTRAINT fk_rezervimi_pasagjeri FOREIGN KEY (id_pasagjerit) REFERENCES pasagjerit(id_pasagjerit),
+    CONSTRAINT fk_rezervimi_fluturimi FOREIGN KEY (id_fluturimit) REFERENCES fluturimet(id_fluturimit)
+);

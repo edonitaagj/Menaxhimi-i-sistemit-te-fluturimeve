@@ -1,0 +1,11 @@
+INSERT INTO rezervimet (kodi_rezervimit, id_pasagjerit, id_fluturimit, klasa, cmimi_total, statusi, data_rezervimit) VALUES
+('PRNOS001', 1, 1, 'ekonomike', 189.00, 'konfirmuar', '2025-05-20 10:30:00'),
+('PRNOS002', 2, 1, 'ekonomike', 189.00, 'konfirmuar', '2025-05-20 10:35:00'),
+('PRNLH001', 3, 3, 'biznes', 450.00, 'konfirmuar', '2025-05-18 14:00:00'),
+('PRNTK001', 4, 5, 'ekonomike', 210.00, 'konfirmuar', '2025-05-19 09:15:00'),
+('PRNXK001', 9, 7, 'ekonomike', 85.00, 'konfirmuar', '2025-06-01 11:00:00'),
+('PRNXK002', 10, 7, 'ekonomike', 85.00, 'konfirmuar', '2025-06-01 11:05:00'),
+('PRNLH002', 5, 10, 'ekonomike', 320.00, 'konfirmuar', '2025-05-21 16:45:00'),
+('PRNTK002', 8, 6, 'biznes', 520.00, 'konfirmuar', '2025-05-22 08:30:00'),
+('PRNFR001', 6, 4, 'ekonomike', 140.00, 'konfirmuar', '2025-05-23 12:00:00'),
+('PRNWZ001', 11, 9, 'ekonomike', 99.00, 'konfirmuar', '2025-05-24 20:00:00');
