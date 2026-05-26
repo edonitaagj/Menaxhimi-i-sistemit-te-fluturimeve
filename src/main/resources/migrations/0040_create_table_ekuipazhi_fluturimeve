@@ -1,0 +1,9 @@
+CREATE TABLE ekuipazhi_fluturimit (
+    id_fluturimit INT UNSIGNED NOT NULL,
+    id_stafit INT UNSIGNED NOT NULL,
+    roli_ne_fluturim ENUM('kapiten','ko_pilot','kryesteward','steward','mekanik','tjeter') NOT NULL,
+    konfirmuar BOOLEAN DEFAULT FALSE,
+    PRIMARY KEY (id_fluturimit, id_stafit),
+    CONSTRAINT fk_ekuipazh_fluturimi FOREIGN KEY (id_fluturimit) REFERENCES fluturimet(id_fluturimit),
+    CONSTRAINT fk_ekuipazh_stafi FOREIGN KEY (id_stafit) REFERENCES stafi(id_stafit)
+);

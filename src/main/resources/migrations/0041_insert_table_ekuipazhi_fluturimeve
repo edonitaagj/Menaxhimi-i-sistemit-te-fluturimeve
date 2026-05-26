@@ -1,0 +1,5 @@
+INSERT INTO ekuipazhi_fluturimit (id_fluturimit, id_stafit, roli_ne_fluturim, konfirmuar) VALUES
+(1, 1, 'kapiten', TRUE),
+(1, 2, 'ko_pilot', TRUE),
+(1, 3, 'kryesteward', TRUE),
+(3, 10, 'kapiten', TRUE);
