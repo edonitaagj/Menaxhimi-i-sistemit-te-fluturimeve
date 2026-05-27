@@ -1,0 +1,6 @@
+INSERT INTO artikujt_humbur
+(id_aeroportit, pershkrimi, kategoria, data_gjetjes, vendi_gjetjes, statusi, id_pasagjerit_pronar, id_stafit_raportues)
+VALUES
+(1, 'iPhone 13 Pro, ngjyrë e zezë, me këllëf të kaltër', 'elektronike', '2026-05-01', 'Terminali 1, Gate A2', 'i_gjetur', NULL, 1),
+(1, 'Pasaportë e Republikës së Kosovës', 'dokumente', '2026-05-03', 'Zonën e Check-in', 'i_kthyer', 1, 1),
+(1, 'Çantë shpine Nike, ngjyrë hiri', 'bagazh', '2026-05-05', 'Parking', 'i_raportuar', NULL, 1);

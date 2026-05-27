@@ -1,0 +1,16 @@
+CREATE TABLE artikujt_humbur (
+    id_artikullit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_aeroportit INT UNSIGNED NOT NULL,
+    pershkrimi TEXT NOT NULL,
+    kategoria ENUM('elektronike', 'dokumente', 'bagazh', 'tjetër') DEFAULT 'tjetër',
+    data_gjetjes DATE NOT NULL,
+    vendi_gjetjes VARCHAR(100),
+    statusi ENUM('i_raportuar', 'i_gjetur', 'i_kthyer', 'i_asgjësuar') DEFAULT 'i_raportuar',
+    id_pasagjerit_pronar INT UNSIGNED, -- NULL nëse nuk dihet pronari
+    id_stafit_raportues INT UNSIGNED NOT NULL,
+    foto_path VARCHAR(255), -- Për JavaFX që të shfaqë imazhin
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_lost_aeroporti FOREIGN KEY (id_aeroportit) REFERENCES aeroportet(id_aeroportit),
+    CONSTRAINT fk_lost_pasagjeri FOREIGN KEY (id_pasagjerit_pronar) REFERENCES pasagjerit(id_pasagjerit),
+    CONSTRAINT fk_lost_stafi FOREIGN KEY (id_stafit_raportues) REFERENCES stafi(id_stafit)
+);
