@@ -1,0 +1,13 @@
+INSERT INTO njoftimet (id_fluturimit, id_aeroportit, lloji, titulli_sq, titulli_en, mesazhi_sq, mesazhi_en, aktiv_nga, aktiv_deri) VALUES
+(3, 1, 'vonesë',
+ 'Vonesë - LH 1497',
+ 'Delay - LH 1497',
+ 'Fluturimi LH 1497 në destinacionin Frankfurt është vonuar 40 minuta për shkak të kushteve të motit.',
+ 'Flight LH 1497 to Frankfurt is delayed by 40 minutes due to weather conditions.',
+ '2025-06-02 06:50:00', '2025-06-02 09:00:00'),
+(NULL, 1, 'info',
+ 'Mirëserdhët në Aeroportin Adem Jashari',
+ 'Welcome to Adem Jashari Airport',
+ 'Ju lutemi kontrolloni tabelën e largimeve për informatat e fundit mbi fluturimet tuaja.',
+ 'Please check the departures board for the latest information on your flights.',
+ '2025-01-01 00:00:00', NULL);
