@@ -1,0 +1,14 @@
+CREATE TABLE njoftimet (
+    id_njoftimit INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_fluturimit INT UNSIGNED,
+    id_aeroportit INT UNSIGNED NOT NULL,
+    lloji ENUM('info','vonese','anulim','boarding','emergjence','tjeter') DEFAULT 'info',
+    titulli_sq VARCHAR(200),
+    titulli_en VARCHAR(200),
+    mesazhi_sq TEXT,
+    mesazhi_en TEXT,
+    aktiv_nga DATETIME NOT NULL,
+    aktiv_deri DATETIME,
+    CONSTRAINT fk_njoftimi_fluturimi FOREIGN KEY (id_fluturimit) REFERENCES fluturimet(id_fluturimit),
+    CONSTRAINT fk_njoftimi_aeroporti FOREIGN KEY (id_aeroportit) REFERENCES aeroportet(id_aeroportit)
+);
