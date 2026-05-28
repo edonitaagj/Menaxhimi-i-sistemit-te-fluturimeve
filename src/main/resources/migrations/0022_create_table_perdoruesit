@@ -7,7 +7,6 @@ CREATE TABLE perdoruesit (
     password_hash    VARCHAR(255) NOT NULL,   -- BCrypt $2a$...
     salt             VARCHAR(100) NOT NULL,
     roli             ENUM('admin','staf','klient') DEFAULT 'klient',
-    gjuha_preferuar  ENUM('sq','en') DEFAULT 'sq',
     eshte_aktiv      BOOLEAN DEFAULT TRUE,
     tentativa_login  TINYINT DEFAULT 0,       -- lockout pas 5
     last_login       TIMESTAMP,
