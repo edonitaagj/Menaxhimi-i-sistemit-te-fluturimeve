@@ -1,0 +1,7 @@
+ALTER TABLE perdoruesit DROP COLUMN salt;
+ALTER TABLE perdoruesit DROP COLUMN gjuha_prefereuar;
+ALTER TABLE vendet DROP COLUMN emri_anglisht;
+ALTER TABLE qytetet DROP COLUMN emri_anglisht;
+ALTER TABLE aeroportet DROP COLUMN emri_anglisht;
+ALTER TABLE njoftimet DROP COLUMN titulli_en;
+ALTER TABLE njoftimet DROP COLUMN mesazhi_en;
