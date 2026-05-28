@@ -1,0 +1,12 @@
+CREATE TABLE pagesat (
+    id_pageses INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_rezervimit INT UNSIGNED NOT NULL,
+    shuma DECIMAL(10,2) NOT NULL,
+    monedha CHAR(3) DEFAULT 'EUR',
+    metoda ENUM('karte','cash','transfer','online','voucher') NOT NULL,
+    statusi ENUM('e_pritshme','e_kryer','e_deshtuar','e_kthyer') DEFAULT 'e_pritshme',
+    referenca_transaksionit VARCHAR(100),
+    data_pageses DATETIME DEFAULT CURRENT_TIMESTAMP,
+    shenimet TEXT,
+    CONSTRAINT fk_pagesa_rezervimi FOREIGN KEY (id_rezervimit) REFERENCES rezervimet(id_rezervimit)
+);

@@ -1,0 +1,11 @@
+INSERT INTO pagesat (id_rezervimit, shuma, monedha, metoda, statusi, referenca_transaksionit, data_pageses) VALUES
+(1, 189.00, 'EUR', 'kartë', 'e_kryer', 'TXN-OS-20250520-001', '2025-05-20 10:30:00'),
+(2, 189.00, 'EUR', 'kartë', 'e_kryer', 'TXN-OS-20250520-002', '2025-05-20 10:35:00'),
+(3, 450.00, 'EUR', 'online', 'e_kryer', 'TXN-LH-20250518-003', '2025-05-18 14:00:00'),
+(4, 210.00, 'EUR', 'kartë', 'e_kryer', 'TXN-TK-20250519-004', '2025-05-19 09:15:00'),
+(5, 85.00, 'EUR', 'cash', 'e_kryer', 'TXN-XK-20250601-005', '2025-06-01 11:00:00'),
+(6, 85.00, 'EUR', 'cash', 'e_kryer', 'TXN-XK-20250601-006', '2025-06-01 11:05:00'),
+(7, 320.00, 'EUR', 'online', 'e_kryer', 'TXN-LH-20250521-007', '2025-05-21 16:45:00'),
+(8, 520.00, 'EUR', 'kartë', 'e_kryer', 'TXN-TK-20250522-008', '2025-05-22 08:30:00'),
+(9, 140.00, 'EUR', 'kartë', 'e_kryer', 'TXN-FR-20250523-009', '2025-05-23 12:00:00'),
+(10, 99.00, 'EUR', 'online', 'e_kryer', 'TXN-WZ-20250524-010', '2025-05-24 20:00:00');
