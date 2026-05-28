@@ -1,0 +1,16 @@
+CREATE TABLE biletat (
+    id_biletes INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_rezervimit INT UNSIGNED NOT NULL,
+    id_pasagjerit INT UNSIGNED NOT NULL,
+    numri_biletes VARCHAR(20) NOT NULL UNIQUE,
+    vendi_uljes VARCHAR(5),
+    klasa_uljes ENUM('ekonomike','biznes','first') DEFAULT 'ekonomike',
+    cmimi DECIMAL(10,2) NOT NULL,
+    taksa DECIMAL(10,2) DEFAULT 0.00,
+    checked_in BOOLEAN DEFAULT FALSE,
+    ora_checkin DATETIME,
+    bagazhe_kg SMALLINT UNSIGNED DEFAULT 20,
+    statusi ENUM('i_vlefshem','i_perdorur','anuluar','humbur') DEFAULT 'i_vlefshem',
+    CONSTRAINT fk_bileta_rezervimi FOREIGN KEY (id_rezervimit) REFERENCES rezervimet(id_rezervimit),
+    CONSTRAINT fk_bileta_pasagjeri FOREIGN KEY (id_pasagjerit) REFERENCES pasagjerit(id_pasagjerit)
+);
