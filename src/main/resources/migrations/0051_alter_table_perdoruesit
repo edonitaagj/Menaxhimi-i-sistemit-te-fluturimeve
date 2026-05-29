@@ -1,0 +1,3 @@
+ALTER TABLE perdoruesit ADD COLUMN username VARCHAR(255) NOT NULL;
+ALTER TABLE perdoruesit ADD UNIQUE (username);
+ALTER TABLE perdoruesit CHANGE COLUMN password_hash password VARCHAR(255) NOT NULL;
