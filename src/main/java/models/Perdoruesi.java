@@ -13,11 +13,12 @@ public class Perdoruesi {
     private boolean eshteAktiv;
     private int tentativaLogin;
     private Timestamp lastLogin;
+    private String username;
 
     // Constructor minimal (p.sh. per login)
     public Perdoruesi(int idPerdoruesit, String email, String passwordHash) {
         this.idPerdoruesit = idPerdoruesit;
-        this.email = email;
+        this.username = username;
         this.passwordHash = passwordHash;
     }
 
@@ -32,7 +33,8 @@ public class Perdoruesi {
             String roli,
             boolean eshteAktiv,
             int tentativaLogin,
-            Timestamp lastLogin
+            Timestamp lastLogin,
+            String username
     ) {
         this.idPerdoruesit = idPerdoruesit;
         this.idStafit = idStafit;
@@ -44,6 +46,7 @@ public class Perdoruesi {
         this.eshteAktiv = eshteAktiv;
         this.tentativaLogin = tentativaLogin;
         this.lastLogin = lastLogin;
+        this.username = username;
     }
 
     // Getters & Setters
@@ -126,5 +129,13 @@ public class Perdoruesi {
 
     public void setLastLogin(Timestamp lastLogin) {
         this.lastLogin = lastLogin;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
