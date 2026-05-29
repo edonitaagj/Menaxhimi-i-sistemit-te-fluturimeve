@@ -5,4 +5,5 @@ module Menaxhimi.i.sistemit.te.fluturimeve {
     // JavaFX modules
     requires javafx.controls;
     requires javafx.fxml;
+    requires jbcrypt;
 }
