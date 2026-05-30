@@ -1,6 +1,6 @@
 package models.dto;
 
-public class LoginResponseDto {
+public class LoginResponseDto implements IRequestDto {
     private boolean login;
     private String message;
 

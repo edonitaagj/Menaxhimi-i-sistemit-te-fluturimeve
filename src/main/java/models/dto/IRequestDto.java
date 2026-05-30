@@ -1,4 +1,4 @@
 package models.dto;
 
-public class IRequestDto {
+public interface IRequestDto {
 }

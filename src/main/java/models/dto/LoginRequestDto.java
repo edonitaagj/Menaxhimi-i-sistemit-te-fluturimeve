@@ -1,6 +1,6 @@
 package models.dto;
 
-public class LoginRequestDto {
+public class LoginRequestDto implements IRequestDto {
     private String username;
     private String password;
 
