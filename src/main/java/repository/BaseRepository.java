@@ -1,7 +1,6 @@
 package repository;
 
-import models.Student;
-import models.mappers.Mapper;
+import models.mappers.IMapper;
 import services.DatabaseService;
 
 import java.sql.*;
@@ -10,7 +9,7 @@ abstract public class BaseRepository<T> implements IRepository<T>{
 
     abstract String getInsertQuery();
     abstract String getUpdateQuery();
-    abstract Mapper<T> getMapper();
+    abstract IMapper<T> getMapper();
     abstract String tableName();
     abstract void setPstmCreate(PreparedStatement pstm, T obj) throws SQLException;
     abstract void setPstmUpdate(PreparedStatement pstm, T obj) throws SQLException;
