@@ -16,7 +16,7 @@ public class Perdoruesi {
     private String username;
 
     // Constructor minimal (p.sh. per login)
-    public Perdoruesi(int idPerdoruesit, String email, String passwordHash) {
+    public Perdoruesi(int idPerdoruesit, String username, String passwordHash) {
         this.idPerdoruesit = idPerdoruesit;
         this.username = username;
         this.passwordHash = passwordHash;
