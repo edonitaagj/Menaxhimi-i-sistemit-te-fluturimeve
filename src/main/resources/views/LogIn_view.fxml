@@ -155,7 +155,7 @@
         <Region prefHeight="8"/>
         <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
             <TextField fx:id="usernameField"
-                       promptText="emri@shembull.com"
+                       promptText="username"
                        style="-fx-background-color: #F8FAFC;
                               -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
                               -fx-border-radius: 10; -fx-background-radius: 10;
@@ -163,7 +163,7 @@
                               -fx-font-size: 14; -fx-text-fill: #0F172A;
                               -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 600;"
                        maxWidth="Infinity"/>
-            <Label text="✉" style="-fx-text-fill: #94A3B8; -fx-font-size: 18; -fx-padding: 0 16 0 0;"/>
+            <Label text="👤" style="-fx-text-fill: #94A3B8; -fx-font-size: 18; -fx-padding: 0 16 0 0;"/>
         </StackPane>
 
         <Region prefHeight="20"/>
