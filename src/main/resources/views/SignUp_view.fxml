@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 
 <HBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controllers.LoginController"
+      fx:controller="controllers.SignupController"
       prefWidth="860" prefHeight="600"
       style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 20, 0, 0, 10);">
 
