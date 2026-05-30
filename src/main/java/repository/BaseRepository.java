@@ -4,107 +4,131 @@ import models.mappers.IMapper;
 import services.DatabaseService;
 
 import java.sql.*;
+import java.util.StringJoiner;
 
-abstract public class BaseRepository<T> implements IRepository<T>{
+public abstract class BaseRepository<T> implements IRepository<T> {
 
-    abstract String getInsertQuery();
-    abstract String getUpdateQuery();
-    abstract IMapper<T> getMapper();
-    abstract String tableName();
-    abstract void setPstmCreate(PreparedStatement pstm, T obj) throws SQLException;
-    abstract void setPstmUpdate(PreparedStatement pstm, T obj) throws SQLException;
+    protected abstract String tableName();
+    protected abstract String idColumnName();
+    protected abstract String[] insertColumns();
+    protected abstract String[] updateColumns();
+    protected abstract IMapper<T> getMapper();
 
-    public T create(T obj){
-        String query = this.getInsertQuery();
-        try(
-                Connection connection = DatabaseService.getConnection();
-                PreparedStatement pstm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)
-        ){
-            this.setPstmCreate(pstm, obj);
+    protected abstract void setPstmCreate(PreparedStatement pstm, T obj) throws SQLException;
+    protected abstract void setPstmUpdate(PreparedStatement pstm, T obj) throws SQLException;
 
-            pstm.executeUpdate();
+    protected String buildInsertQuery() {
+        StringJoiner columns = new StringJoiner(", ");
+        StringJoiner placeholders = new StringJoiner(", ");
 
-            ResultSet res = pstm.getGeneratedKeys();
-            if(res.next()){
-                int id = res.getInt(1);
-                return this.getById(id);
-            }
-        }catch (Exception e){
-
+        for (int i = 0; i < insertColumns().length; i++) {
+            columns.add(insertColumns()[i]);
+            placeholders.add("?");
         }
-        return null;
+
+        return "INSERT INTO " + tableName() +
+                " (" + columns + ") VALUES (" + placeholders + ")";
     }
 
-    public T update(T obj){
-        String query = this.getUpdateQuery();
-        try(
-                Connection connection = DatabaseService.getConnection();
-                PreparedStatement pstm = connection.prepareStatement(query);
-        ){
-            this.setPstmUpdate(pstm, obj);
-            pstm.executeUpdate();
-        }catch (Exception e){
+    protected String buildUpdateQuery() {
+        StringJoiner setClause = new StringJoiner(", ");
 
+        for (String column : updateColumns()) {
+            setClause.add(column + " = ?");
         }
-        return obj;
+
+        return "UPDATE " + tableName() +
+                " SET " + setClause +
+                " WHERE " + idColumnName() + " = ?";
     }
 
-    public T getById(int id){
-        String query = "SELECT * FROM " + tableName() + " WHERE id = ?";
+    protected String buildSelectByIdQuery() {
+        return "SELECT * FROM " + tableName() +
+                " WHERE " + idColumnName() + " = ?";
+    }
 
-//        Connection conn = DatabaseService.getConnection();
-//        PreparedStatement pstm = null;
-//        try{
-//            pstm = connection.prepareStatement(query);
-//            pstm.setInt(1, id);
-//            ResultSet res = pstm.executeQuery();
-//            if(res.next()){
-//                return mapper.getFromResultSet(res);
-//            }
-//            return null;
-//        }catch (Exception e){
-//
-//        }finally {
-//            try{
-//                connection.close();
-//                if(pstm != null)
-//                    pstm.close();
-//
-//            }catch (Exception e){
-//
-//            }
-//        }
+    protected String buildDeleteByIdQuery() {
+        return "DELETE FROM " + tableName() +
+                " WHERE " + idColumnName() + " = ?";
+    }
+
+    @Override
+    public T create(T obj) {
+        String query = buildInsertQuery();
 
         try (
                 Connection connection = DatabaseService.getConnection();
-                PreparedStatement pstm = connection.prepareStatement(query);
-        ){
-            pstm.setInt(1, id);
-            ResultSet res = pstm.executeQuery();
-            if(res.next()){
-                return getMapper().getFromResultSet(res);
-            }
-        }catch (Exception e){
+                PreparedStatement pstm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)
+        ) {
+            setPstmCreate(pstm, obj);
+            pstm.executeUpdate();
 
+            try (ResultSet res = pstm.getGeneratedKeys()) {
+                if (res.next()) {
+                    int id = res.getInt(1);
+                    return getById(id);
+                }
+            }
+
+            return obj;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create record in table: " + tableName(), e);
+        }
+    }
+
+    @Override
+    public T update(T obj) {
+        String query = buildUpdateQuery();
+
+        try (
+                Connection connection = DatabaseService.getConnection();
+                PreparedStatement pstm = connection.prepareStatement(query)
+        ) {
+            setPstmUpdate(pstm, obj);
+            pstm.executeUpdate();
+            return obj;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to update record in table: " + tableName(), e);
+        }
+    }
+
+    @Override
+    public T getById(int id) {
+        String query = buildSelectByIdQuery();
+
+        try (
+                Connection connection = DatabaseService.getConnection();
+                PreparedStatement pstm = connection.prepareStatement(query)
+        ) {
+            pstm.setInt(1, id);
+
+            try (ResultSet res = pstm.executeQuery()) {
+                if (res.next()) {
+                    return getMapper().getFromResultSet(res);
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to fetch record from table: " + tableName() + " by id: " + id, e);
         }
 
         return null;
     }
 
-    public boolean delete(int objId){
-        String query = "DELETE FROM " + tableName() + " WHERE id = ?";
-        try(
+    @Override
+    public boolean delete(int id) {
+        String query = buildDeleteByIdQuery();
+
+        try (
                 Connection connection = DatabaseService.getConnection();
-                PreparedStatement pstm = connection.prepareStatement(query);
-        ){
-            pstm.setInt(1, objId);
-
+                PreparedStatement pstm = connection.prepareStatement(query)
+        ) {
+            pstm.setInt(1, id);
             return pstm.executeUpdate() > 0;
-        }catch (Exception e){
-
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to delete record from table: " + tableName() + " by id: " + id, e);
         }
-        return false;
     }
 
-
+    @Override
+    public abstract boolean delete(T obj);
 }
