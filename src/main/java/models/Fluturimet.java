@@ -21,6 +21,7 @@ public class Fluturimet {
     private String shkakuVoneses;
     private int kapacitetiTotal;
     private int vendetELira;
+    private double cmimiBaze;
 
     public Fluturimet(int idFluturimit) {
         this.idFluturimit = idFluturimit;
@@ -43,7 +44,8 @@ public class Fluturimet {
             String statusi,
             String shkakuVoneses,
             int kapacitetiTotal,
-            int vendetELira
+            int vendetELira,
+            double cmimiBaze
     ) {
         this.idFluturimit = idFluturimit;
         this.idOrarit = idOrarit;
@@ -62,6 +64,7 @@ public class Fluturimet {
         this.shkakuVoneses = shkakuVoneses;
         this.kapacitetiTotal = kapacitetiTotal;
         this.vendetELira = vendetELira;
+        this.cmimiBaze=cmimiBaze;
     }
 
     public int getIdFluturimit() {
@@ -200,4 +203,7 @@ public class Fluturimet {
         this.vendetELira = vendetELira;
     }
 
+    public double getCmimiBaze() { return cmimiBaze; }
+
+    public void setCmimiBaze(double cmimiBaze) { this.cmimiBaze = cmimiBaze ;}
 }
