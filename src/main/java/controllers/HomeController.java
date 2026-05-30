@@ -133,7 +133,7 @@ public class HomeController {
 
     @FXML
     private void handleNavProfili() {
-        Router.navigateTo(ViewsEnum.PROFILE_VIEW);
+        Router.navigateTo(ViewsEnum.PROFIL_VIEW);
     }
 
     // ===============================
