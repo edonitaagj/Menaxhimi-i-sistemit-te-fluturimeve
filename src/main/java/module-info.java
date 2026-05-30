@@ -6,4 +6,8 @@ module Menaxhimi.i.sistemit.te.fluturimeve {
     requires javafx.controls;
     requires javafx.fxml;
     requires jbcrypt;
+
+    exports app;
+
+    opens controllers to javafx.fxml;
 }
