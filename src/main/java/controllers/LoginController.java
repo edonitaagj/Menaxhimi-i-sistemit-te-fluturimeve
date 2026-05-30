@@ -42,18 +42,25 @@ public class LoginController {
 
         LoginResponseDto response = authService.login(username, password);
 
-        if (response.isLogin()) {
-            Perdoruesi user = userRepo.findByUsername(username);
-
-            if (user == null) {
-                showError("Login u pranua, por përdoruesi nuk u gjet në databazë.");
-                return;
-            }
-
-            SessionManager.login(user);
-            Router.navigateTo(ViewsEnum.HOME_VIEW);
-        } else {
+        if (!response.isLogin()) {
             showError(response.getMessage());
+            return;
+        }
+
+        Perdoruesi user = userRepo.findByUsername(username);
+        if (user == null) {
+            showError("Login u pranua, por përdoruesi nuk u gjet në databazë.");
+            return;
+        }
+
+        SessionManager.login(user);
+
+        String role = user.getRoli() != null ? user.getRoli().trim().toLowerCase() : "";
+
+        switch (role) {
+            case "admin" -> Router.navigateTo(ViewsEnum.ADMIN_VIEW);
+            case "klient" -> Router.navigateTo(ViewsEnum.HOME_VIEW);
+            default -> Router.navigateTo(ViewsEnum.HOME_VIEW);
         }
     }
 

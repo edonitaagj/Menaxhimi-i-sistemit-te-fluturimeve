@@ -66,7 +66,7 @@ public class AdminController {
 
         loadDashboardData(); // Ngarkon tabelën e parë sapo hapet faqja
     }
-    
+
     private void loadAdminData() {
         Perdoruesi admin = SessionManager.getCurrentUser();
 
