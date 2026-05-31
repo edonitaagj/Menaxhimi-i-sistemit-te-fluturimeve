@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import models.ArtikujtHumbur;
 import models.dto.ArtikullHumburRequestDto;
 import services.ArtikujtHumburService;
@@ -18,6 +19,15 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class AdminHumburController implements Initializable {
+
+    @FXML private HBox navDashboard;
+    @FXML private HBox navFluturimet;
+    @FXML private HBox navRezervimet;
+    @FXML private HBox navAvionet;
+    @FXML private HBox navHumbur;
+    @FXML private HBox navStafi;
+    @FXML private HBox navPasagjeret;
+    @FXML private HBox navKompanite;
 
     @FXML private TextField txtArtikulli;
     @FXML private TextField txtVendi;
@@ -42,6 +52,7 @@ public class AdminHumburController implements Initializable {
         setupComboBox();
         setupSearch();
         loadData();
+        setupSidebarActions();
 
         if (dtDataGjetjes != null) {
             dtDataGjetjes.setValue(LocalDate.now());
@@ -180,5 +191,16 @@ public class AdminHumburController implements Initializable {
     private void handleLogout() {
         SessionManager.logout();
         Router.navigateTo(ViewsEnum.LOGIN_VIEW);
+    }
+
+    private void setupSidebarActions() {
+        if (navDashboard != null) navDashboard.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_VIEW));
+        if (navRezervimet != null) navRezervimet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_REZERVIMET));
+        if (navAvionet != null) navAvionet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_AVIONET));
+        if (navHumbur != null) navHumbur.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_ARTIKUJT_HUMBUR));
+        if (navStafi != null) navStafi.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_STAFI));
+        if (navPasagjeret != null) navPasagjeret.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_PASAGJERIT));
+        if (navKompanite != null) navKompanite.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_KOMPANITE));
+        // navFluturimet është faqja aktuale
     }
 }
