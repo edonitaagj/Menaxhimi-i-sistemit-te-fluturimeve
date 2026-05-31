@@ -133,6 +133,10 @@ public class HomeController {
         Router.navigateTo(ViewsEnum.PROFIL_VIEW);
     }
 
+    @FXML
+    private void handleNavHelp() {
+        Router.navigateTo(ViewsEnum.HELP_VIEW);
+    }
     // ===============================
     // LOGOUT
     // ===============================
