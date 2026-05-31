@@ -30,11 +30,18 @@ public class ProfilController {
     @FXML private PasswordField txtFjalekalimiAktual;
     @FXML private PasswordField txtFjalekalimiRi;
 
+    @FXML private Label userFullName;
+    @FXML private Label userEmail;
+    @FXML private Label avatarLabel;
+
     private final UserRepository userRepo = new UserRepository();
 
     @FXML
     private void initialize() {
+
         loadProfili();
+        loadUserData();
+
     }
 
     // ════════════════════════════════════════════════════════════════════
@@ -121,6 +128,21 @@ public class ProfilController {
     @FXML private void handleNavRezervimet() { Router.navigateTo(ViewsEnum.REZERVIMET_VIEW); }
     @FXML private void handleNavBileta()     { Router.navigateTo(ViewsEnum.BILETAT_VIEW); }
     @FXML private void handleNavNjoftimet()  { Router.navigateTo(ViewsEnum.NJOFTIMET_VIEW); }
+
+    private void loadUserData() {
+        Perdoruesi user = SessionManager.getCurrentUser();
+
+        if (user != null) {
+            String fullName = user.getEmri() + " " + user.getMbiemri();
+
+            userFullName.setText(fullName);
+            userEmail.setText(user.getEmail());
+
+            avatarLabel.setText(
+                    user.getEmri().substring(0, 1).toUpperCase()
+            );
+        }
+    }
 
     @FXML
     private void handleLogout() {

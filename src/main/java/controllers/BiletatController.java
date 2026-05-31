@@ -1,11 +1,13 @@
 package controllers;
 
 import app.Router;
+import app.SessionManager;
 import app.ViewsEnum;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import models.Perdoruesi;
 import models.dto.BiletaTableDto;
 import services.BiletatService;
 
@@ -27,6 +29,10 @@ public class BiletatController {
     @FXML private TableColumn<BiletaTableDto, Double> colTaksa;
     @FXML private TableColumn<BiletaTableDto, String> colCheckedIn;
     @FXML private TableColumn<BiletaTableDto, String> colStatusiBiletes;
+
+    @FXML private Label userFullName;
+    @FXML private Label userEmail;
+    @FXML private Label avatarLabel;
 
     private final BiletatService biletatService = new BiletatService();
     private BiletaTableDto biletaESelektuar;
@@ -51,6 +57,7 @@ public class BiletatController {
         tblBiletat.setPlaceholder(new Label("Nuk u gjetën bileta për përdoruesin aktual."));
 
         loadBiletatData();
+        loadUserData();
 
         tblBiletat.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             biletaESelektuar = newSelection;
@@ -65,6 +72,21 @@ public class BiletatController {
         });
 
         btnKryejCheckIn.setOnAction(e -> handleKryejCheckIn());
+    }
+
+    private void loadUserData() {
+        Perdoruesi user = SessionManager.getCurrentUser();
+
+        if (user != null) {
+            String fullName = user.getEmri() + " " + user.getMbiemri();
+
+            userFullName.setText(fullName);
+            userEmail.setText(user.getEmail());
+
+            avatarLabel.setText(
+                    user.getEmri().substring(0, 1).toUpperCase()
+            );
+        }
     }
 
     private void loadBiletatData() {
@@ -118,7 +140,11 @@ public class BiletatController {
     @FXML private void handleNavNjoftimet() { Router.navigateTo(ViewsEnum.NJOFTIMET_VIEW); }
     @FXML private void handleNavProfili() { Router.navigateTo(ViewsEnum.PROFIL_VIEW); }
 
-
+    @FXML
+    private void handleLogout() {
+        SessionManager.logout();
+        Router.navigateTo(ViewsEnum.LOGIN_VIEW);
+    }
 
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);

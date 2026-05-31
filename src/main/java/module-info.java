@@ -8,8 +8,8 @@ module Menaxhimi.i.sistemit.te.fluturimeve {
     requires jbcrypt;
     requires javafx.graphics;
 
-    exports app;
-
     opens controllers to javafx.fxml;
     opens models.dto to javafx.base;
+
+    exports app;
 }
