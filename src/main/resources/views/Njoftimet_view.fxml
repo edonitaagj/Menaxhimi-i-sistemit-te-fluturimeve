@@ -23,10 +23,6 @@
                 <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="🏠" />
                 <Label style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 13; -fx-font-weight: 600;" text="Kryefaqja" />
             </HBox>
-            <HBox fx:id="navFluturimet" alignment="CENTER_LEFT" onMouseClicked="#handleNavFluturimet" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
-                <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="✈" />
-                <Label style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 13; -fx-font-weight: 600;" text="Fluturimet" />
-            </HBox>
             <HBox fx:id="navRezervimet" alignment="CENTER_LEFT" onMouseClicked="#handleNavRezervimet" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
                 <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="🎫" />
                 <Label style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 13; -fx-font-weight: 600;" text="Rezervimet e mia" />
