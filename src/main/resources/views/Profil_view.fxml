@@ -64,12 +64,12 @@
 
                     <VBox spacing="6">
                         <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Emri i Plotë" />
-                        <TextField fx:id="txtEmriPlote" editable="false" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: #F8FAFC; -fx-text-fill: #64748B;" />
+                        <TextField fx:id="txtEmriPlote" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: #F8FAFC; -fx-text-fill: #64748B;" />
                     </VBox>
 
                     <VBox spacing="6">
                         <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Adresa Elektronike (Email)" />
-                        <TextField fx:id="txtEmail" editable="false" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: #F8FAFC; -fx-text-fill: #64748B;" />
+                        <TextField fx:id="txtEmail"  style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: #F8FAFC; -fx-text-fill: #64748B;" />
                     </VBox>
 
                     <VBox spacing="6">
