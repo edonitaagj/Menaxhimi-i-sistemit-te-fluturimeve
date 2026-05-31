@@ -3,7 +3,7 @@ package models;
 public class RoliStafit {
     private int idRolit;
     private String emriRoli;
-    private String pershkrimi;
+    private String departamenti;
 
     public RoliStafit(int idRolit) {
         this.idRolit = idRolit;
@@ -16,7 +16,7 @@ public class RoliStafit {
     ) {
         this.idRolit = idRolit;
         this.emriRoli = emriRoli;
-        this.pershkrimi = pershkrimi;
+        this.departamenti = departamenti;
     }
 
     public int getIdRolit() {
@@ -35,12 +35,12 @@ public class RoliStafit {
         this.emriRoli = emriRoli;
     }
 
-    public String getPershkrimi() {
-        return pershkrimi;
+    public String getDepartamenti() {
+        return departamenti;
     }
 
-    public void setPershkrimi(String pershkrimi) {
-        this.pershkrimi = pershkrimi;
+    public void setDepartamenti(String departamenti) {
+        this.departamenti = departamenti;
     }
 
 }

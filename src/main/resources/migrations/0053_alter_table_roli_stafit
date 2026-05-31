@@ -1,0 +1,15 @@
+alter table roli_stafit drop COLUMN pershkrimi;
+ALTER TABLE roli_stafit
+ADD COLUMN departamenti VARCHAR(100) DEFAULT NULL;
+
+UPDATE roli_stafit
+SET departamenti = CASE
+    WHEN `id_rolit` IN (1, 2) THEN 'Operacionet Fluturuese'
+    WHEN `id_rolit` IN (3, 4) THEN 'Shërbimet e Kabinës'
+    WHEN `id_rolit` = 5 THEN 'Shërbimet tokësore'
+    WHEN `id_rolit` = 6 THEN 'Menaxhimi i Trafikut Ajror'
+    WHEN `id_rolit` = 7 THEN 'Mirëmbajtja'
+    WHEN `id_rolit` = 8 THEN 'Operacionet e Aeroportit'
+    WHEN `id_rolit` = 9 THEN 'Siguria'
+    ELSE 'I pacaktuar'
+END;

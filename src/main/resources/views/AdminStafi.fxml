@@ -92,17 +92,22 @@
             <VBox style="-fx-padding: 32;" spacing="24">
 
                 <HBox spacing="20">
+                    <!-- KARTA 1: TOTALI I STAFIT -->
                     <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 10, 0, 0, 5);">
                         <Label text="TOTALI I STAFIT" style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800;"/>
-                        <Label text="348 Punonjës" style="-fx-text-fill: #0F172A; -fx-font-size: 22; -fx-font-weight: 900; -fx-padding: 5 0 0 0;"/>
+                        <Label fx:id="lblTotaliStafit" text="0 Punonjës" style="-fx-text-fill: #0F172A; -fx-font-size: 22; -fx-font-weight: 900; -fx-padding: 5 0 0 0;"/>
                     </VBox>
+
+                    <!-- KARTA 2: STAFI AKTIV -->
                     <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 10, 0, 0, 5);">
-                        <Label text="STAFI AKTIV SOT" style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800;"/>
-                        <Label text="112 në Ndërresë" style="-fx-text-fill: #10B981; -fx-font-size: 22; -fx-font-weight: 900; -fx-padding: 5 0 0 0;"/>
+                        <Label text="STAFI AKTIV" style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800;"/>
+                        <Label fx:id="lblStafiAktiv" text="0 Aktivë" style="-fx-text-fill: #10B981; -fx-font-size: 22; -fx-font-weight: 900; -fx-padding: 5 0 0 0;"/>
                     </VBox>
+
+                    <!-- KARTA 3: DEPARTAMENTE -->
                     <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 10, 0, 0, 5);">
                         <Label text="DEPARTAMENTE" style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800;"/>
-                        <Label text="6 Sektorë Aktivë" style="-fx-text-fill: #3A94F2; -fx-font-size: 22; -fx-font-weight: 900; -fx-padding: 5 0 0 0;"/>
+                        <Label fx:id="lblDepartamente" text="0 Sektorë" style="-fx-text-fill: #3A94F2; -fx-font-size: 22; -fx-font-weight: 900; -fx-padding: 5 0 0 0;"/>
                     </VBox>
                 </HBox>
 
