@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.ShtoMirembajtjeController"
+      spacing="18"
+      prefWidth="1000" prefHeight="720"
+      style="-fx-background-color: #F1F5F9; -fx-padding: 24;">
+
+    <VBox spacing="4">
+        <Label text="Regjistrimi i shërbimit teknik" style="-fx-font-size: 22; -fx-font-weight: 900; -fx-text-fill: #0F172A;"/>
+        <Label text="Krijo një rekord të ri mirëmbajtjeje për avionin e zgjedhur." style="-fx-font-size: 12; -fx-text-fill: #64748B;"/>
+    </VBox>
+
+    <GridPane hgap="14" vgap="14" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 14; -fx-border-color: #E2E8F0; -fx-border-radius: 14;">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="26"/>
+            <ColumnConstraints percentWidth="74"/>
+        </columnConstraints>
+
+        <Label text="Avioni" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="cmbAvioni" promptText="Zgjidh avionin" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Lloji i shërbimit" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="cmbLlojiSherbimit" promptText="Zgjidh llojin e shërbimit" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Data e fillimit" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="dpDataFillimit" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Ora e fillimit" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtOraFillimit" promptText="09:30" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Data e mbarimit" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="dpDataMbarimit" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <Label text="Ora e mbarimit" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtOraMbarimit" promptText="17:00" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+        <Label text="Stafi përgjegjës" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="cmbStafi" promptText="Zgjidh stafin" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+        <Label text="Kostoja (€)" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtKostoja" promptText="120.50" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+        <Label text="Statusi" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="cmbStatusi" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+        <Label text="Përshkrimi i punës" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+        <TextArea fx:id="txtPershkrimiPunes" prefRowCount="5" promptText="Përshkruaj punët e kryera..." GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="12" alignment="CENTER_RIGHT">
+        <Button fx:id="btnAnulo" text="Anulo" style="-fx-background-color: transparent; -fx-border-color: #94A3B8; -fx-text-fill: #334155; -fx-font-weight: 700; -fx-background-radius: 8; -fx-border-radius: 8; -fx-padding: 10 18;"/>
+        <Button fx:id="btnRuaj" text="Ruaj shërbimin teknik" style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 8; -fx-padding: 10 18;"/>
+    </HBox>
+</VBox>

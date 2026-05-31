@@ -1,18 +1,33 @@
-package models;
+package models.dto;
 
-import java.time.LocalDateTime;
-
-public class MirembajtjaAvioneve {
+public class MirembajtjaTableDto {
     private int idMirembajtjes;
     private int idAvionit;
     private String llojiSherbimit;
-    private LocalDateTime dataFillimit;
-    private LocalDateTime dataMbarimit;
+    private String dataFillimit;
+    private String dataMbarimit;
     private String pershkrimiPunes;
     private double kostoja;
     private int idStafitPergjegjes;
     private String statusi;
     private String emriStafit;
+
+    public MirembajtjaTableDto() {}
+
+    public MirembajtjaTableDto(int idMirembajtjes, int idAvionit, String llojiSherbimit,
+                               String dataFillimit, String dataMbarimit, String pershkrimiPunes,
+                               double kostoja, int idStafitPergjegjes, String statusi, String emriStafit) {
+        this.idMirembajtjes = idMirembajtjes;
+        this.idAvionit = idAvionit;
+        this.llojiSherbimit = llojiSherbimit;
+        this.dataFillimit = dataFillimit;
+        this.dataMbarimit = dataMbarimit;
+        this.pershkrimiPunes = pershkrimiPunes;
+        this.kostoja = kostoja;
+        this.idStafitPergjegjes = idStafitPergjegjes;
+        this.statusi = statusi;
+        this.emriStafit = emriStafit;
+    }
 
     public int getIdMirembajtjes() { return idMirembajtjes; }
     public void setIdMirembajtjes(int idMirembajtjes) { this.idMirembajtjes = idMirembajtjes; }
@@ -23,11 +38,11 @@ public class MirembajtjaAvioneve {
     public String getLlojiSherbimit() { return llojiSherbimit; }
     public void setLlojiSherbimit(String llojiSherbimit) { this.llojiSherbimit = llojiSherbimit; }
 
-    public LocalDateTime getDataFillimit() { return dataFillimit; }
-    public void setDataFillimit(LocalDateTime dataFillimit) { this.dataFillimit = dataFillimit; }
+    public String getDataFillimit() { return dataFillimit; }
+    public void setDataFillimit(String dataFillimit) { this.dataFillimit = dataFillimit; }
 
-    public LocalDateTime getDataMbarimit() { return dataMbarimit; }
-    public void setDataMbarimit(LocalDateTime dataMbarimit) { this.dataMbarimit = dataMbarimit; }
+    public String getDataMbarimit() { return dataMbarimit; }
+    public void setDataMbarimit(String dataMbarimit) { this.dataMbarimit = dataMbarimit; }
 
     public String getPershkrimiPunes() { return pershkrimiPunes; }
     public void setPershkrimiPunes(String pershkrimiPunes) { this.pershkrimiPunes = pershkrimiPunes; }

@@ -1,24 +1,23 @@
-package models;
+package models.dto;
 
 import java.time.LocalDateTime;
 
-public class MirembajtjaAvioneve {
-    private int idMirembajtjes;
-    private int idAvionit;
+public class MirembajtjaRequestDto implements IRequestDto {
+    private Integer idMirembajtjes;
+    private Integer idAvionit;
     private String llojiSherbimit;
     private LocalDateTime dataFillimit;
     private LocalDateTime dataMbarimit;
     private String pershkrimiPunes;
-    private double kostoja;
-    private int idStafitPergjegjes;
+    private Double kostoja;
+    private Integer idStafitPergjegjes;
     private String statusi;
-    private String emriStafit;
 
-    public int getIdMirembajtjes() { return idMirembajtjes; }
-    public void setIdMirembajtjes(int idMirembajtjes) { this.idMirembajtjes = idMirembajtjes; }
+    public Integer getIdMirembajtjes() { return idMirembajtjes; }
+    public void setIdMirembajtjes(Integer idMirembajtjes) { this.idMirembajtjes = idMirembajtjes; }
 
-    public int getIdAvionit() { return idAvionit; }
-    public void setIdAvionit(int idAvionit) { this.idAvionit = idAvionit; }
+    public Integer getIdAvionit() { return idAvionit; }
+    public void setIdAvionit(Integer idAvionit) { this.idAvionit = idAvionit; }
 
     public String getLlojiSherbimit() { return llojiSherbimit; }
     public void setLlojiSherbimit(String llojiSherbimit) { this.llojiSherbimit = llojiSherbimit; }
@@ -32,15 +31,12 @@ public class MirembajtjaAvioneve {
     public String getPershkrimiPunes() { return pershkrimiPunes; }
     public void setPershkrimiPunes(String pershkrimiPunes) { this.pershkrimiPunes = pershkrimiPunes; }
 
-    public double getKostoja() { return kostoja; }
-    public void setKostoja(double kostoja) { this.kostoja = kostoja; }
+    public Double getKostoja() { return kostoja; }
+    public void setKostoja(Double kostoja) { this.kostoja = kostoja; }
 
-    public int getIdStafitPergjegjes() { return idStafitPergjegjes; }
-    public void setIdStafitPergjegjes(int idStafitPergjegjes) { this.idStafitPergjegjes = idStafitPergjegjes; }
+    public Integer getIdStafitPergjegjes() { return idStafitPergjegjes; }
+    public void setIdStafitPergjegjes(Integer idStafitPergjegjes) { this.idStafitPergjegjes = idStafitPergjegjes; }
 
     public String getStatusi() { return statusi; }
     public void setStatusi(String statusi) { this.statusi = statusi; }
-
-    public String getEmriStafit() { return emriStafit; }
-    public void setEmriStafit(String emriStafit) { this.emriStafit = emriStafit; }
 }
