@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #0f172a;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HelpController">
+
+    <HBox layoutX="40" layoutY="30" spacing="15">
+        <Label style="-fx-font-size: 34;" text="❓"/>
+        <Label style="-fx-text-fill: white; -fx-font-size: 30; -fx-font-weight: bold;" text="Qendra e Ndihmës"/>
+    </HBox>
+
+    <Label layoutX="40" layoutY="80" style="-fx-text-fill: #94a3b8; -fx-font-size: 15;" text="Informacione dhe udhëzime për përdorimin e sistemit të menaxhimit të fluturimeve."/>
+
+    <Button layoutX="1050" layoutY="40" onAction="#handleBack" style="-fx-background-color: #334155; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 6 15 6 15; -fx-cursor: hand;" text="⬅ Kthehu"/>
+
+    <ScrollPane fitToWidth="true" layoutX="35" layoutY="130" prefHeight="620" prefWidth="1130" style="-fx-background: transparent; -fx-background-color: transparent;">
+        <VBox spacing="20" style="-fx-background-color: transparent; -fx-padding: 10;">
+
+            <VBox spacing="10" style="-fx-background-color: #1e293b; -fx-background-radius: 18; -fx-padding: 20;">
+                <Label style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;" text="✈ Si të kërkoni fluturime?"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="1. Zgjidhni qytetin 'Nga' dhe 'Deri'." wrapText="true"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="2. Zgjidhni datën e dëshiruar të fluturimit." wrapText="true"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="3. Shtypni butonin 'Kërko fluturime'." wrapText="true"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="4. Sistemi shfaq të gjitha fluturimet e disponueshme sipas kritereve." wrapText="true"/>
+            </VBox>
+
+            <VBox spacing="10" style="-fx-background-color: #1e293b; -fx-background-radius: 18; -fx-padding: 20;">
+                <Label style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;" text="🎫 Si të menaxhoni rezervimet?"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="1. Shkoni te seksioni 'Rezervimet'." wrapText="true"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="2. Për rezervim të ri: Zgjidhni fluturimin, pasagjerin dhe klasën." wrapText="true"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="3. Për modifikim: Klikoni 'Ndrysho' pranë rezervimit ekzistues." wrapText="true"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="4. Për anulim: Përdorni butonin 'Anulo' dhe konfirmoni veprimin." wrapText="true"/>
+            </VBox>
+
+            <VBox spacing="10" style="-fx-background-color: #1e293b; -fx-background-radius: 18; -fx-padding: 20;">
+                <Label style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;" text="🛫 Menaxhimi i biletave"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="1. Shkoni te 'Biletat' për të parë të gjitha biletat aktive." wrapText="true"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="2. Biletat gjenerohen automatikisht pas rezervimit të suksesshëm." wrapText="true"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="3. Mund të shkarkoni / printoni biletën në formatin PDF." wrapText="true"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="4. Historiku i biletave të anuluara gjendet në skedën 'Historiku'." wrapText="true"/>
+            </VBox>
+
+            <VBox spacing="10" style="-fx-background-color: #1e293b; -fx-background-radius: 18; -fx-padding: 20;">
+                <Label style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;" text="🔔 Njoftimet"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="Njoftimet shfaqen në krye të faqes kryesore." wrapText="true"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="Ato përfshijnë: vonesa të fluturimeve, ndryshime të portave, anulime të mundshme." wrapText="true"/>
+                <Label style="-fx-text-fill: #cbd5e1; -fx-font-size: 14;" text="Njoftimet e reja shënohen me një pikë të kuqe (🔴)." wrapText="true"/>
+            </VBox>
+
+            <VBox spacing="12" style="-fx-background-color: #1e293b; -fx-background-radius: 18; -fx-padding: 20;">
+                <Label style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;" text="📚 Pyetjet më të shpeshta (FAQ)"/>
+                <Label style="-fx-text-fill: #cbd5e1;" text="• Si mund ta ndryshoj një rezervim? → Shko te Rezervimet → Kliko Ndrysho"/>
+                <Label style="-fx-text-fill: #cbd5e1;" text="• Si mund ta anuloj një biletë? → Anulo rezervimin përkatës në seksionin Rezervimet"/>
+                <Label style="-fx-text-fill: #cbd5e1;" text="• Ku mund t'i shoh fluturimet aktive? → Në faqen kryesore pas kërkimit ose te Fluturimet"/>
+                <Label style="-fx-text-fill: #cbd5e1;" text="• Si ta përditësoj profilin tim? → Shko te Profili → Ndrysho të dhënat personale"/>
+                <Label style="-fx-text-fill: #cbd5e1;" text="• A mund të rezervoj për një tjetër person? → Po, gjatë rezervimit zgjidh pasagjerin ekzistues ose shto të ri."/>
+            </VBox>
+
+            <VBox spacing="10" style="-fx-background-color: #2563eb; -fx-background-radius: 18; -fx-padding: 20;">
+                <Label style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;" text="☎ Kontakti zyrtar"/>
+                <Label style="-fx-text-fill: white;" text="📧 Email: support@ademjashari-airport.com"/>
+                <Label style="-fx-text-fill: white;" text="📞 Tel: +383 38 000 111"/>
+                <Label style="-fx-text-fill: white;" text="🕒 Orari i punës: Hënë – Premte, 08:00 – 20:00"/>
+            </VBox>
+
+            <VBox spacing="12" style="-fx-background-color: #1e293b; -fx-background-radius: 18; -fx-padding: 20;">
+                <Label style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;" text="📬 Kërko ndihmë shtesë"/>
+                <Label style="-fx-text-fill: #94a3b8;" text="Nëse keni një problem teknik ose pyetje që nuk gjendet më lart, na dërgoni një mesazh."/>
+
+                <TextField fx:id="nameField" promptText="Emri juaj" style="-fx-background-radius: 8;"/>
+                <TextField fx:id="emailField" promptText="Email për përgjigje" style="-fx-background-radius: 8;"/>
+                <TextArea fx:id="helpMessageArea" promptText="Përshkruani problemin ose pyetjen tuaj..." prefHeight="100" style="-fx-background-radius: 8;"/>
+
+                <Button text="📤 Dërgo kërkesën për ndihmë" onAction="#handleSendHelpRequest" style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16 8 16;"/>
+                <Label fx:id="statusLabel" style="-fx-text-fill: #facc15; -fx-font-size: 13;" text=""/>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+</AnchorPane>

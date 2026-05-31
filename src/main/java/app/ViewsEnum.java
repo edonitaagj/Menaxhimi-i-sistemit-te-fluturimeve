@@ -22,7 +22,9 @@ public enum ViewsEnum {
     ADMIN_KOMPANITE("/views/AdminKompanite.fxml"),
 
     ADMIN_SHTO_AVION("/views/AdminShtoAvion_view.fxml"),
-    ADMIN_SHTO_MIREMBAJTJE("/views/AdminShtoMirembajtje_view.fxml");
+    ADMIN_SHTO_MIREMBAJTJE("/views/AdminShtoMirembajtje_view.fxml"),
+
+    HELP_VIEW("/views/Help_view.fxml");
 
     private final String viewPath;
 

@@ -42,6 +42,10 @@ public class ArtikujtHumbur {
         this.fotoPath = fotoPath;
     }
 
+    public ArtikujtHumbur() {
+
+    }
+
     public int getIdArtikullit() {
         return idArtikullit;
     }
