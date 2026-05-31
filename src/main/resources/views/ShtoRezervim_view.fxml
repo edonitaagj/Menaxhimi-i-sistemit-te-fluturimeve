@@ -8,21 +8,21 @@
 <VBox prefWidth="460" spacing="20" style="-fx-background-color: white; -fx-padding: 28;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShtoRezervimModalController">
 
     <VBox spacing="4">
-        <Label style="-fx-text-fill: #0F172A; -fx-font-size: 18; -fx-font-weight: 900;" text="Krijo Rezervim të Ri" />
-        <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 12; -fx-font-weight: 600;" text="Zgjidhni detajet e udhëtimit tuaj të ardhshëm" />
+        <Label style="-fx-text-fill: #0F172A; -fx-font-size: 18; -fx-font-weight: 900;" text="%res.add.title.main" />
+        <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 12; -fx-font-weight: 600;" text="%res.add.title.subtitle" />
         <Separator style="-fx-padding: 6 0 0 0;" />
     </VBox>
 
     <VBox spacing="14">
 
         <VBox spacing="6">
-            <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="Fluturimi i Disponueshëm *" />
-            <ComboBox fx:id="cmbFluturimi" maxWidth="Infinity" promptText="Zgjidhni destinacionin dhe orarin..." style="-fx-background-radius: 6; -fx-padding: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
+            <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="%res.add.label.flight" />
+            <ComboBox fx:id="cmbFluturimi" maxWidth="Infinity" promptText="%res.add.placeholder.flight" style="-fx-background-radius: 6; -fx-padding: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
         </VBox>
 
         <VBox spacing="6">
-            <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="Klasa e Fluturimit *" />
-            <ComboBox fx:id="cmbKlasa" maxWidth="Infinity" promptText="Zgjidhni klasën..." style="-fx-background-radius: 6; -fx-padding: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6;">
+            <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="%res.add.label.class" />
+            <ComboBox fx:id="cmbKlasa" maxWidth="Infinity" promptText="%res.add.placeholder.class" style="-fx-background-radius: 6; -fx-padding: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6;">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="ekonomike" />
@@ -35,27 +35,26 @@
 
         <HBox spacing="12">
             <VBox HBox.hgrow="ALWAYS" spacing="6">
-                <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="Çmimi Total Estimer" />
+                <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="%res.add.label.price" />
                 <TextField fx:id="txtCmimiTotal" editable="false" promptText="0.00" style="-fx-background-radius: 6; -fx-padding: 10; -fx-background-color: #F8FAFC; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-font-weight: 700; -fx-text-fill: #0F172A;" />
             </VBox>
 
             <VBox prefWidth="100" spacing="6">
-                <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="Monedha" />
+                <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="%res.add.label.currency" />
                 <TextField fx:id="txtMonedha" editable="false" text="EUR" alignment="CENTER" style="-fx-background-radius: 6; -fx-padding: 10; -fx-background-color: #F8FAFC; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-text-fill: #64748B;" />
             </VBox>
         </HBox>
 
         <VBox spacing="6">
-            <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="Kërkesa të Veçanta / Shënime" />
-            <TextArea fx:id="txtShenimet" prefHeight="70" promptText="P.sh. Ulëse afër dritares, ushqim vegjetarian..." style="-fx-background-radius: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-font-size: 12;" wrapText="true" />
+            <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="%res.add.label.notes" />
+            <TextArea fx:id="txtShenimet" prefHeight="70" promptText="%res.add.placeholder.notes" style="-fx-background-radius: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-font-size: 12;" wrapText="true" />
         </VBox>
 
     </VBox>
 
     <HBox alignment="CENTER_RIGHT" spacing="12" style="-fx-padding: 10 0 0 0;">
-        <Button onAction="#handleAnulo" style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-cursor: hand; -fx-padding: 10 16;" text="Anulo" />
-
-        <Button onAction="#handleKalojTePagesa" style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 6; -fx-padding: 10 20; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(58,148,242,0.2), 6, 0, 0, 2);" text="Vazhdo te Pagesa ⟶" />
+        <Button onAction="#handleAnulo" style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-cursor: hand; -fx-padding: 10 16;" text="%res.add.action.cancel" />
+        <Button onAction="#handleKalojTePagesa" style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 6; -fx-padding: 10 20; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(58,148,242,0.2), 6, 0, 0, 2);" text="%res.add.action.proceed" />
     </HBox>
 
 </VBox>

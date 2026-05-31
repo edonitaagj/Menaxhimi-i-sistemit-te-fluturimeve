@@ -13,8 +13,8 @@
                     <Label style="-fx-text-fill: #3A94F2; -fx-font-size: 20;" text="⚙" />
                 </StackPane>
                 <VBox spacing="1">
-                    <Label style="-fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: 900; -fx-letter-spacing: 0.05em;" text="PRN ADMIN" />
-                    <Label style="-fx-text-fill: rgba(133,183,235,0.45); -fx-font-size: 10; -fx-font-weight: 600;" text="Paneli i Menaxhimit" />
+                    <Label style="-fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: 900; -fx-letter-spacing: 0.05em;" text="%admin.nav.title" />
+                    <Label style="-fx-text-fill: rgba(133,183,235,0.45); -fx-font-size: 10; -fx-font-weight: 600;" text="%admin.nav.subtitle" />
                 </VBox>
             </HBox>
         </VBox>
@@ -22,52 +22,52 @@
         <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
             <VBox spacing="4" style="-fx-padding: 16 12 16 12;">
 
-                <Label style="-fx-text-fill: rgba(255,255,255,0.25); -fx-font-size: 10; -fx-font-weight: 800; -fx-letter-spacing: 0.1em; -fx-padding: 12 12 4 12;" text="OPERACIONET" />
+                <Label style="-fx-text-fill: rgba(255,255,255,0.25); -fx-font-size: 10; -fx-font-weight: 800; -fx-letter-spacing: 0.1em; -fx-padding: 12 12 4 12;" text="%admin.nav.cat.operations" />
 
                 <HBox fx:id="navDashboard" alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
                     <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="📊" />
-                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="Dashboard" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="%admin.nav.item.dashboard" />
                 </HBox>
 
                 <HBox fx:id="navFluturimet" alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
                     <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="✈" />
-                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="Fluturimet &amp; Oraret" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="%admin.nav.item.flights" />
                 </HBox>
 
                 <HBox fx:id="navRezervimet" alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
                     <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="🎫" />
-                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="Rezervimet &amp; Pagesat" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="%admin.nav.item.reservations" />
                 </HBox>
 
-                <Label style="-fx-text-fill: rgba(255,255,255,0.25); -fx-font-size: 10; -fx-font-weight: 800; -fx-letter-spacing: 0.1em; -fx-padding: 20 12 4 12;" text="LOGJISTIKA" />
+                <Label style="-fx-text-fill: rgba(255,255,255,0.25); -fx-font-size: 10; -fx-font-weight: 800; -fx-letter-spacing: 0.1em; -fx-padding: 20 12 4 12;" text="%admin.nav.cat.logistics" />
 
                 <HBox fx:id="navAvionet" alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
                     <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="🔧" />
-                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="Avionët &amp; Mirëmbajtja" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="%admin.nav.item.aircrafts" />
                 </HBox>
 
                 <HBox fx:id="navHumbur" alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
                     <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="🔍" />
-                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="Artikujt e Humbur" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="%admin.nav.item.lostfound" />
                     <Region HBox.hgrow="ALWAYS" />
                     <Label style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-size: 8; -fx-font-weight: 900; -fx-padding: 1 4 1 4; -fx-background-radius: 4;" text="NEW" />
                 </HBox>
 
-                <Label style="-fx-text-fill: rgba(255,255,255,0.25); -fx-font-size: 10; -fx-font-weight: 800; -fx-letter-spacing: 0.1em; -fx-padding: 20 12 4 12;" text="ADMINISTRIMI" />
+                <Label style="-fx-text-fill: rgba(255,255,255,0.25); -fx-font-size: 10; -fx-font-weight: 800; -fx-letter-spacing: 0.1em; -fx-padding: 20 12 4 12;" text="%admin.nav.cat.administration" />
 
                 <HBox fx:id="navStafi" alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
                     <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="👥" />
-                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="Menaxhimi i Stafit" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="%admin.nav.item.staff" />
                 </HBox>
 
                 <HBox fx:id="navPasagjeret" alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
                     <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="👤" />
-                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="Pasagjerët" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="%admin.nav.item.passengers" />
                 </HBox>
 
                 <HBox fx:id="navKompanite" alignment="CENTER_LEFT" spacing="12" style="-fx-background-color: rgba(58,148,242,0.15); -fx-border-color: #3A94F2; -fx-border-width: 0 0 0 3; -fx-padding: 11 16 11 13; -fx-cursor: hand;">
                     <Label style="-fx-font-size: 15; -fx-text-fill: #3A94F2;" text="🏢" />
-                    <Label style="-fx-text-fill: #3A94F2; -fx-font-size: 13; -fx-font-weight: 700;" text="Kompanitë &amp; Linjat" />
+                    <Label style="-fx-text-fill: #3A94F2; -fx-font-size: 13; -fx-font-weight: 700;" text="%admin.nav.item.companies" />
                 </HBox>
             </VBox>
         </ScrollPane>
@@ -80,12 +80,12 @@
                     <Label fx:id="avatarLabel" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;" text="AD" />
                 </StackPane>
                 <VBox spacing="2">
-                    <Label fx:id="userFullName" style="-fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: 700;" text="Administrator" />
+                    <Label fx:id="userFullName" style="-fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: 700;" text="%admin.profile.role" />
                     <Label fx:id="userEmail" style="-fx-text-fill: rgba(133,183,235,0.4); -fx-font-size: 10;" text="admin@prn-airport.com" />
                 </VBox>
             </HBox>
             <Region prefHeight="15" />
-            <Button maxWidth="Infinity" onAction="#handleLogout" style="-fx-background-color: rgba(239,68,68,0.1); -fx-text-fill: #F87171; -fx-font-size: 12; -fx-font-weight: 700; -fx-background-radius: 8; -fx-padding: 10; -fx-border-color: rgba(239,68,68,0.2); -fx-cursor: hand;" text="⟵  Dilni nga Sistemi" />
+            <Button maxWidth="Infinity" onAction="#handleLogout" style="-fx-background-color: rgba(239,68,68,0.1); -fx-text-fill: #F87171; -fx-font-size: 12; -fx-font-weight: 700; -fx-background-radius: 8; -fx-padding: 10; -fx-border-color: rgba(239,68,68,0.2); -fx-cursor: hand;" text="%admin.button.logout" />
         </VBox>
     </VBox>
 
@@ -93,8 +93,8 @@
 
         <HBox alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 16 32 16 32; -fx-border-color: #E2E8F0; -fx-border-width: 0 0 1 0;">
             <VBox>
-                <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 12; -fx-font-weight: 600;" text="Logjistika Ajrore &amp; Infrastruktura" />
-                <Label style="-fx-text-fill: #0F172A; -fx-font-size: 22; -fx-font-weight: 900;" text="Menaxhimi i Operatorëve &amp; Linjave" />
+                <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 12; -fx-font-weight: 600;" text="%admin.header.category" />
+                <Label style="-fx-text-fill: #0F172A; -fx-font-size: 22; -fx-font-weight: 900;" text="%admin.header.title" />
             </VBox>
             <Region HBox.hgrow="ALWAYS" />
             <StackPane prefHeight="40" prefWidth="40" style="-fx-background-color: #F1F5F9; -fx-background-radius: 20;">
@@ -108,76 +108,76 @@
                 <HBox spacing="20" style="-fx-min-height: 380;">
 
                     <VBox prefWidth="380" spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 16; -fx-border-color: #E2E8F0; -fx-border-width: 1; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.01), 10, 0, 0, 5);">
-                        <Label style="-fx-text-fill: #0F172A; -fx-font-size: 14; -fx-font-weight: 800;" text="STRUKTURA E KOMPANISË" />
+                        <Label style="-fx-text-fill: #0F172A; -fx-font-size: 14; -fx-font-weight: 800;" text="%admin.comp.form.title" />
 
                         <VBox spacing="10" VBox.vgrow="ALWAYS">
                             <VBox spacing="4">
-                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Emri i Plotë i Kompanisë *" />
-                                <TextField fx:id="txtKompaniaEmri" promptText="p.sh. Austrian Airlines" style="-fx-background-radius: 6; -fx-padding: 7;" />
+                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%admin.comp.label.name" />
+                                <TextField fx:id="txtKompaniaEmri" promptText="%admin.comp.placeholder.name" style="-fx-background-radius: 6; -fx-padding: 7;" />
                             </VBox>
 
                             <HBox spacing="10">
                                 <VBox spacing="4" HBox.hgrow="ALWAYS">
-                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Kodi IATA *" />
-                                    <TextField fx:id="txtKodiIata" promptText="OS" style="-fx-background-radius: 6; -fx-padding: 7;" />
+                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%admin.comp.label.iata" />
+                                    <TextField fx:id="txtKodiIata" promptText="%admin.comp.placeholder.iata" style="-fx-background-radius: 6; -fx-padding: 7;" />
                                 </VBox>
                                 <VBox spacing="4" HBox.hgrow="ALWAYS">
-                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Kodi ICAO *" />
-                                    <TextField fx:id="txtKodiIcao" promptText="AUA" style="-fx-background-radius: 6; -fx-padding: 7;" />
+                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%admin.comp.label.icao" />
+                                    <TextField fx:id="txtKodiIcao" promptText="%admin.comp.placeholder.icao" style="-fx-background-radius: 6; -fx-padding: 7;" />
                                 </VBox>
                             </HBox>
 
                             <HBox spacing="10">
                                 <VBox spacing="4" HBox.hgrow="ALWAYS">
-                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Emri i Shkurtër" />
-                                    <TextField fx:id="txtEmriShkurter" promptText="Austrian" style="-fx-background-radius: 6; -fx-padding: 7;" />
+                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%admin.comp.label.shortname" />
+                                    <TextField fx:id="txtEmriShkurter" promptText="%admin.comp.placeholder.shortname" style="-fx-background-radius: 6; -fx-padding: 7;" />
                                 </VBox>
                                 <VBox spacing="4" HBox.hgrow="ALWAYS">
-                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Shteti i Origjinës (ID) *" />
-                                    <ComboBox fx:id="cmbKompaniaShteti" maxWidth="Infinity" promptText="Zgjidh..." style="-fx-background-radius: 6; -fx-padding: 4;" />
+                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%admin.comp.label.country" />
+                                    <ComboBox fx:id="cmbKompaniaShteti" maxWidth="Infinity" promptText="%admin.comp.placeholder.country" style="-fx-background-radius: 6; -fx-padding: 4;" />
                                 </VBox>
                             </HBox>
 
                             <VBox spacing="4">
-                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Faqja Web (URL)" />
-                                <TextField fx:id="txtFaqjaWeb" promptText="https://www.shembull.com" style="-fx-background-radius: 6; -fx-padding: 7;" />
+                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%admin.comp.label.website" />
+                                <TextField fx:id="txtFaqjaWeb" promptText="%admin.comp.placeholder.website" style="-fx-background-radius: 6; -fx-padding: 7;" />
                             </VBox>
 
                             <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 5 0 0 0;">
                                 <VBox spacing="4" HBox.hgrow="ALWAYS">
-                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Telefoni Zyrtar" />
-                                    <TextField fx:id="txtKompaniaTelefoni" promptText="+383..." style="-fx-background-radius: 6; -fx-padding: 7;" />
+                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%admin.comp.label.phone" />
+                                    <TextField fx:id="txtKompaniaTelefoni" promptText="%admin.comp.placeholder.phone" style="-fx-background-radius: 6; -fx-padding: 7;" />
                                 </VBox>
-                                <CheckBox fx:id="chkKompaniaAktive" selected="true" style="-fx-text-fill: #0F172A; -fx-font-size: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="Statusi Aktiv" />
+                                <CheckBox fx:id="chkKompaniaAktive" selected="true" style="-fx-text-fill: #0F172A; -fx-font-size: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="%admin.comp.checkbox.active" />
                             </HBox>
                         </VBox>
 
                         <HBox spacing="8" style="-fx-padding: 5 0 0 0;">
-                            <Button fx:id="btnSaveKompania" onAction="#handleSaveKompania" style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 6; -fx-padding: 8 16; -fx-cursor: hand;" text="💾 Ruaj" />
-                            <Button onAction="#handleClearKompania" style="-fx-background-color: #F1F5F9; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-background-radius: 6; -fx-padding: 8 12; -fx-cursor: hand;" text="Pastro" />
-                            <Button fx:id="btnDeleteKompania" disable="true" onAction="#handleDeleteKompania" style="-fx-background-color: rgba(239,68,68,0.1); -fx-text-fill: #EF4444; -fx-font-weight: 700; -fx-background-radius: 6; -fx-padding: 8 12; -fx-cursor: hand;" text="Fshij" />
+                            <Button fx:id="btnSaveKompania" onAction="#handleSaveKompania" style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 6; -fx-padding: 8 16; -fx-cursor: hand;" text="%admin.action.save" />
+                            <Button onAction="#handleClearKompania" style="-fx-background-color: #F1F5F9; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-background-radius: 6; -fx-padding: 8 12; -fx-cursor: hand;" text="%admin.action.clear" />
+                            <Button fx:id="btnDeleteKompania" disable="true" onAction="#handleDeleteKompania" style="-fx-background-color: rgba(239,68,68,0.1); -fx-text-fill: #EF4444; -fx-font-weight: 700; -fx-background-radius: 6; -fx-padding: 8 12; -fx-cursor: hand;" text="%admin.action.delete" />
                         </HBox>
                     </VBox>
 
                     <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: #E2E8F0; -fx-border-width: 1;" HBox.hgrow="ALWAYS">
                         <HBox alignment="CENTER_LEFT" style="-fx-padding: 14 20 10 20; -fx-border-color: #F1F5F9; -fx-border-width: 0 0 1 0;">
                             <VBox spacing="1">
-                                <Label style="-fx-text-fill: #0F172A; -fx-font-size: 14; -fx-font-weight: 900;" text="Regjistri i Operatorëve Ajrorë" />
-                                <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11;" text="Kompanitë ajrore me të drejtë operimi në terminal" />
+                                <Label style="-fx-text-fill: #0F172A; -fx-font-size: 14; -fx-font-weight: 900;" text="%admin.comp.table.title" />
+                                <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11;" text="%admin.comp.table.subtitle" />
                             </VBox>
                             <Region HBox.hgrow="ALWAYS" />
-                            <TextField fx:id="txtSearchKompania" onKeyReleased="#handleSearchKompania" promptText="Kërko operatorin..." style="-fx-background-radius: 6; -fx-min-width: 200; -fx-padding: 6;" />
+                            <TextField fx:id="txtSearchKompania" onKeyReleased="#handleSearchKompania" promptText="%admin.comp.search.placeholder" style="-fx-background-radius: 6; -fx-min-width: 200; -fx-padding: 6;" />
                         </HBox>
 
                         <TableView fx:id="tblKompanite" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 0 10 10 10;" VBox.vgrow="ALWAYS">
                             <columns>
-                                <TableColumn fx:id="colKompId" prefWidth="50" text="ID" />
-                                <TableColumn fx:id="colKompEmri" prefWidth="140" text="EMRI" />
-                                <TableColumn fx:id="colKompIata" prefWidth="65" text="IATA" />
-                                <TableColumn fx:id="colKompIcao" prefWidth="65" text="ICAO" />
-                                <TableColumn fx:id="colKompShteti" prefWidth="95" text="SHTETI ORIGJINËS" />
-                                <TableColumn fx:id="colKompWeb" prefWidth="150" text="WEB SITE" />
-                                <TableColumn fx:id="colKompStatusi" prefWidth="85" text="STATUSI" />
+                                <TableColumn fx:id="colKompId" prefWidth="50" text="%admin.comp.col.id" />
+                                <TableColumn fx:id="colKompEmri" prefWidth="140" text="%admin.comp.col.name" />
+                                <TableColumn fx:id="colKompIata" prefWidth="65" text="%admin.comp.col.iata" />
+                                <TableColumn fx:id="colKompIcao" prefWidth="65" text="%admin.comp.col.icao" />
+                                <TableColumn fx:id="colKompShteti" prefWidth="95" text="%admin.comp.col.country" />
+                                <TableColumn fx:id="colKompWeb" prefWidth="150" text="%admin.comp.col.web" />
+                                <TableColumn fx:id="colKompStatusi" prefWidth="85" text="%admin.comp.col.status" />
                             </columns>
                             <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
                         </TableView>
@@ -187,60 +187,60 @@
                 <HBox spacing="20" style="-fx-min-height: 380;">
 
                     <VBox prefHeight="445.0" prefWidth="296.0" spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 16; -fx-border-color: #E2E8F0; -fx-border-width: 1; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.01), 10, 0, 0, 5);">
-                        <Label style="-fx-text-fill: #0F172A; -fx-font-size: 14; -fx-font-weight: 800;" text="KONFIGURIMI I LINJËS" />
+                        <Label style="-fx-text-fill: #0F172A; -fx-font-size: 14; -fx-font-weight: 800;" text="%admin.route.form.title" />
 
                         <VBox spacing="10" VBox.vgrow="ALWAYS">
                             <VBox spacing="4">
-                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Aeroporti i Nisjes *" />
-                                <ComboBox fx:id="cmbAeroportiNisjes" maxWidth="Infinity" promptText="Zgjidh pikën fillestare..." style="-fx-background-radius: 6; -fx-padding: 5;" />
+                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%admin.route.label.departure" />
+                                <ComboBox fx:id="cmbAeroportiNisjes" maxWidth="Infinity" promptText="%admin.route.placeholder.departure" style="-fx-background-radius: 6; -fx-padding: 5;" />
                             </VBox>
 
                             <VBox spacing="4">
-                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Aeroporti i Mbërritjes *" />
-                                <ComboBox fx:id="cmbAeroportiMberritjes" maxWidth="Infinity" promptText="Zgjidh destinacionin..." style="-fx-background-radius: 6; -fx-padding: 5;" />
+                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%admin.route.label.arrival" />
+                                <ComboBox fx:id="cmbAeroportiMberritjes" maxWidth="Infinity" promptText="%admin.route.placeholder.arrival" style="-fx-background-radius: 6; -fx-padding: 5;" />
                             </VBox>
 
                             <HBox spacing="10">
                                 <VBox spacing="4" HBox.hgrow="ALWAYS">
-                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Distanca (KM)" />
-                                    <TextField fx:id="txtDistanca" promptText="p.sh. 800" style="-fx-background-radius: 6; -fx-padding: 7;" />
+                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%admin.route.label.distance" />
+                                    <TextField fx:id="txtDistanca" promptText="%admin.route.placeholder.distance" style="-fx-background-radius: 6; -fx-padding: 7;" />
                                 </VBox>
                                 <VBox spacing="4" HBox.hgrow="ALWAYS">
-                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Koha Est. (Minuta)" />
-                                    <TextField fx:id="txtKohaFluturimit" promptText="p.sh. 90" style="-fx-background-radius: 6; -fx-padding: 7;" />
+                                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%admin.route.label.duration" />
+                                    <TextField fx:id="txtKohaFluturimit" promptText="%admin.route.placeholder.duration" style="-fx-background-radius: 6; -fx-padding: 7;" />
                                 </VBox>
                             </HBox>
 
                             <VBox alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;">
-                                <CheckBox fx:id="chkLinjaAktive" selected="true" style="-fx-text-fill: #0F172A; -fx-font-size: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="Linjë Aktive për Fluturime" />
+                                <CheckBox fx:id="chkLinjaAktive" selected="true" style="-fx-text-fill: #0F172A; -fx-font-size: 12; -fx-font-weight: 700; -fx-cursor: hand;" text="%admin.route.checkbox.active" />
                             </VBox>
                         </VBox>
 
                         <HBox spacing="8" style="-fx-padding: 5 0 0 0;">
-                            <Button fx:id="btnSaveLinja" onAction="#handleSaveLinja" style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 6; -fx-padding: 8 16; -fx-cursor: hand;" text="💾 Ruaj" />
-                            <Button onAction="#handleClearLinja" style="-fx-background-color: #F1F5F9; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-background-radius: 6; -fx-padding: 8 12; -fx-cursor: hand;" text="Pastro" />
-                            <Button fx:id="btnDeleteLinja" disable="true" onAction="#handleDeleteLinja" style="-fx-background-color: rgba(239,68,68,0.1); -fx-text-fill: #EF4444; -fx-font-weight: 700; -fx-background-radius: 6; -fx-padding: 8 12; -fx-cursor: hand;" text="Fshij" />
+                            <Button fx:id="btnSaveLinja" onAction="#handleSaveLinja" style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 6; -fx-padding: 8 16; -fx-cursor: hand;" text="%admin.action.save" />
+                            <Button onAction="#handleClearLinja" style="-fx-background-color: #F1F5F9; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-background-radius: 6; -fx-padding: 8 12; -fx-cursor: hand;" text="%admin.action.clear" />
+                            <Button fx:id="btnDeleteLinja" disable="true" onAction="#handleDeleteLinja" style="-fx-background-color: rgba(239,68,68,0.1); -fx-text-fill: #EF4444; -fx-font-weight: 700; -fx-background-radius: 6; -fx-padding: 8 12; -fx-cursor: hand;" text="%admin.action.delete" />
                         </HBox>
                     </VBox>
 
                     <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 16; -fx-border-color: #E2E8F0; -fx-border-width: 1;" HBox.hgrow="ALWAYS">
                         <HBox alignment="CENTER_LEFT" style="-fx-padding: 14 20 10 20; -fx-border-color: #F1F5F9; -fx-border-width: 0 0 1 0;">
                             <VBox spacing="1">
-                                <Label style="-fx-text-fill: #0F172A; -fx-font-size: 14; -fx-font-weight: 900;" text="Matrica e Linjave Ajrore" />
-                                <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11;" text="Lidhjet korrente ndërmjet korridoreve ajrore" />
+                                <Label style="-fx-text-fill: #0F172A; -fx-font-size: 14; -fx-font-weight: 900;" text="%admin.route.table.title" />
+                                <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11;" text="%admin.route.table.subtitle" />
                             </VBox>
                             <Region HBox.hgrow="ALWAYS" />
-                            <TextField fx:id="txtSearchLinja" onKeyReleased="#handleSearchLinja" promptText="Kërko linjën..." style="-fx-background-radius: 6; -fx-min-width: 200; -fx-padding: 6;" />
+                            <TextField fx:id="txtSearchLinja" onKeyReleased="#handleSearchLinja" promptText="%admin.route.search.placeholder" style="-fx-background-radius: 6; -fx-min-width: 200; -fx-padding: 6;" />
                         </HBox>
 
                         <TableView fx:id="tblLinjat" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 0 10 10 10;" VBox.vgrow="ALWAYS">
                             <columns>
-                                <TableColumn fx:id="colLinjaId" prefWidth="60" text="ID" />
-                                <TableColumn fx:id="colLinjaNisja" prefWidth="160" text="AEROPORTI NISJES" />
-                                <TableColumn fx:id="colLinjaMberritja" prefWidth="160" text="AEROPORTI MBËRRITJES" />
-                                <TableColumn fx:id="colLinjaDistanca" prefWidth="110" text="DISTANCA" />
-                                <TableColumn fx:id="colLinjaKoha" prefWidth="120" text="KOHA (MINUTA)" />
-                                <TableColumn fx:id="colLinjaStatusi" prefWidth="90" text="STATUSI" />
+                                <TableColumn fx:id="colLinjaId" prefWidth="60" text="%admin.route.col.id" />
+                                <TableColumn fx:id="colLinjaNisja" prefWidth="160" text="%admin.route.col.departure" />
+                                <TableColumn fx:id="colLinjaMberritja" prefWidth="160" text="%admin.route.col.arrival" />
+                                <TableColumn fx:id="colLinjaDistanca" prefWidth="110" text="%admin.route.col.distance" />
+                                <TableColumn fx:id="colLinjaKoha" prefWidth="120" text="%admin.route.col.duration" />
+                                <TableColumn fx:id="colLinjaStatusi" prefWidth="90" text="%admin.route.col.status" />
                             </columns>
                             <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
                         </TableView>

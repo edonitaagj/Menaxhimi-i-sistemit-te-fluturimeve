@@ -6,8 +6,8 @@
 <VBox prefHeight="640" prefWidth="520" spacing="0" style="-fx-background-color: #F1F5F9;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="controllers.ShtoPunonjesController">
 
     <VBox style="-fx-background-color: white; -fx-padding: 24 32 20 32; -fx-border-color: #E2E8F0; -fx-border-width: 0 0 1 0;">
-        <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800; -fx-letter-spacing: 0.05em;" text="KRIJO PROFILIN E RI" />
-        <Label style="-fx-text-fill: #0F172A; -fx-font-size: 20; -fx-font-weight: 900;" text="Regjistrimi i një Punonjësi në Sistem" />
+        <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800; -fx-letter-spacing: 0.05em;" text="%emp.add.title.category" />
+        <Label style="-fx-text-fill: #0F172A; -fx-font-size: 20; -fx-font-weight: 900;" text="%emp.add.title.main" />
     </VBox>
 
     <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #F1F5F9; -fx-border-color: transparent;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
@@ -15,44 +15,44 @@
 
             <HBox spacing="16">
                 <VBox spacing="6" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Emri *" />
-                    <TextField fx:id="txtEmri" promptText="p.sh. Arben" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%emp.add.label.firstname" />
+                    <TextField fx:id="txtEmri" promptText="%emp.add.placeholder.firstname" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
                 </VBox>
                 <VBox spacing="6" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Mbiemri *" />
-                    <TextField fx:id="txtMbiemri" promptText="p.sh. Gashi" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%emp.add.label.lastname" />
+                    <TextField fx:id="txtMbiemri" promptText="%emp.add.placeholder.lastname" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
                 </VBox>
             </HBox>
 
             <VBox spacing="6">
-                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Adresa Elektronike (E-mail) *" />
-                <TextField fx:id="txtEmail" promptText="arben.gashi@airport-prn.com" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
+                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%emp.add.label.email" />
+                <TextField fx:id="txtEmail" promptText="%emp.add.placeholder.email" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
             </VBox>
 
             <VBox spacing="6">
-                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Numri i Telefonit" />
-                <TextField fx:id="txtTelefoni" promptText="+383 4X XXX XXX" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
+                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%emp.add.label.phone" />
+                <TextField fx:id="txtTelefoni" promptText="%emp.add.placeholder.phone" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
             </VBox>
 
             <HBox spacing="16">
                 <VBox spacing="6" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Departamenti *" />
-                    <ComboBox fx:id="cmbDepartamenti" maxWidth="Infinity" promptText="Zgjidh Sektorin..." style="-fx-background-radius: 6; -fx-padding: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%emp.add.label.department" />
+                    <ComboBox fx:id="cmbDepartamenti" maxWidth="Infinity" promptText="%emp.add.placeholder.department" style="-fx-background-radius: 6; -fx-padding: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
                 </VBox>
                 <VBox spacing="6" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Roli / Pozita *" />
-                    <TextField fx:id="txtRoli" promptText="p.sh. Inxhinier Avionësh" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%emp.add.label.role" />
+                    <TextField fx:id="txtRoli" promptText="%emp.add.placeholder.role" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
                 </VBox>
             </HBox>
 
             <HBox spacing="16">
                 <VBox spacing="6" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Data e Punësimit" />
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%emp.add.label.hiredate" />
                     <DatePicker fx:id="dtPunesimit" maxWidth="Infinity" style="-fx-background-radius: 6; -fx-padding: 4; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
                 </VBox>
                 <VBox spacing="6" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Paga Neto (€) *" />
-                    <TextField fx:id="txtPaga" promptText="0.00" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%emp.add.label.salary" />
+                    <TextField fx:id="txtPaga" promptText="%emp.add.placeholder.salary" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-background-color: white;" />
                 </VBox>
             </HBox>
 
@@ -60,8 +60,8 @@
     </ScrollPane>
 
     <HBox alignment="CENTER_RIGHT" spacing="12" style="-fx-background-color: white; -fx-padding: 16 32 16 32; -fx-border-color: #E2E8F0; -fx-border-width: 1 0 0 0;">
-        <Button onAction="#handleAnulo" style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-padding: 10 20; -fx-cursor: hand;" text="Anulo" />
-        <Button onAction="#handleRuajPunonjes" style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 8; -fx-padding: 10 24; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(58,148,242,0.2), 8, 0, 0, 3);" text="💾 Ruaj Punonjësin" />
+        <Button onAction="#handleAnulo" style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-padding: 10 20; -fx-cursor: hand;" text="%emp.add.action.cancel" />
+        <Button onAction="#handleRuajPunonjes" style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 8; -fx-padding: 10 24; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(58,148,242,0.2), 8, 0, 0, 3);" text="%emp.add.action.save" />
     </HBox>
 
 </VBox>
