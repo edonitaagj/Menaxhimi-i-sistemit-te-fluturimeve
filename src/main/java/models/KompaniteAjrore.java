@@ -109,4 +109,5 @@ public class KompaniteAjrore {
         this.eshteAktive = eshteAktive;
     }
 
+
 }
