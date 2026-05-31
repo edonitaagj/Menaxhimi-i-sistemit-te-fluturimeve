@@ -100,6 +100,7 @@ public class AdminKompaniteController {
         loadKompanite();
         loadLinjat();
         loadComboBoxes();
+        setupSidebarActions();
     }
 
     // ════════════════════════════════════════════════════════════════════
@@ -112,6 +113,17 @@ public class AdminKompaniteController {
         avatarLabel.setText(emri.substring(0, 1).toUpperCase());
         userFullName.setText(user.getFullName());
         userEmail.setText(nvl(user.getEmail(), ""));
+    }
+
+    private void setupSidebarActions() {
+        if (navDashboard != null) navDashboard.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_VIEW));
+        if (navFluturimet != null) navFluturimet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_FLUTURIMET));
+        if (navRezervimet != null) navRezervimet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_REZERVIMET));
+        if (navAvionet != null) navAvionet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_AVIONET));
+        if (navHumbur != null) navHumbur.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_ARTIKUJT_HUMBUR));
+        if (navStafi != null) navStafi.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_STAFI));
+        if (navKompanite != null) navKompanite.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_KOMPANITE));
+        if (navPasagjeret != null) navPasagjeret.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_PASAGJERIT));
     }
 
     // ════════════════════════════════════════════════════════════════════
@@ -359,16 +371,6 @@ public class AdminKompaniteController {
                         r.getAeroportiMbrrritjes().toLowerCase().contains(low));
     }
 
-    // ════════════════════════════════════════════════════════════════════
-    //  Navigation sidebar
-    // ════════════════════════════════════════════════════════════════════
-    @FXML private void handleNavDashboard()  { Router.navigateTo(ViewsEnum.ADMIN_VIEW); }
-    @FXML private void handleNavFluturimet() { Router.navigateTo(ViewsEnum.ADMIN_FLUTURIMET); }
-    @FXML private void handleNavRezervimet() { Router.navigateTo(ViewsEnum.ADMIN_REZERVIMET); }
-    @FXML private void handleNavAvionet()    { Router.navigateTo(ViewsEnum.ADMIN_AVIONET); }
-    @FXML private void handleNavHumbur()     { Router.navigateTo(ViewsEnum.ADMIN_ARTIKUJT_HUMBUR); }
-    @FXML private void handleNavStafi()      { Router.navigateTo(ViewsEnum.ADMIN_STAFI); }
-    @FXML private void handleNavPasagjeret() { Router.navigateTo(ViewsEnum.ADMIN_PASAGJERIT); }
 
     @FXML
     private void handleLogout() {
