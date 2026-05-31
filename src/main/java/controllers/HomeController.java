@@ -111,10 +111,7 @@ public class HomeController {
     // ===============================
     // NAVIGATION
     // ===============================
-    @FXML
-    private void handleNavFluturimet() {
-        Router.navigateTo(ViewsEnum.FLUTURIMET_VIEW);
-    }
+
 
     @FXML
     private void handleNavRezervimet() {

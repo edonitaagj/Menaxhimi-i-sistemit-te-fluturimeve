@@ -6,7 +6,7 @@ public enum ViewsEnum {
     SIGNUP_VIEW("/views/SignUp_view.fxml"),
 
     // Pamjet e reja të shtuara për navigim
-    FLUTURIMET_VIEW("/views/Fluturimet_view.fxml"),
+
     REZERVIMET_VIEW("/views/Rezervimet_view.fxml"),
     BILETAT_VIEW("/views/Biletat_view.fxml"),
     NJOFTIMET_VIEW("/views/Njoftimet_view.fxml"),

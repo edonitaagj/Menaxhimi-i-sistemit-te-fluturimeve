@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox prefHeight="760" prefWidth="1200" style="-fx-background-color: #F1F5F9;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfiliController">
+<HBox prefHeight="760" prefWidth="1200" style="-fx-background-color: #F1F5F9;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfilController">
 
     <VBox prefWidth="220" style="-fx-background-color: linear-gradient(to bottom, #091E36, #030A12); -fx-padding: 0;">
         <VBox style="-fx-padding: 28 24 24 24; -fx-border-color: rgba(255,255,255,0.07); -fx-border-width: 0 0 1 0;">
@@ -23,10 +23,7 @@
                 <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="🏠" />
                 <Label style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 13; -fx-font-weight: 600;" text="Kryefaqja" />
             </HBox>
-            <HBox fx:id="navFluturimet" alignment="CENTER_LEFT" onMouseClicked="#handleNavFluturimet" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
-                <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="✈" />
-                <Label style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 13; -fx-font-weight: 600;" text="Fluturimet" />
-            </HBox>
+
             <HBox fx:id="navRezervimet" alignment="CENTER_LEFT" onMouseClicked="#handleNavRezervimet" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
                 <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="🎫" />
                 <Label style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 13; -fx-font-weight: 600;" text="Rezervimet e mia" />
