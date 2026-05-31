@@ -2,7 +2,7 @@ package models;
 
 import java.sql.Date;
 
-public class Pasagjerit {
+public class Pasagjeri {
     private int idPasagjerit;
     private String numriPasaportes;
     private int idVenditShtetesise;
@@ -15,11 +15,12 @@ public class Pasagjerit {
     private String adresa;
     private Date pasaportaSkadimi;
 
-    public Pasagjerit(int idPasagjerit) {
+    public Pasagjeri() {}
+    public Pasagjeri(int idPasagjerit) {
         this.idPasagjerit = idPasagjerit;
     }
 
-    public Pasagjerit(
+    public Pasagjeri(
             int idPasagjerit,
             String numriPasaportes,
             int idVenditShtetesise,
@@ -125,12 +126,11 @@ public class Pasagjerit {
         this.adresa = adresa;
     }
 
-    public Date getPasaportaSkadimi() {
-        return pasaportaSkadimi;
-    }
-
     public void setPasaportaSkadimi(Date pasaportaSkadimi) {
         this.pasaportaSkadimi = pasaportaSkadimi;
     }
 
+    public java.sql.Date getPasaportaSkadimiAsDate() {
+        return this.pasaportaSkadimi; // Kjo kthen fushën java.sql.Date
+    }
 }
