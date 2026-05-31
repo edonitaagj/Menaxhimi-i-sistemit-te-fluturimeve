@@ -117,38 +117,32 @@ public class AdminController {
     }
 
     private void loadFluturimetTable() {
-        System.out.println("SELECT * FROM fluturimet...");
+        Router.navigateTo(ViewsEnum.FLUTURIMET_VIEW);
         // TODO: Popullo 'adminDataTable' me kolonat dhe të dhënat e fluturimeve
     }
 
     private void loadRezervimetTable() {
-        System.out.println("SELECT * FROM rezervimet...");
-        // TODO: Popullo 'adminDataTable' me të dhënat e rezervimeve/pagesave
+        Router.navigateTo(ViewsEnum.ADMIN_REZERVIMET);
     }
 
     private void loadAvionetTable() {
-        System.out.println("SELECT * FROM avionet...");
-        // TODO: Popullo 'adminDataTable' me avionët dhe mirëmbajtjen
+        Router.navigateTo(ViewsEnum.ADMIN_AVIONET);
     }
 
     private void loadArtikujtHumburTable() {
-        System.out.println("SELECT * FROM artikujt_humbur...");
-        // TODO: Popullo 'adminDataTable' me sendet e raportuara të humbura
+        Router.navigateTo(ViewsEnum.ADMIN_ARTIKUJT_HUMBUR);
     }
 
     private void loadStafiTable() {
-        System.out.println("SELECT * FROM stafi...");
-        // TODO: Popullo 'adminDataTable' me menaxhimin e stafit
+        Router.navigateTo(ViewsEnum.ADMIN_STAFI);
     }
 
     private void loadPasagjeretTable() {
-        System.out.println("SELECT * FROM pasagjeret...");
-        // TODO: Popullo 'adminDataTable' me listën e pasagjerëve
+        Router.navigateTo(ViewsEnum.ADMIN_PASAGJERIT);
     }
 
     private void loadKompaniteTable() {
-        System.out.println("SELECT * FROM kompanite_ajrore...");
-        // TODO: Popullo 'adminDataTable' me kompanitë dhe linjat
+        Router.navigateTo(ViewsEnum.ADMIN_KOMPANITE);
     }
 
 // shto, kerko

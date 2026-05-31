@@ -18,7 +18,9 @@ public enum ViewsEnum {
     ADMIN_AVIONET("/views/AdminAvionet.fxml"),
     ADMIN_REZERVIMET("/views/AdminRezervimet.fxml"),
     ADMIN_FLUTURIMET("/views/AdminFluturimet.fxml"),
-    ADMIN_STAFI("/views/AdminStafi.fxml");
+    ADMIN_STAFI("/views/AdminStafi.fxml"),
+    ADMIN_PASAGJERIT("/views/AdminPasagjerit.fxml"),
+    ADMIN_KOMPANITE("/views/AdminKompanite.fxml");
 
     private final String viewPath;
 

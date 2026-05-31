@@ -59,6 +59,15 @@
                     <Label text="👥" style="-fx-font-size: 15;"/>
                     <Label text="Menaxhimi i Stafit" style="-fx-text-fill: #3A94F2; -fx-font-size: 13; -fx-font-weight: 700;"/>
                 </HBox>
+                <HBox fx:id="navPasagjeret" alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="👤" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="Pasagjerët" />
+                </HBox>
+
+                <HBox fx:id="navKompanite" alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="🏢" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 13; -fx-font-weight: 600;" text="Kompanitë &amp; Linjat" />
+                </HBox>
             </VBox>
         </ScrollPane>
         <Region VBox.vgrow="ALWAYS"/>
