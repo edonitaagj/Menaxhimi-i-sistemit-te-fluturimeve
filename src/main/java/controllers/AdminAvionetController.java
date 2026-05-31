@@ -1,9 +1,9 @@
 package controllers;
 
+import app.AdminSelectionState;
 import app.Router;
 import app.SessionManager;
 import app.ViewsEnum;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -12,17 +12,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import models.Avionet;
-import models.LlojetAvioneve;
-import models.MirembajtjaAvioneve;
-
-import java.sql.Timestamp;
+import models.Perdoruesi;
+import models.dto.AvionetTableDto;
+import models.dto.MirembajtjaTableDto;
+import services.AvionetService;
+import services.MirembajtjaService;
 
 public class AdminAvionetController {
 
-    // ===============================
-    // SIDEBAR NAVIGATION ELEMENTS
-    // ===============================
     @FXML private HBox navDashboard;
     @FXML private HBox navFluturimet;
     @FXML private HBox navRezervimet;
@@ -32,158 +29,164 @@ public class AdminAvionetController {
     @FXML private HBox navPasagjeret;
     @FXML private HBox navKompanite;
 
-    // ===============================
-    // SEARCH FIELD
-    // ===============================
     @FXML private TextField txtSearchAvioni;
 
-    // ===============================
-    // TABLE VIEW: AVIONET
-    // ===============================
-    @FXML private TableView<Avionet> tblAvionet;
-    @FXML private TableColumn<Avionet, Integer> colAvioniId;
-    @FXML private TableColumn<Avionet, String> colNumriRegjistrit;
-    @FXML private TableColumn<Avionet, String> colProdhuesi;
-    @FXML private TableColumn<Avionet, String> colModeli;
-    @FXML private TableColumn<Avionet, String> colVitiProdhimit;
-    @FXML private TableColumn<Avionet, String> colStatusiAvionit;
+    @FXML private TableView<AvionetTableDto> tblAvionet;
+    @FXML private TableColumn<AvionetTableDto, Integer> colAvioniId;
+    @FXML private TableColumn<AvionetTableDto, String> colNumriRegjistrit;
+    @FXML private TableColumn<AvionetTableDto, String> colProdhuesi;
+    @FXML private TableColumn<AvionetTableDto, String> colModeli;
+    @FXML private TableColumn<AvionetTableDto, String> colVitiProdhimit;
+    @FXML private TableColumn<AvionetTableDto, String> colStatusiAvionit;
 
-    // ===============================
-    // TABLE VIEW: MIREMBAJTJA
-    // ===============================
-    @FXML private TableView<MirembajtjaAvioneve> tblMirembajtja;
-    @FXML private TableColumn<MirembajtjaAvioneve, String> colLlojiSherbimit;
-    @FXML private TableColumn<MirembajtjaAvioneve, String> colDataFillimit;
-    @FXML private TableColumn<MirembajtjaAvioneve, String> colDataMbarimit;
-    @FXML private TableColumn<MirembajtjaAvioneve, String> colPershkrimiPunes;
-    @FXML private TableColumn<MirembajtjaAvioneve, Double> colKostoja;
-    @FXML private TableColumn<MirembajtjaAvioneve, String> colStatusiMirembajtjes;
+    @FXML private TableView<MirembajtjaTableDto> tblMirembajtja;
+    @FXML private TableColumn<MirembajtjaTableDto, String> colLlojiSherbimit;
+    @FXML private TableColumn<MirembajtjaTableDto, String> colDataFillimit;
+    @FXML private TableColumn<MirembajtjaTableDto, String> colDataMbarimit;
+    @FXML private TableColumn<MirembajtjaTableDto, String> colPershkrimiPunes;
+    @FXML private TableColumn<MirembajtjaTableDto, Double> colKostoja;
+    @FXML private TableColumn<MirembajtjaTableDto, String> colStatusiMirembajtjes;
 
-    private ObservableList<Avionet> listaAvioneve = FXCollections.observableArrayList();
-    private ObservableList<MirembajtjaAvioneve> listaMirembajtjes = FXCollections.observableArrayList();
+    @FXML private Label userFullName;
+    @FXML private Label userEmail;
+    @FXML private Label avatarLabel;
 
-    // ===============================
-    // INITIALIZE
-    // ===============================
+    private final AvionetService avionetService = new AvionetService();
+    private final MirembajtjaService mirembajtjaService = new MirembajtjaService();
+
+    private final ObservableList<AvionetTableDto> avionetMaster = FXCollections.observableArrayList();
+    private final ObservableList<MirembajtjaTableDto> mirembajtjaMaster = FXCollections.observableArrayList();
+
     @FXML
     public void initialize() {
         setupSidebarActions();
         setupTableColumns();
-
-        // Ngarko të dhënat fillestare
         loadAvionetNgaDB();
+        loadAdminData();
 
-        // MASTER-DETAIL LISTENER: Kur përzgjidhet një avion, ngarko historikun e mirëmbajtjes
-        tblAvionet.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                loadMirembajtjaPerAvionin(newSelection.getIdAvionit());
+        tblAvionet.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                AdminSelectionState.setSelectedAvionId(newVal.getIdAvionit());
+                AdminSelectionState.setSelectedAvionRegjistri(newVal.getNumriRegjistrit());
+                loadMirembajtjaPerAvionin(newVal.getIdAvionit());
             } else {
                 tblMirembajtja.getItems().clear();
             }
         });
 
-        // Kërkimi dinamik (onKeyReleased)
         if (txtSearchAvioni != null) {
-            txtSearchAvioni.setOnKeyReleased(e -> handleSearchAvioni());
+            txtSearchAvioni.textProperty().addListener((obs, oldText, newText) -> filterAvionet(newText));
+        }
+
+        tblAvionet.setPlaceholder(new Label("Nuk u gjetën avionë."));
+        tblMirembajtja.setPlaceholder(new Label("Zgjidh një avion për të parë mirëmbajtjen."));
+    }
+
+    private void loadAdminData() {
+        Perdoruesi admin = SessionManager.getCurrentUser();
+        if (admin != null) {
+            String fullName = admin.getEmri() + " " + admin.getMbiemri();
+            userFullName.setText(fullName);
+            userEmail.setText(admin.getEmail());
+            avatarLabel.setText(admin.getEmri().substring(0, 1).toUpperCase());
         }
     }
 
     private void setupSidebarActions() {
-        navDashboard.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_VIEW));
-        navFluturimet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_FLUTURIMET));
-        navRezervimet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_REZERVIMET));
-        navAvionet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_AVIONET));
-        navHumbur.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_ARTIKUJT_HUMBUR));
-        navStafi.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_STAFI));
-        navKompanite.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_KOMPANITE));
-        navPasagjeret.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_PASAGJERIT));
+        if (navDashboard != null) navDashboard.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_VIEW));
+        if (navFluturimet != null) navFluturimet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_FLUTURIMET));
+        if (navRezervimet != null) navRezervimet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_REZERVIMET));
+        if (navAvionet != null) navAvionet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_AVIONET));
+        if (navHumbur != null) navHumbur.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_ARTIKUJT_HUMBUR));
+        if (navStafi != null) navStafi.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_STAFI));
+        if (navKompanite != null) navKompanite.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_KOMPANITE));
+        if (navPasagjeret != null) navPasagjeret.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_PASAGJERIT));
     }
 
     private void setupTableColumns() {
-        // 1. Mapimi i kolonave për tabelën e Avionëve
-        if (colAvioniId != null) colAvioniId.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getIdAvionit()).asObject());
-        if (colNumriRegjistrit != null) colNumriRegjistrit.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getNumriRegjistrit()));
-        if (colVitiProdhimit != null) colVitiProdhimit.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getVitiProdhimit()));
-        if (colStatusiAvionit != null) colStatusiAvionit.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getStatusi()));
+        colAvioniId.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getIdAvionit()).asObject());
+        colNumriRegjistrit.setCellValueFactory(data -> new SimpleStringProperty(nvl(data.getValue().getNumriRegjistrit())));
+        colProdhuesi.setCellValueFactory(data -> new SimpleStringProperty(nvl(data.getValue().getProdhuesi())));
+        colModeli.setCellValueFactory(data -> new SimpleStringProperty(nvl(data.getValue().getModeli())));
+        colVitiProdhimit.setCellValueFactory(data -> new SimpleStringProperty(nvl(data.getValue().getVitiProdhimit())));
+        colStatusiAvionit.setCellValueFactory(data -> new SimpleStringProperty(nvl(data.getValue().getStatusi())));
 
-        // Prodhuesi dhe Modeli lidhen me idLlojit. Kur të bësh query në DB me JOIN, këto do të plotësohen automatikisht.
-        if (colProdhuesi != null) {
-            colProdhuesi.setCellValueFactory(data -> new SimpleStringProperty("Lloji ID: " + data.getValue().getIdLlojit()));
-        }
-        if (colModeli != null) {
-            colModeli.setCellValueFactory(data -> new SimpleStringProperty("Modeli ID: " + data.getValue().getIdLlojit()));
-        }
-
-        // 2. Mapimi i kolonave për tabelën e Mirëmbajtjes
-        if (colLlojiSherbimit != null) colLlojiSherbimit.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getLlojiSherbimit()));
-        if (colPershkrimiPunes != null) colPershkrimiPunes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getPershkrimiPunes()));
-        if (colStatusiMirembajtjes != null) colStatusiMirembajtjes.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getStatusi()));
-        if (colKostoja != null) colKostoja.setCellValueFactory(data -> new SimpleDoubleProperty(data.getValue().getKostoja()).asObject());
-
-        if (colDataFillimit != null) {
-            colDataFillimit.setCellValueFactory(data -> {
-                Timestamp t = data.getValue().getDataFillimit();
-                return new SimpleStringProperty(t != null ? t.toString().substring(0, 16) : "-");
-            });
-        }
-        if (colDataMbarimit != null) {
-            colDataMbarimit.setCellValueFactory(data -> {
-                Timestamp t = data.getValue().getDataMbarimit();
-                return new SimpleStringProperty(t != null ? t.toString().substring(0, 16) : "-");
-            });
-        }
+        colLlojiSherbimit.setCellValueFactory(data -> new SimpleStringProperty(nvl(data.getValue().getLlojiSherbimit())));
+        colDataFillimit.setCellValueFactory(data -> new SimpleStringProperty(nvl(data.getValue().getDataFillimit())));
+        colDataMbarimit.setCellValueFactory(data -> new SimpleStringProperty(nvl(data.getValue().getDataMbarimit())));
+        colPershkrimiPunes.setCellValueFactory(data -> new SimpleStringProperty(nvl(data.getValue().getPershkrimiPunes())));
+        colKostoja.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getKostoja()));
+        colStatusiMirembajtjes.setCellValueFactory(data -> new SimpleStringProperty(nvl(data.getValue().getStatusi())));
     }
 
-    // ===============================
-    // DATA LOADING METHODS
-    // ===============================
-
     private void loadAvionetNgaDB() {
-        System.out.println("Duke marrë listën e avionëve nga DB...");
-        // TODO: Mbushe listën nga repository yt
-        // listaAvioneve.clear();
-        // listaAvioneve.addAll(avionetRepo.getAllAvionet());
-        // tblAvionet.setItems(listaAvioneve);
+        avionetMaster.setAll(avionetService.getAllAvionet());
+        tblAvionet.setItems(avionetMaster);
+    }
+
+    private void filterAvionet(String query) {
+        if (query == null || query.trim().isEmpty()) {
+            tblAvionet.setItems(avionetMaster);
+            return;
+        }
+
+        String q = query.trim().toLowerCase();
+        ObservableList<AvionetTableDto> filtered = FXCollections.observableArrayList();
+
+        for (AvionetTableDto a : avionetMaster) {
+            boolean matches =
+                    contains(a.getNumriRegjistrit(), q) ||
+                            contains(a.getProdhuesi(), q) ||
+                            contains(a.getModeli(), q) ||
+                            contains(a.getStatusi(), q) ||
+                            contains(a.getEmriKompanise(), q);
+
+            if (matches) {
+                filtered.add(a);
+            }
+        }
+
+        tblAvionet.setItems(filtered);
     }
 
     private void loadMirembajtjaPerAvionin(int idAvionit) {
-        System.out.println("Duke marrë historikun e mirëmbajtjes për avionin me ID: " + idAvionit);
-        // TODO: Filtro të dhënat nga tabela mirembajtja_avioneve WHERE id_avionit = idAvionit
-        // listaMirembajtjes.clear();
-        // listaMirembajtjes.addAll(mirembajtjaRepo.getMirembajtjaByAvionId(idAvionit));
-        // tblMirembajtja.setItems(listaMirembajtjes);
+        mirembajtjaMaster.setAll(mirembajtjaService.getByAvionId(idAvionit));
+        tblMirembajtja.setItems(mirembajtjaMaster);
     }
-
-    // ===============================
-    // BUTTON & ACTION HANDLERS
-    // ===============================
 
     @FXML
     private void handleShtoAvion(ActionEvent event) {
-        System.out.println("U klikua shto avion i ri. Hap modalin ose formën e re...");
-        // TODO: Router.openModal(ViewsEnum.SHTO_AVION_POPUP); ose hapja e një dritareje dialogu
+        Router.navigateTo(ViewsEnum.ADMIN_SHTO_AVION);
     }
 
     @FXML
     private void handleShtoMirembajtje(ActionEvent event) {
-        Avionet avioniSelektuar = tblAvionet.getSelectionModel().getSelectedItem();
-        if (avioniSelektuar == null) {
-            System.out.println("Ju lutem selektoni një avion nga tabela për të regjistruar një shërbim teknik!");
+        if (tblAvionet.getSelectionModel().getSelectedItem() == null) {
+            showAlert(Alert.AlertType.WARNING, "Kujdes", "Selekto një avion para regjistrimit të shërbimit teknik.");
             return;
         }
-        System.out.println("U klikua regjistrimi i shërbimit teknik për avionin: " + avioniSelektuar.getNumriRegjistrit());
-        // TODO: Hap dialogun për shtimin e urdhër-punës së re
-    }
-
-    private void handleSearchAvioni() {
-        String query = txtSearchAvioni.getText() != null ? txtSearchAvioni.getText().trim() : "";
-        System.out.println("Duke kërkuar flotën ajrore për: " + query);
-        // TODO: Filtro listën e avionëve
+        Router.navigateTo(ViewsEnum.ADMIN_SHTO_MIREMBAJTJE);
     }
 
     @FXML
     private void handleLogout(ActionEvent event) {
         SessionManager.logout();
         Router.navigateTo(ViewsEnum.LOGIN_VIEW);
+    }
+
+    private boolean contains(String value, String q) {
+        return value != null && value.toLowerCase().contains(q);
+    }
+
+    private String nvl(String s) {
+        return s == null ? "" : s;
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
