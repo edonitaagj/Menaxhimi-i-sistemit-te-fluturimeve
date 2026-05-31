@@ -26,6 +26,11 @@ public class Router {
     private static Parent loadView(String viewPath) {
         try {
             FXMLLoader loader = new FXMLLoader(Router.class.getResource(viewPath));
+
+            // 🌟 SHTO KËTË RRESHT KËTU:
+            // Kjo bën që çdo pamje që ngarkohet përmes Router-it të lexojë skedarët .properties
+            loader.setResources(I18n.getResourceBundle());
+
             return loader.load();
         } catch (IOException e) {
             throw new RuntimeException("Failed to load view: " + viewPath, e);
