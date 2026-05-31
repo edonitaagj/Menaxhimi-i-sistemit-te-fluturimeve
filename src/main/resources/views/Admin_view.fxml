@@ -115,23 +115,26 @@
                 <HBox spacing="20">
                     <VBox style="-fx-background-color: white; -fx-padding: 24; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 10, 0, 0, 5);" HBox.hgrow="ALWAYS">
                         <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800;" text="TOTALI FLUTURIMEVE" />
-                        <Label style="-fx-text-fill: #0F172A; -fx-font-size: 28; -fx-font-weight: 900;" text="142" />
-                        <Label style="-fx-text-fill: #10B981; -fx-font-size: 11; -fx-font-weight: 700;" text="+12% nga muaji i kaluar" />
+                        <Label fx:id="totalFlightsLabel" style="-fx-text-fill: #0F172A; -fx-font-size: 28; -fx-font-weight: 900;" text="0" />
+                        <Label style="-fx-text-fill: #10B981; -fx-font-size: 11; -fx-font-weight: 700;" text="Në sistem live" />
                     </VBox>
+
                     <VBox style="-fx-background-color: white; -fx-padding: 24; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 10, 0, 0, 5);" HBox.hgrow="ALWAYS">
                         <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800;" text="REDAKTIMET E STAFF-IT" />
                         <Label style="-fx-text-fill: #0F172A; -fx-font-size: 28; -fx-font-weight: 900;" text="85" />
                         <Label style="-fx-text-fill: #3A94F2; -fx-font-size: 11; -fx-font-weight: 700;" text="10 aktivë tani" />
                     </VBox>
+
                     <VBox style="-fx-background-color: white; -fx-padding: 24; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 10, 0, 0, 5);" HBox.hgrow="ALWAYS">
                         <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800;" text="ARTIKUJT E HUMBUR" />
-                        <Label style="-fx-text-fill: #EF4444; -fx-font-size: 28; -fx-font-weight: 900;" text="12" />
-                        <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="3 raportuar sot" />
+                        <Label fx:id="lostItemsLabel" style="-fx-text-fill: #EF4444; -fx-font-size: 28; -fx-font-weight: 900;" text="0" />
+                        <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Raportuar gjithsej" />
                     </VBox>
+
                     <VBox style="-fx-background-color: white; -fx-padding: 24; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 10, 0, 0, 5);" HBox.hgrow="ALWAYS">
                         <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800;" text="TË ARDHURAT (EUR)" />
                         <Label style="-fx-text-fill: #0F172A; -fx-font-size: 28; -fx-font-weight: 900;" text="€ 24,500" />
-                        <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Sot, 2 Qershor" />
+                        <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="Sot, Live" />
                     </VBox>
                 </HBox>
 
@@ -152,12 +155,13 @@
                     <TableView fx:id="adminDataTable" prefHeight="400" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 10;">
                         <columns>
                             <TableColumn prefWidth="50" text="ID" />
-                            <TableColumn prefWidth="100" text="KODI" />
-                            <TableColumn prefWidth="150" text="KOMPANIA" />
-                            <TableColumn prefWidth="180" text="DESTINACIONI" />
-                            <TableColumn prefWidth="150" text="DATA/ORA" />
-                            <TableColumn prefWidth="120" text="STATUSI" />
-                            <TableColumn prefWidth="150" text="VEPRIMET" />
+                            <TableColumn prefWidth="90" text="KODI" />
+                            <TableColumn prefWidth="140" text="KOMPANIA" />
+                            <TableColumn prefWidth="140" text="PREJ (NISJA)" />
+                            <TableColumn prefWidth="140" text="KU (MBËRRITJA)" />
+                            <TableColumn prefWidth="140" text="DATA/ORA" />
+                            <TableColumn prefWidth="110" text="STATUSI" />
+                            <TableColumn prefWidth="130" text="VEPRIMET" />
                         </columns>
                     </TableView>
 

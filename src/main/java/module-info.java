@@ -11,4 +11,5 @@ module Menaxhimi.i.sistemit.te.fluturimeve {
     exports app;
 
     opens controllers to javafx.fxml;
+    opens models.dto to javafx.base;
 }

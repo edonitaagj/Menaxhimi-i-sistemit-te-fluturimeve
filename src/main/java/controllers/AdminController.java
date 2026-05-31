@@ -3,18 +3,27 @@ package controllers;
 import app.Router;
 import app.SessionManager;
 import app.ViewsEnum;
+import models.Perdoruesi;
+import models.dto.FluturimiTabelaDTO;
+import repository.AdminRepository;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
-import models.Perdoruesi;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class AdminController {
+    @FXML private Label totalFlightsLabel;
+    @FXML private Label lostItemsLabel;
 
     // ===============================
     // ADMIN INFO (Sidebar bottom)
@@ -22,14 +31,6 @@ public class AdminController {
     @FXML private Label userFullName;
     @FXML private Label userEmail;
     @FXML private Label avatarLabel;
-
-    // ===============================
-    // CLOCK & HEADER
-    // ===============================
-    // Shënim: Nëse dëshiron të shfaqësh orën edhe te paneli i adminit,
-    // mund t'i shtosh këto labela në FXML te pjesa e Header-it.
-    @FXML private Label clockLabel;
-    @FXML private Label dateLabel;
 
     // ===============================
     // SEARCH & FILTERS
@@ -49,9 +50,13 @@ public class AdminController {
     @FXML private HBox navKompanite;
 
     // ===============================
-    // TABLE VIEW (Menaxhimi i përgjithshëm)
+    // TABLE VIEW NDRYSHUAR NË DTO
     // ===============================
-    @FXML private TableView<?> adminDataTable;
+    @FXML private TableView<FluturimiTabelaDTO> adminDataTable;
+
+    // Krijojmë një listë të vëzhgueshme (ObservableList) për tabelën
+    private final ObservableList<FluturimiTabelaDTO> listaFluturimeve = FXCollections.observableArrayList();
+    private final AdminRepository adminRepository = new AdminRepository();
 
     // ===============================
     // INIT
@@ -61,46 +66,29 @@ public class AdminController {
         loadAdminData();
         setupSidebarActions();
 
-        // Nëse ke vendosur clockLabel dhe dateLabel në FXML, hiqja komentet kësaj vije:
-        // startClock();
+        // Konfigurojmë kolonat e tabelës që të përputhen me FXML
+        initTableColumns();
 
-        loadDashboardData(); // Ngarkon tabelën e parë sapo hapet faqja
+        // Ngarkon automatikisht fluturimet sapo hapet kryefaqja
+        loadDashboardData();
+
+        // Dëgjuesi (Listener) për kërkim live gjatë shkrimit
+        adminSearchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            handleAdminSearch();
+        });
     }
 
     private void loadAdminData() {
         Perdoruesi admin = SessionManager.getCurrentUser();
-
         if (admin != null) {
             String fullName = admin.getEmri() + " " + admin.getMbiemri();
-
             userFullName.setText(fullName);
             userEmail.setText(admin.getEmail());
-
-            // Merr shkronjën e parë të emrit për rrethin e avatarit
-            avatarLabel.setText(
-                    admin.getEmri().substring(0, 1).toUpperCase()
-            );
+            avatarLabel.setText(admin.getEmri().substring(0, 1).toUpperCase());
         }
-    }
-    // opsionale nese duhet clock
-    private void startClock() {
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(1), e -> updateClock())
-        );
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-
-        updateClock();
-    }
-
-    private void updateClock() {
-        LocalDateTime now = LocalDateTime.now();
-        if (clockLabel != null) clockLabel.setText(now.format(DateTimeFormatter.ofPattern("HH:mm")));
-        if (dateLabel != null) dateLabel.setText(now.format(DateTimeFormatter.ofPattern("EEEE, dd MMM yyyy")));
     }
 
     private void setupSidebarActions() {
-        // Klikimet në sidebar ndryshojnë se çfarë të dhënash shfaqen në TableView
         navDashboard.setOnMouseClicked(e -> loadDashboardData());
         navFluturimet.setOnMouseClicked(e -> loadFluturimetTable());
         navRezervimet.setOnMouseClicked(e -> loadRezervimetTable());
@@ -111,54 +99,74 @@ public class AdminController {
         navKompanite.setOnMouseClicked(e -> loadKompaniteTable());
     }
 
+    private void initTableColumns() {
+        ObservableList<TableColumn<FluturimiTabelaDTO, ?>> columns = adminDataTable.getColumns();
+
+        if (columns.size() >= 7) {
+            columns.get(0).setCellValueFactory(new PropertyValueFactory<>("idFluturimit"));
+            columns.get(1).setCellValueFactory(new PropertyValueFactory<>("kodiFluturimit"));
+            columns.get(2).setCellValueFactory(new PropertyValueFactory<>("emriKompanise"));
+            columns.get(3).setCellValueFactory(new PropertyValueFactory<>("nisja"));       // Kolona e re: Nisja
+            columns.get(4).setCellValueFactory(new PropertyValueFactory<>("mberritja"));   // Kolona e re: Mbërritja
+            columns.get(5).setCellValueFactory(new PropertyValueFactory<>("dataOra"));
+            columns.get(6).setCellValueFactory(new PropertyValueFactory<>("statusi"));
+
+            // Kolona 7 (Veprimet) mbetet për butonat e modifikimit
+        }
+
+        adminDataTable.setItems(listaFluturimeve);
+    }
+
     private void loadDashboardData() {
-        System.out.println("Duke ngarkuar pamjen kryesore të Dashboard...");
-        // TODO: Shfaq përmbledhjen e përgjithshme ose logun e modifikimeve
+        System.out.println("Duke ngarkuar fluturimet dhe statistikat në Dashboard...");
+        listaFluturimeve.clear();
+
+        // 1. Mbush tabelën (Kodi që bëmë herën e kaluar)
+        List<FluturimiTabelaDTO> fluturimetNgaDb = adminRepository.getFluturimetDashboard();
+        listaFluturimeve.addAll(fluturimetNgaDb);
+
+        // 2. Merr numrat live nga DB për kartat e statistikave
+        int totalFlights = adminRepository.getTotalFlightsCount();
+        int totalLostItems = adminRepository.getLostItemsCount();
+
+        // 3. Vendos tekstin dinamikisht në UI
+        totalFlightsLabel.setText(String.valueOf(totalFlights));
+        lostItemsLabel.setText(String.valueOf(totalLostItems));
     }
 
     private void loadFluturimetTable() {
+        // Nëse ke pamje të veçantë për fluturimet
         Router.navigateTo(ViewsEnum.ADMIN_FLUTURIMET);
-        // TODO: Popullo 'adminDataTable' me kolonat dhe të dhënat e fluturimeve
     }
 
-    private void loadRezervimetTable() {
-        Router.navigateTo(ViewsEnum.ADMIN_REZERVIMET);
-    }
-
-    private void loadAvionetTable() {
-        Router.navigateTo(ViewsEnum.ADMIN_AVIONET);
-    }
-
-    private void loadArtikujtHumburTable() {
-        Router.navigateTo(ViewsEnum.ADMIN_ARTIKUJT_HUMBUR);
-    }
-
-    private void loadStafiTable() {
-        Router.navigateTo(ViewsEnum.ADMIN_STAFI);
-    }
-
-    private void loadPasagjeretTable() {
-        Router.navigateTo(ViewsEnum.ADMIN_PASAGJERIT);
-    }
-
-    private void loadKompaniteTable() {
-        Router.navigateTo(ViewsEnum.ADMIN_KOMPANITE);
-    }
-
-// shto, kerko
-    @FXML
-    private void handleAddRecord() {
-        System.out.println("Klikuar butoni për të shtuar rresht të ri (p.sh. Fluturim, Staf, etj.)");
-        // TODO: Hap një dritare të re (Modal Pop-up) për regjistrim të dhënash
-    }
+    private void loadRezervimetTable() { Router.navigateTo(ViewsEnum.ADMIN_REZERVIMET); }
+    private void loadAvionetTable() { Router.navigateTo(ViewsEnum.ADMIN_AVIONET); }
+    private void loadArtikujtHumburTable() { Router.navigateTo(ViewsEnum.ADMIN_ARTIKUJT_HUMBUR); }
+    private void loadStafiTable() { Router.navigateTo(ViewsEnum.ADMIN_STAFI); }
+    private void loadPasagjeretTable() { Router.navigateTo(ViewsEnum.ADMIN_PASAGJERIT); }
+    private void loadKompaniteTable() { Router.navigateTo(ViewsEnum.ADMIN_KOMPANITE); }
 
     @FXML
     private void handleAdminSearch() {
-        String query = adminSearchField.getText();
-        System.out.println("Duke kërkuar në databazë për: " + query);
-        // TODO: Filtro tabelën aktive bazuar në tekstin e shkruar
+        String query = adminSearchField.getText() == null ? "" : adminSearchField.getText().toLowerCase().trim();
+
+        if (query.isEmpty()) {
+            adminDataTable.setItems(listaFluturimeve);
+            return;
+        }
+
+        ObservableList<FluturimiTabelaDTO> filteredList = FXCollections.observableArrayList();
+        for (FluturimiTabelaDTO f : listaFluturimeve) {
+            if (f.getKodiFluturimit().toLowerCase().contains(query) ||
+                    f.getNisja().toLowerCase().contains(query) ||
+                    f.getMberritja().toLowerCase().contains(query) ||
+                    f.getEmriKompanise().toLowerCase().contains(query)) {
+                filteredList.add(f);
+            }
+        }
+        adminDataTable.setItems(filteredList);
     }
-//logout
+
     @FXML
     private void handleLogout() {
         SessionManager.logout();
