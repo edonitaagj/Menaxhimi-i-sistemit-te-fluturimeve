@@ -11,6 +11,7 @@ public enum ViewsEnum {
     PROFIL_VIEW("/views/Profil_view.fxml"),
     PAGESAT_VIEW("/views/Pagesat_view.fxml"),
     SHTO_REZERVIM("/views/ShtoRezervim_view.fxml"),
+    DASHBOARD_VIEW("/views/Dashboard_view.fxml"),
 
     ADMIN_VIEW("/views/Admin_view.fxml"),
     ADMIN_ARTIKUJT_HUMBUR("/views/AdminArtikujtHumbur.fxml"),
