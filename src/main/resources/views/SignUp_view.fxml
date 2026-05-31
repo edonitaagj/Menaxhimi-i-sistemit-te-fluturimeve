@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 
 <HBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controllers.LoginController"
+      fx:controller="controllers.SignupController"
       prefWidth="860" prefHeight="600"
       style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 20, 0, 0, 10);">
 
@@ -117,25 +117,21 @@
         </VBox>
     </StackPane>
 
+    <!-- RIGHT PANEL -->
     <VBox prefWidth="450" alignment="CENTER_LEFT"
           style="-fx-background-color: white;
                  -fx-background-radius: 0 16 16 0;
-                 -fx-padding: 54 50 50 50;"
+                 -fx-padding: 42 50 42 50;"
           spacing="0">
 
-
-
-        <Region prefHeight="32"/>
-
-        <Label text="Mirë se vini"
-               style="-fx-text-fill: #0F172A; -fx-font-size: 34;
+        <Label text="Krijo Llogari"
+               style="-fx-text-fill: #0F172A; -fx-font-size: 30;
                       -fx-font-weight: 900; -fx-font-family: 'System'"/>
         <Region prefHeight="4"/>
-        <Label text="Shkruani kredencialet tuaja për të hyrë në sistem."
-               style="-fx-text-fill: #64748B; -fx-font-size: 13; -fx-font-weight: 500;"/>
 
-        <Region prefHeight="36"/>
+        <Region prefHeight="24"/>
 
+        <!-- Error Box -->
         <HBox fx:id="errBox" alignment="CENTER_LEFT" spacing="10"
               style="-fx-background-color: #FEF2F2;
                      -fx-border-color: #FCA5A5; -fx-border-width: 1;
@@ -144,11 +140,55 @@
               visible="false" managed="false">
             <Label text="⚠️" style="-fx-text-fill: #DC2626; -fx-font-size: 14;"/>
             <Label fx:id="errLabel"
-                   text="Username ose fjalëkalim i gabuar."
+                   text="Ndodhi një gabim gjatë regjistrimit."
                    style="-fx-text-fill: #DC2626; -fx-font-size: 13; -fx-font-weight: 700;"/>
         </HBox>
         <Region fx:id="errSpacer" prefHeight="16" visible="false" managed="false"/>
 
+        <!-- Emri + Mbiemri (side by side) -->
+        <HBox spacing="12" maxWidth="Infinity">
+            <VBox HBox.hgrow="ALWAYS" spacing="0">
+                <Label text="EMRI"
+                       style="-fx-text-fill: #475569; -fx-font-size: 11;
+                              -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
+                <Region prefHeight="8"/>
+                <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
+                    <TextField fx:id="emriField"
+                               promptText="Emri"
+                               style="-fx-background-color: #F8FAFC;
+                                      -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
+                                      -fx-border-radius: 10; -fx-background-radius: 10;
+                                      -fx-padding: 14 45 14 16;
+                                      -fx-font-size: 14; -fx-text-fill: #0F172A;
+                                      -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
+                               maxWidth="Infinity"/>
+                    <Label text="👤" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 14 0 0;"/>
+                </StackPane>
+            </VBox>
+
+            <VBox HBox.hgrow="ALWAYS" spacing="0">
+                <Label text="MBIEMRI"
+                       style="-fx-text-fill: #475569; -fx-font-size: 11;
+                              -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
+                <Region prefHeight="8"/>
+                <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
+                    <TextField fx:id="mbiemriField"
+                               promptText="Mbiemri"
+                               style="-fx-background-color: #F8FAFC;
+                                      -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
+                                      -fx-border-radius: 10; -fx-background-radius: 10;
+                                      -fx-padding: 14 45 14 16;
+                                      -fx-font-size: 14; -fx-text-fill: #0F172A;
+                                      -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
+                               maxWidth="Infinity"/>
+                    <Label text="👤" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 14 0 0;"/>
+                </StackPane>
+            </VBox>
+        </HBox>
+
+        <Region prefHeight="18"/>
+
+        <!-- Username -->
         <Label text="USERNAME"
                style="-fx-text-fill: #475569; -fx-font-size: 11;
                       -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
@@ -161,13 +201,34 @@
                               -fx-border-radius: 10; -fx-background-radius: 10;
                               -fx-padding: 14 45 14 16;
                               -fx-font-size: 14; -fx-text-fill: #0F172A;
-                              -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 600;"
+                              -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
                        maxWidth="Infinity"/>
-            <Label text="👤" style="-fx-text-fill: #94A3B8; -fx-font-size: 18; -fx-padding: 0 16 0 0;"/>
+            <Label text="🪪" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
         </StackPane>
 
-        <Region prefHeight="20"/>
+        <Region prefHeight="18"/>
 
+        <!-- Email -->
+        <Label text="EMAIL"
+               style="-fx-text-fill: #475569; -fx-font-size: 11;
+                      -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
+        <Region prefHeight="8"/>
+        <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
+            <TextField fx:id="emailField"
+                       promptText="emri@shembull.com"
+                       style="-fx-background-color: #F8FAFC;
+                              -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
+                              -fx-border-radius: 10; -fx-background-radius: 10;
+                              -fx-padding: 14 45 14 16;
+                              -fx-font-size: 14; -fx-text-fill: #0F172A;
+                              -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
+                       maxWidth="Infinity"/>
+            <Label text="✉️" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
+        </StackPane>
+
+        <Region prefHeight="18"/>
+
+        <!-- Password -->
         <Label text="FJALËKALIMI"
                style="-fx-text-fill: #475569; -fx-font-size: 11;
                       -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
@@ -180,25 +241,47 @@
                                   -fx-border-radius: 10; -fx-background-radius: 10;
                                   -fx-padding: 14 45 14 16;
                                   -fx-font-size: 14; -fx-text-fill: #0F172A;
-                                  -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 600;"
+                                  -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
                            maxWidth="Infinity"/>
             <Label text="🔒" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
         </StackPane>
 
-        <Region prefHeight="12"/>
+        <Region prefHeight="18"/>
 
-        <HBox alignment="CENTER_RIGHT" maxWidth="Infinity">
-            <Label fx:id="forgotLabel"
-                   text="Harruat fjalëkalimin?"
-                   style="-fx-text-fill: #3A94F2; -fx-font-size: 12;
-                          -fx-font-weight: 700; -fx-cursor: hand;"/>
+        <!-- Confirm Password -->
+        <Label text="KONFIRMO FJALËKALIMIN"
+               style="-fx-text-fill: #475569; -fx-font-size: 11;
+                      -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
+        <Region prefHeight="8"/>
+        <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
+            <PasswordField fx:id="confirmPassField"
+                           promptText="••••••••••••"
+                           style="-fx-background-color: #F8FAFC;
+                                  -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
+                                  -fx-border-radius: 10; -fx-background-radius: 10;
+                                  -fx-padding: 14 45 14 16;
+                                  -fx-font-size: 14; -fx-text-fill: #0F172A;
+                                  -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
+                           maxWidth="Infinity"/>
+            <Label text="🔑" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
+        </StackPane>
+
+        <Region prefHeight="8"/>
+
+        <!-- Password hint -->
+        <HBox alignment="CENTER_LEFT" spacing="6">
+            <Label text="ℹ"
+                   style="-fx-text-fill: #94A3B8; -fx-font-size: 11;"/>
+            <Label text="Minimumi 8 karaktere, të paktën 1 numër."
+                   style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 500;"/>
         </HBox>
 
-        <Region prefHeight="32"/>
+        <Region prefHeight="28"/>
 
-        <Button fx:id="loginBtn"
-                text="Hyr në sistem"
-                onAction="#handleLogin"
+        <!-- Register Button -->
+        <Button fx:id="signupBtn"
+                text="Krijo llogarinë"
+                onAction="#handleSignUp"
                 maxWidth="Infinity"
                 style="-fx-background-color: linear-gradient(to right, #091E36, #122D4F);
                        -fx-text-fill: white;
@@ -210,9 +293,10 @@
 
         <Region prefHeight="12"/>
 
-        <Button fx:id="signupBtn"
-                text="Krijo një llogari të re"
-                onAction="#handleSignUp"
+        <!-- Back to Login Button -->
+        <Button fx:id="loginBtn"
+                text="Keni tashmë llogari? Hyni këtu"
+                onAction="#handleBackToLogin"
                 maxWidth="Infinity"
                 style="-fx-background-color: transparent;
                        -fx-text-fill: #334155;

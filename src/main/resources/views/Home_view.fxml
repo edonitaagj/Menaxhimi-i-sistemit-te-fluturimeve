@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<HBox prefHeight="760" prefWidth="1200" style="-fx-background-color: #F1F5F9;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
+
+    <!-- ═══════════════════════════════ -->
+    <!--  SIDEBAR E MAJTË               -->
+    <!-- ═══════════════════════════════ -->
+    <VBox prefWidth="220" style="-fx-background-color: linear-gradient(to bottom, #091E36, #030A12);                  -fx-padding: 0;">
+
+        <!-- Logo -->
+        <VBox style="-fx-padding: 28 24 24 24; -fx-border-color: rgba(255,255,255,0.07); -fx-border-width: 0 0 1 0;">
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <StackPane prefHeight="38" prefWidth="38" style="-fx-background-color: rgba(55,138,221,0.15);                                   -fx-background-radius: 10;                                   -fx-border-color: rgba(55,138,221,0.3);                                   -fx-border-radius: 10; -fx-border-width: 1.5;">
+                    <Label style="-fx-text-fill: #3A94F2; -fx-font-size: 18;" text="✈" />
+                </StackPane>
+                <VBox spacing="1">
+                    <Label style="-fx-text-fill: white; -fx-font-size: 11;                                   -fx-font-weight: 900;" text="ADEM JASHARI" />
+                    <Label style="-fx-text-fill: rgba(133,183,235,0.45);                                   -fx-font-size: 10; -fx-font-weight: 600;" text="PRN · Klient" />
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <!-- Nav items -->
+        <VBox spacing="4" style="-fx-padding: 16 12 16 12;">
+
+            <Label style="-fx-text-fill: rgba(255,255,255,0.25); -fx-font-size: 10;                           -fx-font-weight: 800; -fx-letter-spacing: 0.08em;                           -fx-padding: 8 12 4 12;" text="NAVIGIMI" />
+
+            <!-- Home — aktiv -->
+            <HBox fx:id="navHome" alignment="CENTER_LEFT" spacing="12" style="-fx-background-color: rgba(58,148,242,0.15);                          -fx-border-color: rgba(58,148,242,0.4);                          -fx-border-width: 0 0 0 3;                          -fx-background-radius: 0 8 8 0;                          -fx-padding: 11 16 11 13; -fx-cursor: hand;">
+                <Label style="-fx-font-size: 15;" text="🏠" />
+                <Label style="-fx-text-fill: #3A94F2; -fx-font-size: 13; -fx-font-weight: 700;" text="Kryefaqja" />
+            </HBox>
+
+
+
+            <!-- Rezervimet -->
+            <HBox fx:id="navRezervimet" alignment="CENTER_LEFT" onMouseClicked="#handleNavRezervimet" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
+                <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="🎫" />
+                <Label style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 13; -fx-font-weight: 600;" text="Rezervimet e mia" />
+            </HBox>
+
+            <!-- Boarding Pass -->
+            <HBox fx:id="navBileta" alignment="CENTER_LEFT" onMouseClicked="#handleNavBileta" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
+                <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="📋" />
+                <Label style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 13; -fx-font-weight: 600;" text="Biletat e mia" />
+            </HBox>
+
+            <!-- Njoftime -->
+            <HBox fx:id="navNjoftimet" alignment="CENTER_LEFT" onMouseClicked="#handleNavNjoftimet" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
+                <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="🔔" />
+                <Label style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 13; -fx-font-weight: 600;" text="Njoftime" />
+                <!-- Badge njoftime -->
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="badgeNjoftime" style="-fx-background-color: #EF4444; -fx-text-fill: white;                               -fx-font-size: 10; -fx-font-weight: 800;                               -fx-background-radius: 10; -fx-padding: 2 6 2 6;" text="3" />
+            </HBox>
+
+            <Label style="-fx-text-fill: rgba(255,255,255,0.25); -fx-font-size: 10;                           -fx-font-weight: 800; -fx-letter-spacing: 0.08em;                           -fx-padding: 12 12 4 12;" text="LLOGARIA" />
+
+            <!-- Profili -->
+            <HBox fx:id="navProfili" alignment="CENTER_LEFT" onMouseClicked="#handleNavProfili" spacing="12" style="-fx-padding: 11 16 11 16; -fx-cursor: hand; -fx-background-radius: 8;">
+                <Label style="-fx-font-size: 15; -fx-text-fill: rgba(255,255,255,0.5);" text="👤" />
+                <Label style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 13; -fx-font-weight: 600;" text="Profili im" />
+            </HBox>
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS" />
+
+        <!-- User info + logout -->
+        <VBox style="-fx-padding: 16 16 24 16;                      -fx-border-color: rgba(255,255,255,0.07);                      -fx-border-width: 1 0 0 0;">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <StackPane prefHeight="36" prefWidth="36" style="-fx-background-color: rgba(58,148,242,0.2);                                   -fx-background-radius: 18;">
+                    <Label fx:id="avatarLabel" style="-fx-text-fill: #3A94F2; -fx-font-size: 15; -fx-font-weight: 800;" text="A" />
+                </StackPane>
+                <VBox spacing="2" HBox.hgrow="ALWAYS">
+                    <Label fx:id="userFullName" style="-fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: 700;" text="Ardian Krasniqi" />
+                    <Label fx:id="userEmail" style="-fx-text-fill: rgba(133,183,235,0.4); -fx-font-size: 11;" text="ardian@email.com" />
+                </VBox>
+            </HBox>
+            <Region prefHeight="12" />
+            <Button fx:id="logoutBtn" maxWidth="Infinity" onAction="#handleLogout" style="-fx-background-color: rgba(239,68,68,0.1);                            -fx-text-fill: #F87171;                            -fx-font-size: 12; -fx-font-weight: 700;                            -fx-background-radius: 8; -fx-cursor: hand;                            -fx-border-color: rgba(239,68,68,0.2);                            -fx-border-radius: 8; -fx-border-width: 1;                            -fx-padding: 8 0 8 0;" text="⟵  Dilni" />
+        </VBox>
+    </VBox>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!--  CONTENT E DJATHTE                                  -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <VBox style="-fx-background-color: #F1F5F9; -fx-padding: 0;" HBox.hgrow="ALWAYS">
+
+        <!-- Top bar -->
+        <HBox alignment="CENTER_LEFT" spacing="16" style="-fx-background-color: white;                      -fx-padding: 16 28 16 28;                      -fx-border-color: #E2E8F0; -fx-border-width: 0 0 1 0;">
+            <VBox spacing="2">
+                <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 12; -fx-font-weight: 600;" text="Mirë se vini! 👋" />
+                <Label fx:id="greetingLabel" style="-fx-text-fill: #0F172A; -fx-font-size: 20; -fx-font-weight: 900;" text="Ardian Krasniqi" />
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- Ora live -->
+            <VBox alignment="CENTER_RIGHT" spacing="2">
+                <Label fx:id="clockLabel" style="-fx-text-fill: #0F172A; -fx-font-size: 22; -fx-font-weight: 900;                               -fx-font-family: 'System';" text="14:32" />
+                <Label fx:id="dateLabel" style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 600;" text="E Hënë, 2 Qershor 2025" />
+            </VBox>
+        </HBox>
+
+        <!-- Main scroll content -->
+        <ScrollPane fitToWidth="true" style="-fx-background: #F1F5F9; -fx-background-color: #F1F5F9;                            -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+            <VBox spacing="20" style="-fx-padding: 24 28 28 28;">
+
+                <!-- ── Kërko fluturim ── -->
+                <VBox spacing="14" style="-fx-background-color: linear-gradient(to right, #091E36, #122D4F);                              -fx-background-radius: 16; -fx-padding: 24 28 24 28;">
+                    <Label style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: 900;" text="Kërko fluturim" />
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+                        <!-- Nga -->
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-text-fill: rgba(133,183,235,0.6); -fx-font-size: 10;                                           -fx-font-weight: 800; -fx-letter-spacing: 0.06em;" text="NGA" />
+                            <StackPane alignment="CENTER_RIGHT">
+                                <TextField fx:id="searchNga" maxWidth="Infinity" promptText="p.sh. PRN" style="-fx-background-color: rgba(255,255,255,0.08);                                                   -fx-border-color: rgba(255,255,255,0.15);                                                   -fx-border-width: 1.5; -fx-border-radius: 10;                                                   -fx-background-radius: 10;                                                   -fx-text-fill: white; -fx-font-size: 14;                                                   -fx-font-weight: 700; -fx-padding: 12 40 12 14;                                                   -fx-prompt-text-fill: rgba(255,255,255,0.3);" />
+                                <Label style="-fx-text-fill: rgba(255,255,255,0.3); -fx-font-size: 16; -fx-padding: 0 12 0 0;" text="✈" />
+                            </StackPane>
+                        </VBox>
+
+                        <!-- Swap icon -->
+                        <Label style="-fx-text-fill: rgba(255,255,255,0.3); -fx-font-size: 20;                                       -fx-padding: 18 0 0 0;" text="⇄" />
+
+                        <!-- Deri -->
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-text-fill: rgba(133,183,235,0.6); -fx-font-size: 10;                                           -fx-font-weight: 800; -fx-letter-spacing: 0.06em;" text="DERI" />
+                            <StackPane alignment="CENTER_RIGHT">
+                                <TextField fx:id="searchDeri" maxWidth="Infinity" promptText="p.sh. VIE" style="-fx-background-color: rgba(255,255,255,0.08);                                                   -fx-border-color: rgba(255,255,255,0.15);                                                   -fx-border-width: 1.5; -fx-border-radius: 10;                                                   -fx-background-radius: 10;                                                   -fx-text-fill: white; -fx-font-size: 14;                                                   -fx-font-weight: 700; -fx-padding: 12 40 12 14;                                                   -fx-prompt-text-fill: rgba(255,255,255,0.3);" />
+                                <Label style="-fx-text-fill: rgba(255,255,255,0.3); -fx-font-size: 15; -fx-padding: 0 12 0 0;" text="📍" />
+                            </StackPane>
+                        </VBox>
+
+                        <!-- Data -->
+                        <VBox prefWidth="160" spacing="6">
+                            <Label style="-fx-text-fill: rgba(133,183,235,0.6); -fx-font-size: 10;                                           -fx-font-weight: 800; -fx-letter-spacing: 0.06em;" text="DATA" />
+                            <DatePicker fx:id="searchData" maxWidth="Infinity" style="-fx-background-color: rgba(255,255,255,0.08);                                                -fx-border-color: rgba(255,255,255,0.15);                                                -fx-border-width: 1.5; -fx-border-radius: 10;                                                -fx-background-radius: 10;                                                -fx-font-size: 13; -fx-font-weight: 700;" />
+                        </VBox>
+
+                        <!-- Butoni kërko -->
+                        <VBox prefWidth="130" spacing="6">
+                            <Label style="-fx-font-size: 10;" text=" " />
+                            <Button fx:id="searchBtn" maxWidth="Infinity" onAction="#handleSearch" style="-fx-background-color: #3A94F2;                                            -fx-text-fill: white; -fx-font-size: 14;                                            -fx-font-weight: 800; -fx-background-radius: 10;                                            -fx-cursor: hand; -fx-padding: 12 0 12 0;                                            -fx-effect: dropshadow(three-pass-box, rgba(58,148,242,0.4), 10, 0, 0, 4);" text="Kërko  →" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- ── Stats kartela ── -->
+                <HBox spacing="16">
+                    <!-- Fluturime sot -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 14;                                  -fx-padding: 20 22 20 22;                                  -fx-border-color: #E2E8F0; -fx-border-width: 1; -fx-border-radius: 14;" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <StackPane prefHeight="42" prefWidth="42" style="-fx-background-color: rgba(58,148,242,0.1);                                               -fx-background-radius: 12;">
+                                <Label style="-fx-font-size: 20;" text="✈" />
+                            </StackPane>
+                            <VBox spacing="2">
+                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 600;" text="Fluturime sot" />
+                                <Label fx:id="statFluturime" style="-fx-text-fill: #0F172A; -fx-font-size: 26; -fx-font-weight: 900;" text="24" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Rezervimet e mia -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 14;                                  -fx-padding: 20 22 20 22;                                  -fx-border-color: #E2E8F0; -fx-border-width: 1; -fx-border-radius: 14;" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <StackPane prefHeight="42" prefWidth="42" style="-fx-background-color: rgba(16,185,129,0.1);                                               -fx-background-radius: 12;">
+                                <Label style="-fx-font-size: 20;" text="🎫" />
+                            </StackPane>
+                            <VBox spacing="2">
+                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 600;" text="Rezervimet e mia" />
+                                <Label fx:id="statRezervimet" style="-fx-text-fill: #0F172A; -fx-font-size: 26; -fx-font-weight: 900;" text="2" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Fluturimi ardhshëm -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 14;                                  -fx-padding: 20 22 20 22;                                  -fx-border-color: #E2E8F0; -fx-border-width: 1; -fx-border-radius: 14;" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <StackPane prefHeight="42" prefWidth="42" style="-fx-background-color: rgba(245,158,11,0.1);                                               -fx-background-radius: 12;">
+                                <Label style="-fx-font-size: 20;" text="⏰" />
+                            </StackPane>
+                            <VBox spacing="2">
+                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 600;" text="Fluturimi tjetër" />
+                                <Label fx:id="statFluturimiArdhshem" style="-fx-text-fill: #0F172A; -fx-font-size: 22; -fx-font-weight: 900;" text="OS 741" />
+                                <Label fx:id="statFluturimiData" style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 600;" text="PRN → VIE · 2 Qer" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Njoftime -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 14;                                  -fx-padding: 20 22 20 22;                                  -fx-border-color: #E2E8F0; -fx-border-width: 1; -fx-border-radius: 14;" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <StackPane prefHeight="42" prefWidth="42" style="-fx-background-color: rgba(239,68,68,0.1);                                               -fx-background-radius: 12;">
+                                <Label style="-fx-font-size: 20;" text="🔔" />
+                            </StackPane>
+                            <VBox spacing="2">
+                                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 600;" text="Njoftime aktive" />
+                                <Label fx:id="statNjoftimet" style="-fx-text-fill: #0F172A; -fx-font-size: 26; -fx-font-weight: 900;" text="3" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </HBox>
+
+                <!-- ── Board largimi + Rezervimet ── -->
+                <HBox alignment="TOP_LEFT" spacing="16">
+
+                    <!-- Board Largimesh -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 14;                                  -fx-border-color: #E2E8F0; -fx-border-width: 1; -fx-border-radius: 14;" HBox.hgrow="ALWAYS">
+
+                        <!-- Header board -->
+                        <HBox alignment="CENTER_LEFT" style="-fx-padding: 18 22 14 22;                                      -fx-border-color: #F1F5F9; -fx-border-width: 0 0 1 0;">
+                            <VBox spacing="2">
+                                <Label style="-fx-text-fill: #0F172A; -fx-font-size: 15; -fx-font-weight: 800;" text="Board Largimesh" />
+                                <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 600;" text="Fluturimet e sotme nga PRN" />
+                            </VBox>
+                            <Region HBox.hgrow="ALWAYS" />
+                            <HBox alignment="CENTER" spacing="5" style="-fx-background-color: rgba(16,185,129,0.1);                                          -fx-padding: 5 10 5 10; -fx-background-radius: 20;">
+                                <Circle fill="#10B981" radius="4" />
+                                <Label style="-fx-text-fill: #10B981; -fx-font-size: 10;                                               -fx-font-weight: 900;" text="LIVE" />
+                            </HBox>
+                        </HBox>
+
+                        <!-- Header kolonat -->
+                        <HBox style="-fx-padding: 10 22 10 22; -fx-background-color: #F8FAFC;                                      -fx-border-color: #F1F5F9; -fx-border-width: 0 0 1 0;">
+                            <Label prefWidth="90" style="-fx-text-fill: #94A3B8; -fx-font-size: 10; -fx-font-weight: 800;" text="FLUTURIMI" />
+                            <Label prefWidth="140" style="-fx-text-fill: #94A3B8; -fx-font-size: 10; -fx-font-weight: 800;" text="DESTINACIONI" />
+                            <Label prefWidth="70" style="-fx-text-fill: #94A3B8; -fx-font-size: 10; -fx-font-weight: 800;" text="ORA" />
+                            <Label prefWidth="60" style="-fx-text-fill: #94A3B8; -fx-font-size: 10; -fx-font-weight: 800;" text="GEJTI" />
+                            <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 10; -fx-font-weight: 800;" text="STATUSI" />
+                        </HBox>
+
+                        <!-- TableView fluturimet -->
+                        <TableView fx:id="departureBoardTable" maxWidth="Infinity" prefHeight="260" style="-fx-background-color: transparent;                                           -fx-border-color: transparent;                                           -fx-table-cell-border-color: #F1F5F9;">
+                            <columns>
+                                <TableColumn fx:id="colFluturimi" prefWidth="90" text="FLUTURIMI" />
+                                <TableColumn fx:id="colDestinacioni" prefWidth="140" text="DESTINACIONI" />
+                                <TableColumn fx:id="colOra" prefWidth="70" text="ORA" />
+                                <TableColumn fx:id="colGejti" prefWidth="60" text="GEJTI" />
+                                <TableColumn fx:id="colStatusi" prefWidth="100" text="STATUSI" />
+                            </columns>
+                        </TableView>
+                    </VBox>
+
+                    <!-- Rezervimet e fundit -->
+                    <VBox prefWidth="290" style="-fx-background-color: white; -fx-background-radius: 14;                                  -fx-border-color: #E2E8F0; -fx-border-width: 1; -fx-border-radius: 14;">
+
+                        <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="289.0" style="-fx-padding: 18 20 14 20;                                      -fx-border-color: #F1F5F9; -fx-border-width: 0 0 1 0;">
+                            <VBox spacing="2">
+                                <Label style="-fx-text-fill: #0F172A; -fx-font-size: 15; -fx-font-weight: 800;" text="Rezervimet e mia" />
+                                <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 600;" text="Rezervimet aktive" />
+                            </VBox>
+                        </HBox>
+
+                        <!-- Lista rezervimeve -->
+                        <VBox fx:id="rezervimetList" spacing="0" style="-fx-padding: 8 0 8 0;">
+
+                            <!-- Rezervim 1 -->
+                            <VBox style="-fx-padding: 14 20 14 20;                                          -fx-border-color: #F1F5F9; -fx-border-width: 0 0 1 0;                                          -fx-cursor: hand;">
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <StackPane prefHeight="36" prefWidth="36" style="-fx-background-color: rgba(58,148,242,0.1);                                                       -fx-background-radius: 10;">
+                                        <Label style="-fx-font-size: 16;" text="✈" />
+                                    </StackPane>
+                                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                        <HBox alignment="CENTER_LEFT">
+                                            <Label style="-fx-text-fill: #0F172A; -fx-font-size: 13; -fx-font-weight: 800;" text="OS 741" />
+                                            <Region HBox.hgrow="ALWAYS" />
+                                            <Label style="-fx-text-fill: #10B981;                                                           -fx-background-color: rgba(16,185,129,0.1);                                                           -fx-border-color: rgba(16,185,129,0.25);                                                           -fx-border-width: 1; -fx-border-radius: 5;                                                           -fx-background-radius: 5;                                                           -fx-padding: 3 7 3 7;                                                           -fx-font-size: 9; -fx-font-weight: 800;" text="KONFIRMUAR" />
+                                        </HBox>
+                                        <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 600;" text="PRN  →  VIE · 2 Qershor" />
+                                        <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11;" text="Kodi: PRNOS001 · Ul. 14A" />
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+
+                            <!-- Rezervim 2 -->
+                            <VBox style="-fx-padding: 14 20 14 20; -fx-cursor: hand;">
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <StackPane prefHeight="36" prefWidth="36" style="-fx-background-color: rgba(245,158,11,0.1);                                                       -fx-background-radius: 10;">
+                                        <Label style="-fx-font-size: 16;" text="✈" />
+                                    </StackPane>
+                                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                        <HBox alignment="CENTER_LEFT">
+                                            <Label style="-fx-text-fill: #0F172A; -fx-font-size: 13; -fx-font-weight: 800;" text="TK 1056" />
+                                            <Region HBox.hgrow="ALWAYS" />
+                                            <Label style="-fx-text-fill: #F59E0B;                                                           -fx-background-color: rgba(245,158,11,0.1);                                                           -fx-border-color: rgba(245,158,11,0.25);                                                           -fx-border-width: 1; -fx-border-radius: 5;                                                           -fx-background-radius: 5;                                                           -fx-padding: 3 7 3 7;                                                           -fx-font-size: 9; -fx-font-weight: 800;" text="WAIT LIST" />
+                                        </HBox>
+                                        <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 600;" text="PRN  →  IST · 5 Qershor" />
+                                        <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11;" text="Kodi: PRNTK001 · Ul. 22C" />
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+                        </VBox>
+
+                        <Region prefHeight="0.0" prefWidth="289.0" VBox.vgrow="ALWAYS" />
+
+                        <!-- Butoni shiko te gjitha -->
+                        <VBox style="-fx-padding: 12 20 16 20;                                      -fx-border-color: #F1F5F9; -fx-border-width: 1 0 0 0;">
+                            <Button maxWidth="Infinity" onAction="#handleNavRezervimet" prefHeight="53.0" prefWidth="249.0" style="-fx-background-color: transparent;                                            -fx-text-fill: #3A94F2; -fx-font-size: 13;                                            -fx-font-weight: 700; -fx-cursor: hand;                                            -fx-border-color: #BFDBFE; -fx-border-width: 1.5;                                            -fx-border-radius: 8; -fx-background-radius: 8;                                            -fx-padding: 10 0 10 0;" text="Shiko të gjitha rezervimet →" />
+                        </VBox>
+                    </VBox>
+                </HBox>
+
+            </VBox>
+        </ScrollPane>
+    </VBox>
+
+</HBox>
