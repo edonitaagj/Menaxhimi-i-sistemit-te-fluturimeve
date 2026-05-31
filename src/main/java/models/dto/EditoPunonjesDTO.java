@@ -1,6 +1,6 @@
 package models.dto;
 
-public class EditoPunonjesDTO {
+public class EditoPunonjesDTO implements IRequestDto {
     private int idStafit;
     private String emri;
     private String mbiemri;

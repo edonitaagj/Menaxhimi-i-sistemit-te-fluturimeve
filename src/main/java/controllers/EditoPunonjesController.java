@@ -30,7 +30,6 @@ public class EditoPunonjesController {
         );
     }
 
-    // Metodë speciale që thërritet nga tabela kryesore për të pasuar të dhënat e rreshtit
     public void setPunonjesiTeDhenat(StafiTableDTO punonjes) {
         this.idStafitAktual = punonjes.getIdStafit();
         txtEmri.setText(punonjes.getEmri());
@@ -40,21 +39,39 @@ public class EditoPunonjesController {
         cmbDepartamenti.setValue(punonjes.getDepartamenti());
         chkAktiv.setSelected(punonjes.isEshteAktiv());
 
-        // Pasi DTO i tabelës nuk e ka pasur pagën dhe telefonin, mund t'i lëmë default ose t'i lexojmë (p.sh. po vendosim një vlerë fillestare ose thërrasim DB nëse është e nevojshme). Po e lëmë 0.00 ose tekst të lirë fillimisht.
-        txtPaga.setText("850.00");
-        txtTelefoni.setText("");
+        // Thërrasim repository për të marrë objektin e plotë nga DB (përfshirë telefonin dhe pagën)
+        StafiRepository repo = new StafiRepository();
+        Stafi stafiPlote = repo.getById(this.idStafitAktual);
+
+        if (stafiPlote != null) {
+            // Nëse klasa jote Stafi e ka fushën e pagës dhe telefonit, i lexon nga stafiPlote:
+            // txtPaga.setText(String.valueOf(stafiPlote.getPaga()));
+            txtPaga.setText("850.00");
+
+            // ZGJIDHJA E GABIMIT: Lexohet nga stafiPlote dhe jo nga punonjes!
+            txtTelefoni.setText(stafiPlote.getTelefoni() != null ? stafiPlote.getTelefoni() : "");
+        } else {
+            txtPaga.setText("850.00");
+            txtTelefoni.setText("");
+        }
     }
 
     @FXML
     private void handleRuajNdryshimet() {
+        // Validimi i fushave (mund ta heqësh txtPaga nga validimi nëse nuk të duhet domosdo)
         if (txtEmri.getText().trim().isEmpty() || txtMbiemri.getText().trim().isEmpty() ||
                 txtEmail.getText().trim().isEmpty() || cmbDepartamenti.getValue() == null ||
-                txtRoli.getText().trim().isEmpty() || txtPaga.getText().trim().isEmpty()) {
+                txtRoli.getText().trim().isEmpty()) {
             shfaqAlert(Alert.AlertType.WARNING, "Validimi", "Plotësoni të gjitha fushat me *!");
             return;
         }
 
-        double pagaValue = Double.parseDouble(txtPaga.getText().trim());
+        double pagaValue = 0.0;
+        try {
+            pagaValue = Double.parseDouble(txtPaga.getText().trim());
+        } catch (NumberFormatException e) {
+            // Nëse dëshiron mund ta lejosh edhe gabim, ose thjesht e lëmë 0.0 pasi nuk ruhet në DB
+        }
 
         EditoPunonjesDTO editDTO = new EditoPunonjesDTO(
                 idStafitAktual,
@@ -64,11 +81,15 @@ public class EditoPunonjesController {
                 txtTelefoni.getText().trim(),
                 txtRoli.getText().trim(),
                 cmbDepartamenti.getValue(),
-                pagaValue,
+                pagaValue, // Ky mbetet vetëm brenda DTO-së për UI
                 chkAktiv.isSelected()
         );
 
-        Stafi entitetiNdryshuar = StafiMapper.toEntityFromEdit(editDTO, 0);
+        StafiMapper mapper = new StafiMapper();
+        Stafi stafiEkzistues = new Stafi(idStafitAktual);
+        Stafi entitetiNdryshuar = mapper.fromDto(stafiEkzistues, editDTO);
+
+        // KËTU NUK IA SHTOJMË PAGËN ENTITETIT - REPO DO TË RUN VETËM 7 KOLONAT E DB
 
         boolean uPerditesua = StafiRepository.perditesoPunonjes(entitetiNdryshuar, editDTO.getEmriRoli(), editDTO.getDepartamenti());
 

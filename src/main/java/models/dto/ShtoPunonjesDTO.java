@@ -2,7 +2,7 @@ package models.dto;
 
 import java.time.LocalDate;
 
-public class ShtoPunonjesDTO {
+public class ShtoPunonjesDTO implements IRequestDto {
     private String emri;
     private String mbiemri;
     private String email;
@@ -32,5 +32,4 @@ public class ShtoPunonjesDTO {
     public String getDepartamenti() { return departamenti; }
     public String getEmriRoli() { return emriRoli; }
     public LocalDate getDataPunesimit() { return dataPunesimit; }
-    public double getPaga() { return paga; }
 }
