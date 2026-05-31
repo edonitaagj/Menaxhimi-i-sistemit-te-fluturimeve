@@ -128,6 +128,7 @@ public class ProfilController {
     @FXML private void handleNavRezervimet() { Router.navigateTo(ViewsEnum.REZERVIMET_VIEW); }
     @FXML private void handleNavBileta()     { Router.navigateTo(ViewsEnum.BILETAT_VIEW); }
     @FXML private void handleNavNjoftimet()  { Router.navigateTo(ViewsEnum.NJOFTIMET_VIEW); }
+    @FXML private void handleNavHelp() {Router.navigateTo(ViewsEnum.HELP_VIEW);}
 
     private void loadUserData() {
         Perdoruesi user = SessionManager.getCurrentUser();

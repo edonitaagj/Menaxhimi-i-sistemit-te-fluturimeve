@@ -139,6 +139,7 @@ public class BiletatController {
     @FXML private void handleNavRezervimet() { Router.navigateTo(ViewsEnum.REZERVIMET_VIEW); }
     @FXML private void handleNavNjoftimet() { Router.navigateTo(ViewsEnum.NJOFTIMET_VIEW); }
     @FXML private void handleNavProfili() { Router.navigateTo(ViewsEnum.PROFIL_VIEW); }
+    @FXML private void handleNavHelp() {Router.navigateTo(ViewsEnum.HELP_VIEW);}
 
     @FXML
     private void handleLogout() {
