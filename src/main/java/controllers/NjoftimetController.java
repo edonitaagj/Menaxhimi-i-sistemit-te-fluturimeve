@@ -29,6 +29,10 @@ public class NjoftimetController {
     @FXML private HBox navNjoftimet;
     @FXML private HBox navProfili;
 
+    @FXML private Label userFullName;
+    @FXML private Label userEmail;
+    @FXML private Label avatarLabel;
+
     private final NjoftimetService njoftimetService = new NjoftimetService();
     private final ObservableList<NjoftimiTableDto> njoftimetData = FXCollections.observableArrayList();
 
@@ -37,6 +41,7 @@ public class NjoftimetController {
         setupColumns();
         loadUserInfo();
         loadNjoftimet();
+        loadUserData();
 
         if (navNjoftimet != null) {
             navNjoftimet.setStyle(
@@ -46,6 +51,21 @@ public class NjoftimetController {
                             "-fx-background-radius: 0 8 8 0;" +
                             "-fx-padding: 11 16 11 13;" +
                             "-fx-cursor: hand;"
+            );
+        }
+    }
+
+    private void loadUserData() {
+        Perdoruesi user = SessionManager.getCurrentUser();
+
+        if (user != null) {
+            String fullName = user.getEmri() + " " + user.getMbiemri();
+
+            userFullName.setText(fullName);
+            userEmail.setText(user.getEmail());
+
+            avatarLabel.setText(
+                    user.getEmri().substring(0, 1).toUpperCase()
             );
         }
     }

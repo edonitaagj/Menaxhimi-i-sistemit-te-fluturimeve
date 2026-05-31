@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import models.Perdoruesi;
 import models.dto.OperationResponseDto;
 import models.dto.RezervimiTableDto;
 import services.RezervimetService;
@@ -35,6 +36,10 @@ public class RezervimetController {
     @FXML private HBox navNjoftimet;
     @FXML private HBox navProfili;
 
+    @FXML private Label userFullName;
+    @FXML private Label userEmail;
+    @FXML private Label avatarLabel;
+
     private final RezervimetService rezervimetService = new RezervimetService();
     private final ObservableList<RezervimiTableDto> rezervimetData = FXCollections.observableArrayList();
 
@@ -42,6 +47,22 @@ public class RezervimetController {
     private void initialize() {
         setupColumns();
         loadRezervimet();
+        loadUserData();
+    }
+
+    private void loadUserData() {
+        Perdoruesi user = SessionManager.getCurrentUser();
+
+        if (user != null) {
+            String fullName = user.getEmri() + " " + user.getMbiemri();
+
+            userFullName.setText(fullName);
+            userEmail.setText(user.getEmail());
+
+            avatarLabel.setText(
+                    user.getEmri().substring(0, 1).toUpperCase()
+            );
+        }
     }
 
     private void setupColumns() {

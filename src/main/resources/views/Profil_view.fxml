@@ -43,8 +43,18 @@
             </HBox>
         </VBox>
         <Region VBox.vgrow="ALWAYS" />
-        <VBox style="-fx-padding: 16 16 24 16; -fx-border-color: rgba(255,255,255,0.07); -fx-border-width: 1 0 0 0;">
-            <Button maxWidth="Infinity" onAction="#handleLogout" style="-fx-background-color: rgba(239,68,68,0.1); -fx-text-fill: #F87171; -fx-font-size: 12; -fx-font-weight: 700; -fx-background-radius: 8; -fx-cursor: hand; -fx-border-color: rgba(239,68,68,0.2); -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 8 0 8 0;" text="⟵  Dilni" />
+        <VBox style="-fx-padding: 16 16 24 16;                      -fx-border-color: rgba(255,255,255,0.07);                      -fx-border-width: 1 0 0 0;">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <StackPane prefHeight="36" prefWidth="36" style="-fx-background-color: rgba(58,148,242,0.2);                                   -fx-background-radius: 18;">
+                    <Label fx:id="avatarLabel" style="-fx-text-fill: #3A94F2; -fx-font-size: 15; -fx-font-weight: 800;" text="A" />
+                </StackPane>
+                <VBox spacing="2" HBox.hgrow="ALWAYS">
+                    <Label fx:id="userFullName" style="-fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: 700;" text="Ardian Krasniqi" />
+                    <Label fx:id="userEmail" style="-fx-text-fill: rgba(133,183,235,0.4); -fx-font-size: 11;" text="ardian@email.com" />
+                </VBox>
+            </HBox>
+            <Region prefHeight="12" />
+            <Button fx:id="logoutBtn" maxWidth="Infinity" onAction="#handleLogout" style="-fx-background-color: rgba(239,68,68,0.1);                            -fx-text-fill: #F87171;                            -fx-font-size: 12; -fx-font-weight: 700;                            -fx-background-radius: 8; -fx-cursor: hand;                            -fx-border-color: rgba(239,68,68,0.2);                            -fx-border-radius: 8; -fx-border-width: 1;                            -fx-padding: 8 0 8 0;" text="⟵  Dilni" />
         </VBox>
     </VBox>
 
