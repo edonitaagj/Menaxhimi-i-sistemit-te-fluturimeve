@@ -59,6 +59,12 @@ public class AdminStafiController {
 
         txtSearchStaf.textProperty().addListener((observable, oldValue, newValue) -> handleSearchAndFilter());
         cmbDepartamentiFilter.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> handleSearchAndFilter());
+        // Shto këtë në fund të metodës initialize()
+        tblStafi.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2 && tblStafi.getSelectionModel().getSelectedItem() != null) {
+                handleHapModalEditimi(tblStafi.getSelectionModel().getSelectedItem());
+            }
+        });
     }
 
     private void setupSidebarActions() {
@@ -162,4 +168,30 @@ public class AdminStafiController {
     private void handleLogout() {
         Router.navigateTo(ViewsEnum.LOGIN_VIEW);
     }
+    private void handleHapModalEditimi(StafiTableDTO punonjesZgjedhur) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EditoPunonjes.fxml"));
+            Parent root = loader.load();
+
+            // Marrim kontrollorin e dritares së editimit dhe ia pasojmë punonjësin e klikuar
+            EditoPunonjesController editController = loader.getController();
+            editController.setPunonjesiTeDhenat(punonjesZgjedhur);
+
+            Stage modalStage = new Stage();
+            modalStage.setTitle("Modifiko Punonjësin");
+            modalStage.initModality(Modality.APPLICATION_MODAL);
+            modalStage.setScene(new Scene(root));
+            modalStage.setResizable(false);
+
+            modalStage.showAndWait();
+
+            // Sapo të mbyllet dritarja, rifreskohen live të dhënat në tabelë dhe kartat lart!
+            loadStaffFromDatabase();
+
+        } catch (IOException e) {
+            System.err.println("Gabim gjatë ngarkimit të EditoPunonjes.fxml: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
 }

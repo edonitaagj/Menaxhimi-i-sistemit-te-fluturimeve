@@ -1,5 +1,9 @@
 package controllers;
 
+import models.dto.ShtoPunonjesDTO;
+import models.mappers.StafiMapper;
+import repository.StafiRepository;
+import models.Stafi;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -7,13 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import services.DatabaseService;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 
 public class ShtoPunonjesController {
@@ -29,7 +26,7 @@ public class ShtoPunonjesController {
 
     @FXML
     public void initialize() {
-        // Mbushja e ComboBox-it me departamentet ekzakte nga kërkesa juaj
+        // Mbushja e ComboBox me Sektorët
         cmbDepartamenti.getItems().addAll(
                 "Operacionet Fluturuese",
                 "Shërbimet e Kabinës",
@@ -39,14 +36,12 @@ public class ShtoPunonjesController {
                 "Operacionet e Aeroportit",
                 "Siguria"
         );
-
-        // Vendos datën e sotme si vlerë fillestare te data e punësimit
         dtPunesimit.setValue(LocalDate.now());
     }
 
     @FXML
     private void handleRuajPunonjes() {
-        // Validimi i fushave të detyrueshme (*)
+        // 1. Validimi i fushave të detyrueshme (*)
         if (txtEmri.getText().trim().isEmpty() || txtMbiemri.getText().trim().isEmpty() ||
                 txtEmail.getText().trim().isEmpty() || cmbDepartamenti.getValue() == null ||
                 txtRoli.getText().trim().isEmpty() || txtPaga.getText().trim().isEmpty()) {
@@ -55,89 +50,46 @@ public class ShtoPunonjesController {
             return;
         }
 
-        String emri = txtEmri.getText().trim();
-        String mbiemri = txtMbiemri.getText().trim();
-        String email = txtEmail.getText().trim();
-        String telefoni = txtTelefoni.getText().trim();
-        String departamenti = cmbDepartamenti.getValue();
-        String emriRoli = txtRoli.getText().trim();
-        LocalDate dataPunesimit = dtPunesimit.getValue();
-
-        // Gjenerimi automatik i një numri punonjësi unik (p.sh. EMP-shifër)
-        String numriPunonjesit = "EMP-" + (int)(Math.random() * 9000 + 1000);
-
-        Connection conn = null;
+        // Parse i pagës për t'u siguruar që është numër valid
+        double pagaValue;
         try {
-            conn = DatabaseService.getConnection();
-            conn.setAutoCommit(false); // Fillojmë një transaksion për siguri
-
-            // Hapi A: Kontrollojmë nëse roli ekziston në 'roli_stafit', nëse jo e krijojmë
-            int idRolit = gjejOseKrijoRolin(conn, emriRoli, departamenti);
-
-            // Hapi B: Fusim punonjësin e ri në tabelën 'stafi'
-            String sqlStafi = "INSERT INTO stafi (id_rolit, emri, mbiemri, numri_punonjesit, email_punes, telefoni, data_fillimit, eshte_aktiv) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
-
-            try (PreparedStatement stmtStafi = conn.prepareStatement(sqlStafi)) {
-                stmtStafi.setInt(1, idRolit);
-                stmtStafi.setString(2, emri);
-                stmtStafi.setString(3, mbiemri);
-                stmtStafi.setString(4, numriPunonjesit);
-                stmtStafi.setString(5, email);
-                stmtStafi.setString(6, telefoni.isEmpty() ? null : telefoni);
-                stmtStafi.setDate(7, java.sql.Date.valueOf(dataPunesimit));
-
-                stmtStafi.executeUpdate();
-            }
-
-            conn.commit(); // Ruajmë ndryshimet me sukses në DB
-            shfaqAlert(AlertType.INFORMATION, "Sukses", "Punonjësi u regjistrua me sukses! Numri i punonjësit: " + numriPunonjesit);
-
-            // Mbyllim formën (dritaren pop-up) automatikisht pas ruajtjes
-            handleAnulo();
-
-        } catch (SQLException e) {
-            if (conn != null) {
-                try { conn.rollback(); } catch (SQLException ex) { ex.printStackTrace(); }
-            }
-            e.printStackTrace();
-            shfaqAlert(AlertType.ERROR, "Gabim në Databazë", "Ndodhi një gabim gjatë ruajtjes: " + e.getMessage());
-        }
-    }
-
-    // Ndihmës funksion që gjen id-në e rolit ose shton një të ri nëse nuk ekziston për atë departament
-    private int gjejOseKrijoRolin(Connection conn, String emriRoli, String departamenti) throws SQLException {
-        String sqlKerko = "SELECT id_rolit FROM roli_stafit WHERE LOWER(emri_roli) = LOWER(?) AND LOWER(departamenti) = LOWER(?)";
-        try (PreparedStatement stmt = conn.prepareStatement(sqlKerko)) {
-            stmt.setString(1, emriRoli);
-            stmt.setString(2, departamenti);
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getInt("id_rolit");
-                }
-            }
+            pagaValue = Double.parseDouble(txtPaga.getText().trim());
+        } catch (NumberFormatException e) {
+            shfaqAlert(AlertType.ERROR, "Gabim Validimi", "Paga Neto duhet të jetë një numër valid decimal!");
+            return;
         }
 
-        // Nëse nuk ekziston, e krijojmë rolin e ri automatikisht te roli_stafit
-        String sqlShtoRol = "INSERT INTO roli_stafit (emri_roli, departamenti, pershkrimi) VALUES (?, ?, ?)";
-        try (PreparedStatement stmtShto = conn.prepareStatement(sqlShtoRol, Statement.RETURN_GENERATED_KEYS)) {
-            stmtShto.setString(1, emriRoli);
-            stmtShto.setString(2, departamenti);
-            stmtShto.setString(3, "Pozitë e shtuar përmes regjistrimit të stafit.");
-            stmtShto.executeUpdate();
+        // 2. Grumbullimi i të dhënave në DTO
+        ShtoPunonjesDTO punonjesDTO = new ShtoPunonjesDTO(
+                txtEmri.getText().trim(),
+                txtMbiemri.getText().trim(),
+                txtEmail.getText().trim(),
+                txtTelefoni.getText().trim(),
+                cmbDepartamenti.getValue(),
+                txtRoli.getText().trim(),
+                dtPunesimit.getValue(),
+                pagaValue
+        );
 
-            try (ResultSet generatedKeys = stmtShto.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    return generatedKeys.getInt(1);
-                }
-            }
+        // 3. Gjenerimi i numrit unik të punonjësit (p.sh. PRN-0453)
+        String numriPunonjesit = "PRN-" + (int)(Math.random() * 9000 + 1000);
+
+        // 4. Konvertimi përmes Mapper në Model Entity (Stafi)
+        Stafi stafiEntity = StafiMapper.toEntity(punonjesDTO, 0, numriPunonjesit);
+
+        // 5. Thirrja e Repository për ruajtjen në Databazë
+        boolean uRuajt = StafiRepository.shtoPunonjesTeRi(stafiEntity, punonjesDTO.getEmriRoli(), punonjesDTO.getDepartamenti());
+
+        if (uRuajt) {
+            shfaqAlert(AlertType.INFORMATION, "Sukses", "Punonjësi u regjistrua me sukses në sistem!\nNumri i Punonjësit: " + numriPunonjesit);
+            handleAnulo(); // Mbyll dritaren automatikisht
+        } else {
+            shfaqAlert(AlertType.ERROR, "Gabim", "Ndodhi një gabim në databazë gjatë ruajtjes së punonjësit.");
         }
-        throw new SQLException("Dështoi krijimi i rolit të ri.");
     }
 
     @FXML
     private void handleAnulo() {
-        // Mbyll dritaren aktuale pop-up
         Stage stage = (Stage) txtEmri.getScene().getWindow();
         stage.close();
     }
