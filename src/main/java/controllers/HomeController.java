@@ -6,16 +6,25 @@ import app.ViewsEnum;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import models.Perdoruesi;
+import models.dto.HomeFluturimiTableDto;
+import repository.HomeRepository;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -46,9 +55,27 @@ public class HomeController {
     @FXML private DatePicker searchData;
 
     // ===============================
+    // STATS
+    // ===============================
+    @FXML private Label statFluturime;
+    @FXML private Label statRezervimet;
+    @FXML private Label statFluturimiArdhshem;
+    @FXML private Label statFluturimiData;
+    @FXML private Label statNjoftimet;
+    @FXML private Label badgeNjoftime;
+
+    // ===============================
     // TABLE
     // ===============================
-    @FXML private TableView<?> departureBoardTable;
+    @FXML private TableView<HomeFluturimiTableDto> departureBoardTable;
+    @FXML private TableColumn<HomeFluturimiTableDto, String> colFluturimi;
+    @FXML private TableColumn<HomeFluturimiTableDto, String> colDestinacioni;
+    @FXML private TableColumn<HomeFluturimiTableDto, String> colOra;
+    @FXML private TableColumn<HomeFluturimiTableDto, String> colGejti;
+    @FXML private TableColumn<HomeFluturimiTableDto, String> colStatusi;
+
+    private final HomeRepository homeRepository = new HomeRepository();
+    private final ObservableList<HomeFluturimiTableDto> fluturimet = FXCollections.observableArrayList();
 
     // ===============================
     // INIT
@@ -57,6 +84,8 @@ public class HomeController {
     public void initialize() {
         loadUserData();
         startClock();
+        initDepartureTable();
+        loadDashboardFromDatabase();
         setupAccessibility();
         setupKeyboardShortcuts();
     }
@@ -106,6 +135,40 @@ public class HomeController {
     }
 
     // ===============================
+    // DATABASE DATA
+    // ===============================
+    private void initDepartureTable() {
+        colFluturimi.setCellValueFactory(new PropertyValueFactory<>("fluturimi"));
+        colDestinacioni.setCellValueFactory(new PropertyValueFactory<>("destinacioni"));
+        colOra.setCellValueFactory(new PropertyValueFactory<>("ora"));
+        colGejti.setCellValueFactory(new PropertyValueFactory<>("gejti"));
+        colStatusi.setCellValueFactory(new PropertyValueFactory<>("statusi"));
+
+        departureBoardTable.setItems(fluturimet);
+        departureBoardTable.setPlaceholder(new Label("Nuk ka fluturime per kriteret e kerkuara."));
+    }
+
+    private void loadDashboardFromDatabase() {
+        fluturimet.setAll(homeRepository.getFluturimetBoard());
+
+        statFluturime.setText(String.valueOf(homeRepository.getTotalFlightsCount()));
+        statRezervimet.setText(String.valueOf(homeRepository.getReservationsCount()));
+
+        int notificationsCount = homeRepository.getNotificationsCount();
+        statNjoftimet.setText(String.valueOf(notificationsCount));
+        badgeNjoftime.setText(String.valueOf(notificationsCount));
+
+        HomeFluturimiTableDto nextFlight = homeRepository.getNextFlight();
+        if (nextFlight != null) {
+            statFluturimiArdhshem.setText(nextFlight.getFluturimi());
+            statFluturimiData.setText(nextFlight.getDestinacioni() + " - " + nextFlight.getData());
+        } else {
+            statFluturimiArdhshem.setText("-");
+            statFluturimiData.setText("Nuk ka fluturime");
+        }
+    }
+
+    // ===============================
     // ACCESSIBILITY
     // ===============================
     private void setupAccessibility() {
@@ -114,15 +177,15 @@ public class HomeController {
         searchData.setFocusTraversable(true);
         departureBoardTable.setFocusTraversable(true);
 
-        searchNga.setAccessibleText("Fusha për vendin e nisjes");
-        searchDeri.setAccessibleText("Fusha për destinacionin");
-        searchData.setAccessibleText("Zgjedhja e datës së udhëtimit");
-        departureBoardTable.setAccessibleText("Tabela me nisjet dhe udhëtimet");
+        searchNga.setAccessibleText("Fusha per vendin e nisjes");
+        searchDeri.setAccessibleText("Fusha per destinacionin");
+        searchData.setAccessibleText("Zgjedhja e dates se udhetimit");
+        departureBoardTable.setAccessibleText("Tabela me nisjet dhe udhetimet");
 
-        greetingLabel.setAccessibleText("Përshëndetje për përdoruesin aktual");
-        userFullName.setAccessibleText("Emri dhe mbiemri i përdoruesit");
-        userEmail.setAccessibleText("Email adresa e përdoruesit");
-        avatarLabel.setAccessibleText("Iniciali i përdoruesit");
+        greetingLabel.setAccessibleText("Pershendetje per perdoruesin aktual");
+        userFullName.setAccessibleText("Emri dhe mbiemri i perdoruesit");
+        userEmail.setAccessibleText("Email adresa e perdoruesit");
+        avatarLabel.setAccessibleText("Iniciali i perdoruesit");
         clockLabel.setAccessibleText("Ora aktuale");
         dateLabel.setAccessibleText("Data aktuale");
 
@@ -221,9 +284,7 @@ public class HomeController {
         String deri = searchDeri.getText();
         var data = searchData.getValue();
 
-        System.out.println("Search: " + nga + " -> " + deri + " | " + data);
-
-        // TODO: connect with DB
+        fluturimet.setAll(homeRepository.searchFluturimet(nga, deri, data));
     }
 
     // ===============================
