@@ -117,7 +117,7 @@ public class AdminController {
     }
 
     private void loadFluturimetTable() {
-        Router.navigateTo(ViewsEnum.FLUTURIMET_VIEW);
+        Router.navigateTo(ViewsEnum.ADMIN_FLUTURIMET);
         // TODO: Popullo 'adminDataTable' me kolonat dhe të dhënat e fluturimeve
     }
 
