@@ -1,11 +1,9 @@
 package controllers;
 
-import app.I18n;
 import app.Router;
 import app.SessionManager;
 import app.ViewsEnum;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -16,8 +14,6 @@ import models.dto.LoginResponseDto;
 import repository.UserRepository;
 import services.AuthService;
 
-import java.util.Locale;
-
 public class LoginController {
 
     @FXML private TextField usernameField;
@@ -25,7 +21,6 @@ public class LoginController {
     @FXML private Label errLabel;
     @FXML private HBox errBox;
     @FXML private Region errSpacer;
-    @FXML private Button languageButton;
 
     private final AuthService authService = new AuthService();
     private final UserRepository userRepo = new UserRepository();
@@ -33,7 +28,6 @@ public class LoginController {
     @FXML
     private void initialize() {
         hideError();
-        updateLanguageButton();
     }
 
     @FXML
@@ -42,7 +36,7 @@ public class LoginController {
         String password = passField.getText() != null ? passField.getText() : "";
 
         if (username.isEmpty() || password.isEmpty()) {
-            showError(I18n.getResourceBundle().getString("login.error.requiredFields"));
+            showError("Ju lutemi plotesoni te gjitha fushat.");
             return;
         }
 
@@ -55,7 +49,7 @@ public class LoginController {
 
         Perdoruesi user = userRepo.findByUsername(username);
         if (user == null) {
-            showError(I18n.getResourceBundle().getString("login.error.userNotFound"));
+            showError("Login u pranua, por perdoruesi nuk u gjet ne databaze.");
             return;
         }
 
@@ -71,23 +65,13 @@ public class LoginController {
     }
 
     @FXML
-    private void handleSignUp() {
-        Router.navigateTo(ViewsEnum.SIGNUP_VIEW);
+    private void handleForgotPassword() {
+        Router.navigateTo(ViewsEnum.FORGOT_PASSWORD_VIEW);
     }
 
     @FXML
-    private void handleLanguageSwitch() {
-        Locale nextLocale = I18n.getLocale().getLanguage().equals("sq")
-                ? Locale.ENGLISH
-                : Locale.forLanguageTag("sq");
-        I18n.setLocale(nextLocale);
-        Router.navigateTo(ViewsEnum.LOGIN_VIEW);
-    }
-
-    private void updateLanguageButton() {
-        if (languageButton != null) {
-            languageButton.setText(I18n.getResourceBundle().getString("language.switch"));
-        }
+    private void handleSignUp() {
+        Router.navigateTo(ViewsEnum.SIGNUP_VIEW);
     }
 
     private void showError(String message) {
