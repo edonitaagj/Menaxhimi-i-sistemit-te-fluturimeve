@@ -25,7 +25,7 @@ public class Router {
 
     private static Parent loadView(String viewPath) {
         try {
-            FXMLLoader loader = new FXMLLoader(Router.class.getResource(viewPath));
+            FXMLLoader loader = new FXMLLoader(Router.class.getResource(viewPath), I18n.getResourceBundle());
             return loader.load();
         } catch (IOException e) {
             throw new RuntimeException("Failed to load view: " + viewPath, e);
