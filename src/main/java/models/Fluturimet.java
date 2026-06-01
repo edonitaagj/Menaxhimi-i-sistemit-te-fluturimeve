@@ -2,8 +2,11 @@ package models;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Fluturimet {
+
     private int idFluturimit;
     private Integer idOrarit;
     private int idKompanise;
@@ -22,6 +25,15 @@ public class Fluturimet {
     private int kapacitetiTotal;
     private int vendetELira;
     private double cmimiBaze;
+
+    // JOIN fields
+    private String emriKompanise;
+    private String kodiIataNisjes;
+    private String kodiIataDestinacioni;
+    private String kodiGejtiNisjes;
+
+    public Fluturimet() {
+    }
 
     public Fluturimet(int idFluturimit) {
         this.idFluturimit = idFluturimit;
@@ -64,7 +76,66 @@ public class Fluturimet {
         this.shkakuVoneses = shkakuVoneses;
         this.kapacitetiTotal = kapacitetiTotal;
         this.vendetELira = vendetELira;
-        this.cmimiBaze=cmimiBaze;
+        this.cmimiBaze = cmimiBaze;
+    }
+
+    public Fluturimet(
+            int idFluturimit,
+            Integer idOrarit,
+            int idKompanise,
+            int idLinjes,
+            int idAvionit,
+            String numriFluturimit,
+            LocalDate dataFluturimit,
+            Integer idGejtitNisjes,
+            LocalDateTime oraNisjesPlanifikuar,
+            LocalDateTime oraNisjesAktuale,
+            Integer idGejtitMbrrritjes,
+            LocalDateTime oraMbrrritjesPlanifikuar,
+            LocalDateTime oraMbrrritjesAktuale,
+            String statusi,
+            String shkakuVoneses,
+            int kapacitetiTotal,
+            int vendetELira
+    ) {
+        this.idFluturimit = idFluturimit;
+        this.idOrarit = idOrarit;
+        this.idKompanise = idKompanise;
+        this.idLinjes = idLinjes;
+        this.idAvionit = idAvionit;
+        this.numriFluturimit = numriFluturimit;
+
+        this.dataFluturimit =
+                dataFluturimit != null ? Date.valueOf(dataFluturimit) : null;
+
+        this.idGejtitNisjes = idGejtitNisjes;
+
+        this.oraNisjesPlanifikuar =
+                oraNisjesPlanifikuar != null
+                        ? Timestamp.valueOf(oraNisjesPlanifikuar)
+                        : null;
+
+        this.oraNisjesAktuale =
+                oraNisjesAktuale != null
+                        ? Timestamp.valueOf(oraNisjesAktuale)
+                        : null;
+
+        this.idGejtitMbrrritjes = idGejtitMbrrritjes;
+
+        this.oraMbrrritjesPlanifikuar =
+                oraMbrrritjesPlanifikuar != null
+                        ? Timestamp.valueOf(oraMbrrritjesPlanifikuar)
+                        : null;
+
+        this.oraMbrrritjesAktuale =
+                oraMbrrritjesAktuale != null
+                        ? Timestamp.valueOf(oraMbrrritjesAktuale)
+                        : null;
+
+        this.statusi = statusi;
+        this.shkakuVoneses = shkakuVoneses;
+        this.kapacitetiTotal = kapacitetiTotal;
+        this.vendetELira = vendetELira;
     }
 
     public int getIdFluturimit() {
@@ -203,7 +274,43 @@ public class Fluturimet {
         this.vendetELira = vendetELira;
     }
 
-    public double getCmimiBaze() { return cmimiBaze; }
+    public double getCmimiBaze() {
+        return cmimiBaze;
+    }
 
-    public void setCmimiBaze(double cmimiBaze) { this.cmimiBaze = cmimiBaze ;}
+    public void setCmimiBaze(double cmimiBaze) {
+        this.cmimiBaze = cmimiBaze;
+    }
+
+    public String getEmriKompanise() {
+        return emriKompanise;
+    }
+
+    public void setEmriKompanise(String emriKompanise) {
+        this.emriKompanise = emriKompanise;
+    }
+
+    public String getKodiIataNisjes() {
+        return kodiIataNisjes;
+    }
+
+    public void setKodiIataNisjes(String kodiIataNisjes) {
+        this.kodiIataNisjes = kodiIataNisjes;
+    }
+
+    public String getKodiIataDestinacioni() {
+        return kodiIataDestinacioni;
+    }
+
+    public void setKodiIataDestinacioni(String kodiIataDestinacioni) {
+        this.kodiIataDestinacioni = kodiIataDestinacioni;
+    }
+
+    public String getKodiGejtiNisjes() {
+        return kodiGejtiNisjes;
+    }
+
+    public void setKodiGejtiNisjes(String kodiGejtiNisjes) {
+        this.kodiGejtiNisjes = kodiGejtiNisjes;
+    }
 }

@@ -3,20 +3,24 @@ package controllers;
 import app.Router;
 import app.SessionManager;
 import app.ViewsEnum;
-import models.Fluturimet;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
-import java.sql.Date;
-import java.time.LocalDate;
+import javafx.scene.layout.VBox;
+import models.dto.AdminFluturimiFormDto;
+import models.dto.AdminFluturimiRowDto;
+import models.dto.KompaniaItem;
+import models.dto.OperacioniResponseDto;
+import services.AdminFluturimiService;
+
+import java.util.List;
 
 public class AdminFluturimetController {
 
-    // --- SIDEBAR NAVIGIMI ---
+    // ── Sidebar nav ──────────────────────────────────────────────────────
     @FXML private HBox navDashboard;
     @FXML private HBox navFluturimet;
     @FXML private HBox navRezervimet;
@@ -26,237 +30,290 @@ public class AdminFluturimetController {
     @FXML private HBox navPasagjeret;
     @FXML private HBox navKompanite;
 
-    // --- FILTRAT DHE KËRKIMI ---
+    // ── Search bar ───────────────────────────────────────────────────────
     @FXML private TextField adminSearchField;
 
-    // --- ELEMENTET E FORMËS SË FLUTURIMIT ---
-    @FXML private TextField txtKodi;
-    @FXML private ComboBox<String> cmbKompania;
-    @FXML private TextField txtOrigjina;
-    @FXML private TextField txtDestinacioni;
-    @FXML private ComboBox<String> cmbStatusi;
+    // ── Forma ────────────────────────────────────────────────────────────
+    @FXML private TextField               txtKodi;
+    @FXML private ComboBox<KompaniaItem>  cmbKompania;
+    @FXML private TextField               txtOrigjina;
+    @FXML private TextField               txtDestinacioni;
+    @FXML private ComboBox<String>        cmbStatusi;
 
-    // --- TABELA DHE KOLONAT ---
-    @FXML private TableView<Fluturimet> tblFluturimet;
-    @FXML private TableColumn<Fluturimet, Integer> colId;
-    @FXML private TableColumn<Fluturimet, String> colKodi;
-    @FXML private TableColumn<Fluturimet, String> colKompania; // Do të shfaqet si emër string/ID
-    @FXML private TableColumn<Fluturimet, String> colOrigjina;
-    @FXML private TableColumn<Fluturimet, String> colDestinacioni;
-    @FXML private TableColumn<Fluturimet, Integer> colGate;
-    @FXML private TableColumn<Fluturimet, String> colStatusi;
-    @FXML private TableColumn<Fluturimet, Void> colVeprimet; // Për butonin fshij/modifiko brenda rreshtit
+    // ── TableView ────────────────────────────────────────────────────────
+    @FXML private TableView<AdminFluturimiRowDto>                 tblFluturimet;
+    @FXML private TableColumn<AdminFluturimiRowDto, String>       colId;
+    @FXML private TableColumn<AdminFluturimiRowDto, String>       colKodi;
+    @FXML private TableColumn<AdminFluturimiRowDto, String>       colKompania;
+    @FXML private TableColumn<AdminFluturimiRowDto, String>       colOrigjina;
+    @FXML private TableColumn<AdminFluturimiRowDto, String>       colDestinacioni;
+    @FXML private TableColumn<AdminFluturimiRowDto, String>       colGate;
+    @FXML private TableColumn<AdminFluturimiRowDto, String>       colStatusi;
+    @FXML private TableColumn<AdminFluturimiRowDto, String>       colVeprimet;
 
-    // Lista programatike e fluturimeve
-    private ObservableList<Fluturimet> listaFluturimeve = FXCollections.observableArrayList();
-    private Fluturimet fluturimiESelektuar = null;
+    // ── Service ──────────────────────────────────────────────────────────
+    private final AdminFluturimiService service = new AdminFluturimiService();
 
+    // ── State ─────────────────────────────────────────────────────────────
+    private FilteredList<AdminFluturimiRowDto> filteredList;
+
+    // ═════════════════════════════════════════════════════════════════════
     @FXML
-    public void initialize() {
-        // Aktivizojmë klikimet në Sidebar
+    private void initialize() {
+        setupColumns();
+        loadComboBoxes();
+        loadFluturimet();
         setupSidebarActions();
-
-        // Inicializojmë kolonat e tabelës
-        initTableColumns();
-
-        // Ngarkojmë të dhënat fillestare në ComboBox-e dhe Tabelë
-        loadInitialData();
-
-        // Monitorojmë përzgjedhjen e rreshtave në tabelë për mbushjen e formës (për editim)
-        tblFluturimet.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                mbushFormenFluturim(newSelection);
-            }
-        });
     }
 
     private void setupSidebarActions() {
         if (navDashboard != null) navDashboard.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_VIEW));
+        if (navFluturimet != null) navFluturimet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_FLUTURIMET));
         if (navRezervimet != null) navRezervimet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_REZERVIMET));
         if (navAvionet != null) navAvionet.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_AVIONET));
         if (navHumbur != null) navHumbur.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_ARTIKUJT_HUMBUR));
         if (navStafi != null) navStafi.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_STAFI));
-        if (navPasagjeret != null) navPasagjeret.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_PASAGJERIT));
         if (navKompanite != null) navKompanite.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_KOMPANITE));
-        // navFluturimet është faqja aktuale
+        if (navPasagjeret != null) navPasagjeret.setOnMouseClicked(e -> Router.navigateTo(ViewsEnum.ADMIN_PASAGJERIT));
     }
 
-    private void initTableColumns() {
-        colId.setCellValueFactory(new PropertyValueFactory<>("idFluturimit"));
-        colKodi.setCellValueFactory(new PropertyValueFactory<>("numriFluturimit"));
-        colKompania.setCellValueFactory(new PropertyValueFactory<>("idKompanise")); // Mund të kovertohet në emër sipas nevojës
-        colOrigjina.setCellValueFactory(new PropertyValueFactory<>("idLinjes"));     // Ose shto getOrigjina në model nëse lidhet me DB
-        colDestinacioni.setCellValueFactory(new PropertyValueFactory<>("idLinjes"));
-        colGate.setCellValueFactory(new PropertyValueFactory<>("idGejtitNisjes"));
-        colStatusi.setCellValueFactory(new PropertyValueFactory<>("statusi"));
+    // ════════════════════════════════════════════════════════════════════
+    //  Setup kolonat
+    // ════════════════════════════════════════════════════════════════════
+    private void setupColumns() {
+        colId.setCellValueFactory(
+                c -> new SimpleStringProperty(String.valueOf(c.getValue().getIdFluturimit())));
+        colKodi.setCellValueFactory(
+                c -> new SimpleStringProperty(c.getValue().getKodi()));
+        colKompania.setCellValueFactory(
+                c -> new SimpleStringProperty(c.getValue().getKompania()));
+        colOrigjina.setCellValueFactory(
+                c -> new SimpleStringProperty(c.getValue().getOrigjina()));
+        colDestinacioni.setCellValueFactory(
+                c -> new SimpleStringProperty(c.getValue().getDestinacioni()));
+        colGate.setCellValueFactory(
+                c -> new SimpleStringProperty(c.getValue().getGate()));
+        colStatusi.setCellValueFactory(
+                c -> new SimpleStringProperty(c.getValue().getStatusi()));
 
-        // Formatimi i shtyllës së statusit me ngjyra sipas vlerës
-        colStatusi.setCellFactory(column -> new TableCell<>() {
+        // Ngjyrë statusi
+        colStatusi.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
-                    setStyle("");
-                } else {
-                    setText(item);
-                    if (item.equalsIgnoreCase("Scheduled") || item.equalsIgnoreCase("Në Kohë")) {
-                        setStyle("-fx-text-fill: #10B981; -fx-font-weight: bold;"); // E gjelbër
-                    } else if (item.equalsIgnoreCase("Delayed") || item.equalsIgnoreCase("Anuluar")) {
-                        setStyle("-fx-text-fill: #EF4444; -fx-font-weight: bold;"); // E kuqe
-                    } else {
-                        setStyle("-fx-text-fill: #3A94F2; -fx-font-weight: bold;"); // E kaltër
-                    }
-                }
+                if (empty || item == null) { setText(null); setStyle(""); return; }
+                setText(formatStatusi(item));
+                setStyle("-fx-text-fill: " + colorStatusi(item) +
+                        "; -fx-font-weight: 800; -fx-font-size: 11;");
             }
         });
 
-        // Krijimi i butonit "Fshij" programatikisht për çdo rresht te kolona VEPRIMET
-        setupVeprimetColumn();
+        // Kolona VEPRIMET — buton ndrysho statusin + fshij
+        colVeprimet.setCellFactory(col -> new TableCell<>() {
+            private final Button btnNdrysho = new Button("✏ Statusi");
+            private final Button btnFshij   = new Button("🗑");
+            private final HBox   box        = new HBox(6, btnNdrysho, btnFshij);
 
-        tblFluturimet.setItems(listaFluturimeve);
-    }
-
-    private void setupVeprimetColumn() {
-        colVeprimet.setCellFactory(param -> new TableCell<>() {
-            private final Button btnDelete = new Button("🗑 Fshij");
             {
-                btnDelete.setStyle("-fx-background-color: rgba(239,68,68,0.1); -fx-text-fill: #EF4444; -fx-font-weight: 700; -fx-background-radius: 4; -fx-padding: 4 8; -fx-cursor: hand;");
-                btnDelete.setOnAction(event -> {
-                    Fluturimet f = getTableView().getItems().get(getIndex());
-                    listaFluturimeve.remove(f);
-                    shfaqAlert("Sukses", "Fluturimi u fshi me sukses!", Alert.AlertType.INFORMATION);
-                    handleClearForm();
+                btnNdrysho.setStyle(
+                        "-fx-background-color: #3A94F2; -fx-text-fill: white; " +
+                                "-fx-font-size: 10; -fx-font-weight: 800; " +
+                                "-fx-background-radius: 5; -fx-cursor: hand; -fx-padding: 4 8;");
+                btnFshij.setStyle(
+                        "-fx-background-color: rgba(239,68,68,0.1); -fx-text-fill: #EF4444; " +
+                                "-fx-font-size: 10; -fx-font-weight: 800; " +
+                                "-fx-background-radius: 5; -fx-cursor: hand; -fx-padding: 4 8;");
+
+                btnNdrysho.setOnAction(e -> {
+                    AdminFluturimiRowDto row = getTableView().getItems().get(getIndex());
+                    handleNdryshiStatusinDialog(row);
+                });
+
+                btnFshij.setOnAction(e -> {
+                    AdminFluturimiRowDto row = getTableView().getItems().get(getIndex());
+                    handleFshij(row.getIdFluturimit());
                 });
             }
 
             @Override
-            protected void updateItem(Void item, boolean empty) {
+            protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(btnDelete);
-                }
+                setGraphic(empty ? null : box);
+                setText(null);
             }
         });
     }
 
-    // --- CRUD OPERACIONET ---
+    // ════════════════════════════════════════════════════════════════════
+    //  Load të dhënat
+    // ════════════════════════════════════════════════════════════════════
+    private void loadFluturimet() {
+        try {
+            List<AdminFluturimiRowDto> rows = service.getAll();
+            filteredList = new FilteredList<>(
+                    FXCollections.observableArrayList(rows), p -> true);
+            tblFluturimet.setItems(filteredList);
+            if (rows.isEmpty())
+                tblFluturimet.setPlaceholder(new Label("Nuk ka fluturime të regjistruara."));
+        } catch (Exception e) {
+            tblFluturimet.setPlaceholder(
+                    new Label("Gabim duke ngarkuar: " + e.getMessage()));
+        }
+    }
 
+    private void loadComboBoxes() {
+        // cmbKompania
+        try {
+            List<KompaniaItem> komp = service.getKompaniteItems();
+            cmbKompania.setItems(FXCollections.observableArrayList(komp));
+        } catch (Exception ignored) {}
+
+        // cmbStatusi
+        cmbStatusi.setItems(FXCollections.observableArrayList(service.getStatusetItems()));
+        cmbStatusi.setValue("i_planifikuar");
+    }
+
+    // ════════════════════════════════════════════════════════════════════
+    //  Handlers
+    // ════════════════════════════════════════════════════════════════════
     @FXML
     private void handleSaveFluturim() {
-        // Validimi i fushave fillestare të detyrueshme
-        if (txtKodi.getText().isEmpty() || cmbKompania.getValue() == null ||
-                txtOrigjina.getText().isEmpty() || txtDestinacioni.getText().isEmpty() ||
-                cmbStatusi.getValue() == null) {
+        KompaniaItem kompania = cmbKompania.getValue();
+        if (kompania == null) { showError("Zgjidhni kompaninë ajrore."); return; }
 
-            shfaqAlert("Gabim Validimi", "Ju lutem plotësoni të gjitha fushat e formës.", Alert.AlertType.WARNING);
-            return;
+        AdminFluturimiFormDto dto = new AdminFluturimiFormDto(
+                txtKodi.getText(),
+                kompania.getId(),
+                txtOrigjina.getText(),
+                txtDestinacioni.getText(),
+                cmbStatusi.getValue()
+        );
+
+        OperacioniResponseDto result = service.create(dto);
+        showResult(result);
+        if (result.isSuccess()) {
+            handleClearForm();
+            loadFluturimet();
         }
-
-        if (fluturimiESelektuar == null) {
-            // SHTIM I RI (INSERT)
-            Fluturimet iRi = new Fluturimet(
-                    listaFluturimeve.size() + 1,               // idFluturimit
-                    null,                                      // idOrarit
-                    cmbKompania.getSelectionModel().getSelectedIndex() + 1, // idKompanise (shembull)
-                    100 + listaFluturimeve.size(),             // idLinjes
-                    1,                                         // idAvionit
-                    txtKodi.getText(),                         // numriFluturimit
-                    Date.valueOf(LocalDate.now()),             // dataFluturimit
-                    1,                                         // idGejtitNisjes
-                    null, null, null, null, null,              // Timestamps
-                    cmbStatusi.getValue(),                     // statusi
-                    null,                                      // shkakuVoneses
-                    180,                                       // kapacitetiTotal
-                    180,                                       // vendetELira
-                    49.99                                      // cmimiBaze
-            );
-            listaFluturimeve.add(iRi);
-            shfaqAlert("Sukses", "Fluturimi u planifikua me sukses!", Alert.AlertType.INFORMATION);
-        } else {
-            // MODIFIKIM (UPDATE)
-            fluturimiESelektuar.setNumriFluturimit(txtKodi.getText());
-            fluturimiESelektuar.setStatusi(cmbStatusi.getValue());
-            // Pasi që modelet e tjera (Linjat, Kompanitë) mund të mbajnë IDs, këtu përditësoni ID-të përkatëse
-
-            tblFluturimet.refresh();
-            shfaqAlert("Sukses", "Fluturimi u përditësua me sukses!", Alert.AlertType.INFORMATION);
-        }
-        handleClearForm();
     }
 
     @FXML
     private void handleClearForm() {
         txtKodi.clear();
-        cmbKompania.setValue(null);
         txtOrigjina.clear();
         txtDestinacioni.clear();
-        cmbStatusi.setValue(null);
-
-        fluturimiESelektuar = null;
-        tblFluturimet.getSelectionModel().clearSelection();
+        cmbKompania.setValue(null);
+        cmbStatusi.setValue("i_planifikuar");
     }
 
-    private void mbushFormenFluturim(Fluturimet f) {
-        fluturimiESelektuar = f;
-        txtKodi.setText(f.getNumriFluturimit());
-        cmbStatusi.setValue(f.getStatusi());
-
-        // Mbushja konvencionale e teksteve ndihmëse për ID-të
-        txtOrigjina.setText("PRN");
-        txtDestinacioni.setText("MUC");
-        cmbKompania.getSelectionModel().select(0);
-    }
-
-    // --- KËRKIMI DINAMIK (SEARCH) ---
     @FXML
-    private void handleAdminSearch(KeyEvent event) {
-        String query = adminSearchField.getText().toLowerCase().trim();
-        if (query.isEmpty()) {
-            tblFluturimet.setItems(listaFluturimeve);
+    private void handleAdminSearch() {
+        String term = adminSearchField.getText();
+        if (filteredList == null) return;
+        if (term == null || term.isBlank()) {
+            filteredList.setPredicate(p -> true);
             return;
         }
-
-        ObservableList<Fluturimet> filteredList = FXCollections.observableArrayList();
-        for (Fluturimet f : listaFluturimeve) {
-            if (f.getNumriFluturimit().toLowerCase().contains(query) ||
-                    f.getStatusi().toLowerCase().contains(query)) {
-                filteredList.add(f);
-            }
-        }
-        tblFluturimet.setItems(filteredList);
+        String low = term.toLowerCase();
+        filteredList.setPredicate(r ->
+                r.getKodi().toLowerCase().contains(low)        ||
+                        r.getKompania().toLowerCase().contains(low)    ||
+                        r.getOrigjina().toLowerCase().contains(low)    ||
+                        r.getDestinacioni().toLowerCase().contains(low)
+        );
     }
 
-    // --- LOGOUT ---
+    // ── Ndrysho statusin me dialog ────────────────────────────────────────
+    private void handleNdryshiStatusinDialog(AdminFluturimiRowDto row) {
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(
+                row.getStatusi(), service.getStatusetItems());
+        dialog.setTitle("Ndrysho Statusin");
+        dialog.setHeaderText("Fluturimi: " + row.getKodi());
+        dialog.setContentText("Zgjidhni statusin e ri:");
+
+        dialog.showAndWait().ifPresent(statusiRi -> {
+            OperacioniResponseDto result = service.updateStatusi(
+                    row.getIdFluturimit(), statusiRi);
+            showResult(result);
+            if (result.isSuccess()) loadFluturimet();
+        });
+    }
+
+    // ── Fshij ─────────────────────────────────────────────────────────────
+    private void handleFshij(int idFluturimit) {
+        if (!confirm("Konfirmo fshirjen",
+                "A jeni i sigurt? Ky veprim fshihet rezervimet e lidhura.")) return;
+
+        OperacioniResponseDto result = service.delete(idFluturimit);
+        showResult(result);
+        if (result.isSuccess()) loadFluturimet();
+    }
+
+
+    @FXML private void handleNavDashboard()  { Router.navigateTo(ViewsEnum.ADMIN_VIEW); }
+    @FXML private void handleNavRezervimet() { Router.navigateTo(ViewsEnum.ADMIN_REZERVIMET); }
+    @FXML private void handleNavAvionet()    { Router.navigateTo(ViewsEnum.ADMIN_AVIONET); }
+    @FXML private void handleNavHumbur()     { Router.navigateTo(ViewsEnum.ADMIN_ARTIKUJT_HUMBUR); }
+    @FXML private void handleNavStafi()      { Router.navigateTo(ViewsEnum.ADMIN_STAFI); }
+    @FXML private void handleNavPasagjeret() { Router.navigateTo(ViewsEnum.ADMIN_PASAGJERIT); }
+    @FXML private void handleNavKompanite()  { Router.navigateTo(ViewsEnum.ADMIN_KOMPANITE); }
+
     @FXML
     private void handleLogout() {
+        SessionManager.logout();
         Router.navigateTo(ViewsEnum.LOGIN_VIEW);
     }
 
-    private void shfaqAlert(String titulli, String mesazhi, Alert.AlertType lloji) {
-        Alert alert = new Alert(lloji);
-        alert.setTitle(titulli);
+
+    // ════════════════════════════════════════════════════════════════════
+    //  UI helpers
+    // ════════════════════════════════════════════════════════════════════
+    private String formatStatusi(String s) {
+        return switch (s.toLowerCase()) {
+            case "i_planifikuar" -> "I PLANIFIKUAR";
+            case "boarding"      -> "BOARDING";
+            case "ngritur"       -> "NGRITUR";
+            case "ne_fluturim"   -> "NË FLUTURIM";
+            case "zbritur"       -> "ZBRITUR";
+            case "mberriti"      -> "MBËRRITI";
+            case "anuluar"       -> "ANULUAR";
+            case "i_vonuar"      -> "I VONUAR";
+            case "devijuar"      -> "DEVIJUAR";
+            default              -> s.toUpperCase();
+        };
+    }
+
+    private String colorStatusi(String s) {
+        return switch (s.toLowerCase()) {
+            case "boarding"              -> "#3A94F2";
+            case "ne_fluturim","ngritur" -> "#10B981";
+            case "i_vonuar","devijuar"   -> "#F59E0B";
+            case "anuluar"               -> "#EF4444";
+            case "mberriti","zbritur"    -> "#64748B";
+            default                      -> "#0F172A";
+        };
+    }
+
+    private void showResult(OperacioniResponseDto r) {
+        Alert.AlertType type = r.isSuccess()
+                ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR;
+        Alert alert = new Alert(type);
+        alert.setTitle(r.isSuccess() ? "Sukses" : "Gabim");
         alert.setHeaderText(null);
-        alert.setContentText(mesazhi);
+        alert.setContentText(r.getMessage());
         alert.showAndWait();
     }
 
-    // --- MBUSHJA ME TË DHËNA TESTUESE (INITIAL MOCK DATA) ---
-    private void loadInitialData() {
-        // Popullimi i ComboBox-eve
-        cmbKompania.setItems(FXCollections.observableArrayList("Wizz Air", "Eurowings", "Austrian Airlines", "Turkish Airlines"));
-        cmbStatusi.setItems(FXCollections.observableArrayList("Scheduled", "Boarding", "Delayed", "Departed", "Anuluar"));
+    private void showError(String msg) {
+        showResult(OperacioniResponseDto.error(msg));
+    }
 
-        // Shtimi i disa fluturimeve fillestare duke përdorur konstruktorin tënd real
-        listaFluturimeve.add(new Fluturimet(1, 10, 1, 101, 1, "W64211", Date.valueOf(LocalDate.now()),
-                3, null, null, null, null, null, "Scheduled", null, 180, 120, 59.99));
-
-        listaFluturimeve.add(new Fluturimet(2, 11, 2, 102, 2, "EW4312", Date.valueOf(LocalDate.now()),
-                1, null, null, null, null, null, "Delayed", "Moti i lig", 150, 45, 89.99));
-
-        listaFluturimeve.add(new Fluturimet(3, 12, 3, 103, 3, "OS722", Date.valueOf(LocalDate.now()),
-                5, null, null, null, null, null, "Boarding", null, 200, 10, 129.99));
+    private boolean confirm(String title, String msg) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        return alert.showAndWait()
+                .filter(b -> b == ButtonType.OK).isPresent();
     }
 }
