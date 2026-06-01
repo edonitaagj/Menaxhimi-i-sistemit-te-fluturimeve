@@ -5,14 +5,19 @@ import java.util.ResourceBundle;
 
 public class I18n {
     private static Locale locale = Locale.ENGLISH;
-    private static String baseName = "i18n.message";
+    private static final String BASE_NAME = "i18n.messages";
 
-    public static void setLocale(Locale locale){
+    private I18n() {}
+
+    public static void setLocale(Locale locale) {
         I18n.locale = locale;
     }
 
-    public static ResourceBundle getResourceBundle(){
-        return ResourceBundle.getBundle(baseName, locale);
+    public static Locale getLocale() {
+        return locale;
+    }
+
+    public static ResourceBundle getResourceBundle() {
+        return ResourceBundle.getBundle(BASE_NAME, locale);
     }
 }
-
