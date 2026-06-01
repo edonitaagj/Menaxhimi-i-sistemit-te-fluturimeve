@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 
 <HBox xmlns:fx="http://javafx.com/fxml"
@@ -12,146 +14,225 @@
     <StackPane prefWidth="410"
                style="-fx-background-color: linear-gradient(to bottom right, #091E36, #030A12); -fx-background-radius: 16 0 0 16;">
 
-        <VBox alignment="TOP_LEFT" spacing="0" style="-fx-padding: 40 32 32 32;">
+        <VBox alignment="TOP_LEFT" spacing="0"
+              style="-fx-padding: 40 32 32 32;">
 
             <HBox alignment="CENTER_LEFT" spacing="12">
                 <StackPane prefWidth="42" prefHeight="42"
-                           style="-fx-background-color: rgba(55, 138, 221, 0.12); -fx-background-radius: 10; -fx-border-color: rgba(55, 138, 221, 0.3); -fx-border-radius: 10; -fx-border-width: 1.5;">
-                    <Label text="PRN" style="-fx-text-fill: #3A94F2; -fx-font-size: 13; -fx-font-weight: 900;"/>
+                           style="-fx-background-color: rgba(55, 138, 221, 0.12);
+                                  -fx-background-radius: 10;
+                                  -fx-border-color: rgba(55, 138, 221, 0.3);
+                                  -fx-border-radius: 10; -fx-border-width: 1.5;">
+                    <Label text="%logIn.text.symbol" style="-fx-text-fill: #3A94F2; -fx-font-size: 20;"/>
                 </StackPane>
                 <VBox spacing="1">
-                    <Label text="AEROPORTI ADEM JASHARI"
-                           style="-fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: 900;"/>
-                    <Label text="PRN - Pristina International"
-                           style="-fx-text-fill: rgba(133, 183, 235, 0.4); -fx-font-size: 11; -fx-font-weight: 600;"/>
+                    <Label text="%logIn.text.aeroporti.adem.jashari"
+                           style="-fx-text-fill: white; -fx-font-size: 12;
+                                  -fx-font-weight: 900; -fx-letter-spacing: 0.05em; -fx-font-family: 'System';"/>
+                    <Label text="%logIn.text.prn.pristina.international"
+                           style="-fx-text-fill: rgba(133, 183, 235, 0.4);
+                                  -fx-font-size: 11; -fx-font-weight: 600;"/>
                 </VBox>
             </HBox>
 
             <Region VBox.vgrow="ALWAYS"/>
 
-            <Label text="PRN"
-                   style="-fx-text-fill: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.002)); -fx-font-size: 110; -fx-font-weight: 900;"
+            <Label text="%logIn.text.prn"
+                   style="-fx-text-fill: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.002));
+                          -fx-font-size: 110; -fx-font-weight: 900;
+                          -fx-font-family: 'System';"
                    alignment="CENTER"
                    maxWidth="Infinity"/>
 
             <Region VBox.vgrow="ALWAYS"/>
 
             <VBox spacing="0"
-                  style="-fx-background-color: rgba(255, 255, 255, 0.03); -fx-border-color: rgba(255, 255, 255, 0.08); -fx-border-width: 1; -fx-border-radius: 12; -fx-background-radius: 12; -fx-padding: 16;">
+                  style="-fx-background-color: rgba(255, 255, 255, 0.03);
+                         -fx-border-color: rgba(255, 255, 255, 0.08);
+                         -fx-border-width: 1; -fx-border-radius: 12;
+                         -fx-background-radius: 12; -fx-padding: 16;">
 
                 <HBox alignment="CENTER_LEFT">
-                    <Label text="FLUTURIMET LIVE"
-                           style="-fx-text-fill: rgba(255, 255, 255, 0.6); -fx-font-size: 11; -fx-font-weight: 800;"/>
+                    <Label text="%logIn.text.fluturimet.live"
+                           style="-fx-text-fill: rgba(255, 255, 255, 0.6);
+                                  -fx-font-size: 11; -fx-font-weight: 800;
+                                  -fx-letter-spacing: 0.08em;"/>
                     <Region HBox.hgrow="ALWAYS"/>
                     <HBox alignment="CENTER" spacing="5"
                           style="-fx-background-color: rgba(16, 185, 129, 0.15); -fx-padding: 3 8 3 8; -fx-background-radius: 20;">
                         <Circle radius="3.5" fill="#10B981"/>
-                        <Label text="ONLINE"
-                               style="-fx-text-fill: #10B981; -fx-font-size: 9; -fx-font-weight: 900;"/>
+                        <Label text="%logIn.text.online"
+                               style="-fx-text-fill: #10B981; -fx-font-size: 9;
+                                      -fx-font-weight: 900; -fx-letter-spacing: 0.05em;"/>
                     </HBox>
                 </HBox>
 
                 <Region prefHeight="14"/>
 
                 <HBox alignment="CENTER_LEFT" spacing="0" style="-fx-padding: 8 0 8 0; -fx-border-color: rgba(255,255,255,0.05); -fx-border-width: 0 0 1 0;">
-                    <Label text="OS 741" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
-                    <Label text="PRN" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
-                    <Label text="  ->  " style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
-                    <Label text="VIE" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%logIn.text.bt.241" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
+                    <Label text="%logIn.text.prn" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%logIn.text.symbol.2" style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
+                    <Label text="%logIn.text.vie" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
                     <Region HBox.hgrow="ALWAYS"/>
-                    <Label text="BOARDING"
-                           style="-fx-text-fill: #3A94F2; -fx-background-color: rgba(58, 148, 242, 0.12); -fx-border-color: rgba(58, 148, 242, 0.25); -fx-border-width: 1; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 4 8 4 8; -fx-font-size: 9; -fx-font-weight: 800;"/>
+                    <Label text="%logIn.text.boarding"
+                           style="-fx-text-fill: #3A94F2;
+                                  -fx-background-color: rgba(58, 148, 242, 0.12);
+                                  -fx-border-color: rgba(58, 148, 242, 0.25);
+                                  -fx-border-width: 1; -fx-border-radius: 6;
+                                  -fx-background-radius: 6; -fx-padding: 4 8 4 8;
+                                  -fx-font-size: 9; -fx-font-weight: 800;"/>
                 </HBox>
 
                 <HBox alignment="CENTER_LEFT" spacing="0" style="-fx-padding: 8 0 8 0; -fx-border-color: rgba(255,255,255,0.05); -fx-border-width: 0 0 1 0;">
-                    <Label text="TK 1056" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
-                    <Label text="PRN" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
-                    <Label text="  ->  " style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
-                    <Label text="IST" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%logIn.text.w6.301" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
+                    <Label text="%logIn.text.prn" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%logIn.text.symbol.2" style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
+                    <Label text="%logIn.text.lgw" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
                     <Region HBox.hgrow="ALWAYS"/>
-                    <Label text="NE KOHE"
-                           style="-fx-text-fill: #10B981; -fx-background-color: rgba(16, 185, 129, 0.12); -fx-border-color: rgba(16, 185, 129, 0.25); -fx-border-width: 1; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 4 8 4 8; -fx-font-size: 9; -fx-font-weight: 800;"/>
+                    <Label text="%logIn.text.ne.kohe"
+                           style="-fx-text-fill: #10B981;
+                                  -fx-background-color: rgba(16, 185, 129, 0.12);
+                                  -fx-border-color: rgba(16, 185, 129, 0.25);
+                                  -fx-border-width: 1; -fx-border-radius: 6;
+                                  -fx-background-radius: 6; -fx-padding: 4 8 4 8;
+                                  -fx-font-size: 9; -fx-font-weight: 800;"/>
                 </HBox>
 
                 <HBox alignment="CENTER_LEFT" spacing="0" style="-fx-padding: 8 0 0 0;">
-                    <Label text="LH 1497" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
-                    <Label text="PRN" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
-                    <Label text="  ->  " style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
-                    <Label text="FRA" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%logIn.text.tk.412" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
+                    <Label text="%logIn.text.prn" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%logIn.text.symbol.2" style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
+                    <Label text="%logIn.text.ist" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
                     <Region HBox.hgrow="ALWAYS"/>
-                    <Label text="VONUAR"
-                           style="-fx-text-fill: #F59E0B; -fx-background-color: rgba(245, 158, 11, 0.12); -fx-border-color: rgba(245, 158, 11, 0.25); -fx-border-width: 1; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 4 8 4 8; -fx-font-size: 9; -fx-font-weight: 800;"/>
+                    <Label text="%logIn.text.vonuar"
+                           style="-fx-text-fill: #F59E0B;
+                                  -fx-background-color: rgba(245, 158, 11, 0.12);
+                                  -fx-border-color: rgba(245, 158, 11, 0.25);
+                                  -fx-border-width: 1; -fx-border-radius: 6;
+                                  -fx-background-radius: 6; -fx-padding: 4 8 4 8;
+                                  -fx-font-size: 9; -fx-font-weight: 800;"/>
                 </HBox>
             </VBox>
         </VBox>
     </StackPane>
 
     <VBox prefWidth="450" alignment="CENTER_LEFT"
-          style="-fx-background-color: white; -fx-background-radius: 0 16 16 0; -fx-padding: 54 50 50 50;"
+          style="-fx-background-color: white;
+                 -fx-background-radius: 0 16 16 0;
+                 -fx-padding: 54 50 50 50;"
           spacing="0">
 
-        <Region prefHeight="32"/>
 
-        <Label text="Mire se vini"
-               style="-fx-text-fill: #0F172A; -fx-font-size: 34; -fx-font-weight: 900;"/>
+
+        
+
+        <HBox alignment="CENTER_RIGHT" maxWidth="Infinity">
+            <Button fx:id="languageButton"
+                    text="%language.switch"
+                    onAction="#handleLanguageSwitch"
+                    style="-fx-background-color: #F8FAFC;
+                           -fx-text-fill: #0F172A;
+                           -fx-font-size: 12; -fx-font-weight: 800;
+                           -fx-border-color: #CBD5E1; -fx-border-width: 1;
+                           -fx-border-radius: 8; -fx-background-radius: 8;
+                           -fx-cursor: hand; -fx-padding: 7 12 7 12;"/>
+        </HBox>
+<Region prefHeight="32"/>
+
+        <Label text="%logIn.text.mire.se.vini"
+               style="-fx-text-fill: #0F172A; -fx-font-size: 34;
+                      -fx-font-weight: 900; -fx-font-family: 'System'"/>
         <Region prefHeight="4"/>
-        <Label text="Shkruani kredencialet tuaja per te hyre ne sistem."
+        <Label text="%logIn.text.shkruani.kredencialet.tuaja.per.te.hyre.ne.siste"
                style="-fx-text-fill: #64748B; -fx-font-size: 13; -fx-font-weight: 500;"/>
 
         <Region prefHeight="36"/>
 
         <HBox fx:id="errBox" alignment="CENTER_LEFT" spacing="10"
-              style="-fx-background-color: #FEF2F2; -fx-border-color: #FCA5A5; -fx-border-width: 1; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 12 16 12 16;"
+              style="-fx-background-color: #FEF2F2;
+                     -fx-border-color: #FCA5A5; -fx-border-width: 1;
+                     -fx-border-radius: 10; -fx-background-radius: 10;
+                     -fx-padding: 12 16 12 16;"
               visible="false" managed="false">
-            <Label text="!" style="-fx-text-fill: #DC2626; -fx-font-size: 14; -fx-font-weight: 900;"/>
+            <Label text="%logIn.text.symbol.3" style="-fx-text-fill: #DC2626; -fx-font-size: 14;"/>
             <Label fx:id="errLabel"
-                   text="Username ose fjalekalim i gabuar."
+                   text="%logIn.text.username.ose.fjalekalim.i.gabuar"
                    style="-fx-text-fill: #DC2626; -fx-font-size: 13; -fx-font-weight: 700;"/>
         </HBox>
         <Region fx:id="errSpacer" prefHeight="16" visible="false" managed="false"/>
 
-        <Label text="USERNAME"
-               style="-fx-text-fill: #475569; -fx-font-size: 11; -fx-font-weight: 800;"/>
+        <Label text="%logIn.text.username"
+               style="-fx-text-fill: #475569; -fx-font-size: 11;
+                      -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
         <Region prefHeight="8"/>
-        <TextField fx:id="usernameField"
-                   promptText="username"
-                   style="-fx-background-color: #F8FAFC; -fx-border-color: #E2E8F0; -fx-border-width: 1.5; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 14 16 14 16; -fx-font-size: 14; -fx-text-fill: #0F172A; -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 600;"
-                   maxWidth="Infinity"/>
+        <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
+            <TextField fx:id="usernameField"
+                       promptText="%logIn.promptText.username"
+                       style="-fx-background-color: #F8FAFC;
+                              -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
+                              -fx-border-radius: 10; -fx-background-radius: 10;
+                              -fx-padding: 14 45 14 16;
+                              -fx-font-size: 14; -fx-text-fill: #0F172A;
+                              -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 600;"
+                       maxWidth="Infinity"/>
+            <Label text="%logIn.text.symbol.4" style="-fx-text-fill: #94A3B8; -fx-font-size: 18; -fx-padding: 0 16 0 0;"/>
+        </StackPane>
 
         <Region prefHeight="20"/>
 
-        <Label text="FJALEKALIMI"
-               style="-fx-text-fill: #475569; -fx-font-size: 11; -fx-font-weight: 800;"/>
+        <Label text="%logIn.text.fjalekalimi"
+               style="-fx-text-fill: #475569; -fx-font-size: 11;
+                      -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
         <Region prefHeight="8"/>
-        <PasswordField fx:id="passField"
-                       promptText="************"
-                       onAction="#handleLogin"
-                       style="-fx-background-color: #F8FAFC; -fx-border-color: #E2E8F0; -fx-border-width: 1.5; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 14 16 14 16; -fx-font-size: 14; -fx-text-fill: #0F172A; -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 600;"
-                       maxWidth="Infinity"/>
+        <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
+            <PasswordField fx:id="passField"
+                           promptText="%logIn.promptText.symbol"
+                           style="-fx-background-color: #F8FAFC;
+                                  -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
+                                  -fx-border-radius: 10; -fx-background-radius: 10;
+                                  -fx-padding: 14 45 14 16;
+                                  -fx-font-size: 14; -fx-text-fill: #0F172A;
+                                  -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 600;"
+                           maxWidth="Infinity"/>
+            <Label text="%logIn.text.symbol.5" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
+        </StackPane>
 
         <Region prefHeight="12"/>
 
         <HBox alignment="CENTER_RIGHT" maxWidth="Infinity">
             <Label fx:id="forgotLabel"
-                   text="Harruat fjalekalimin?"
-                   onMouseClicked="#handleForgotPassword"
-                   style="-fx-text-fill: #3A94F2; -fx-font-size: 12; -fx-font-weight: 700; -fx-cursor: hand;"/>
+                   text="%logIn.text.harruat.fjalekalimin"
+                   style="-fx-text-fill: #3A94F2; -fx-font-size: 12;
+                          -fx-font-weight: 700; -fx-cursor: hand;"/>
         </HBox>
 
         <Region prefHeight="32"/>
 
         <Button fx:id="loginBtn"
-                text="Hyr ne sistem"
+                text="%logIn.text.hyr.ne.sistem"
                 onAction="#handleLogin"
                 maxWidth="Infinity"
-                style="-fx-background-color: linear-gradient(to right, #091E36, #122D4F); -fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: 800; -fx-background-radius: 10; -fx-cursor: hand; -fx-padding: 14 0 14 0; -fx-effect: dropshadow(three-pass-box, rgba(9,30,54,0.2), 10, 0, 0, 4);"/>
+                style="-fx-background-color: linear-gradient(to right, #091E36, #122D4F);
+                       -fx-text-fill: white;
+                       -fx-font-size: 15; -fx-font-weight: 800;
+                       -fx-background-radius: 10;
+                       -fx-cursor: hand; -fx-padding: 14 0 14 0;
+                       -fx-letter-spacing: 0.02em;
+                       -fx-effect: dropshadow(three-pass-box, rgba(9,30,54,0.2), 10, 0, 0, 4);"/>
 
         <Region prefHeight="12"/>
 
         <Button fx:id="signupBtn"
-                text="Krijo nje llogari te re"
+                text="%logIn.text.krijo.nje.llogari.te.re"
                 onAction="#handleSignUp"
                 maxWidth="Infinity"
-                style="-fx-background-color: transparent; -fx-text-fill: #334155; -fx-font-size: 14; -fx-font-weight: 700; -fx-border-color: #CBD5E1; -fx-border-width: 1.5; -fx-border-radius: 10; -fx-background-radius: 10; -fx-cursor: hand; -fx-padding: 13 0 13 0;"/>
+                style="-fx-background-color: transparent;
+                       -fx-text-fill: #334155;
+                       -fx-font-size: 14; -fx-font-weight: 700;
+                       -fx-border-color: #CBD5E1; -fx-border-width: 1.5;
+                       -fx-border-radius: 10; -fx-background-radius: 10;
+                       -fx-cursor: hand; -fx-padding: 13 0 13 0;"/>
+
     </VBox>
 </HBox>
