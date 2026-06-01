@@ -2,6 +2,7 @@ package app;
 
 public enum ViewsEnum {
     LOGIN_VIEW("/views/LogIn_view.fxml"),
+    FORGOT_PASSWORD_VIEW("/views/ForgotPassword_view.fxml"),
     HOME_VIEW("/views/Home_view.fxml"),
     SIGNUP_VIEW("/views/SignUp_view.fxml"),
 

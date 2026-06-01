@@ -76,6 +76,11 @@ public class LoginController {
     }
 
     @FXML
+    private void handleForgotPassword() {
+        Router.navigateTo(ViewsEnum.FORGOT_PASSWORD_VIEW);
+    }
+
+    @FXML
     private void handleLanguageSwitch() {
         Locale nextLocale = I18n.getLocale().getLanguage().equals("sq")
                 ? Locale.ENGLISH
