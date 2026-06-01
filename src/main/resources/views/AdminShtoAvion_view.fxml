@@ -11,8 +11,8 @@
       style="-fx-background-color: #F1F5F9; -fx-padding: 24;">
 
     <VBox spacing="4">
-        <Label text="Regjistrimi i avionit të ri" style="-fx-font-size: 22; -fx-font-weight: 900; -fx-text-fill: #0F172A;"/>
-        <Label text="Shto avionin në flotë me kompaninë dhe llojin e duhur." style="-fx-font-size: 12; -fx-text-fill: #64748B;"/>
+        <Label text="%adminShtoAvion.text.regjistrimi.i.avionit.te.ri" style="-fx-font-size: 22; -fx-font-weight: 900; -fx-text-fill: #0F172A;"/>
+        <Label text="%adminShtoAvion.text.shto.avionin.ne.flote.me.kompanine.dhe.llojin.e" style="-fx-font-size: 12; -fx-text-fill: #64748B;"/>
     </VBox>
 
     <GridPane hgap="14" vgap="14" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 14; -fx-border-color: #E2E8F0; -fx-border-radius: 14;">
@@ -21,24 +21,24 @@
             <ColumnConstraints percentWidth="75"/>
         </columnConstraints>
 
-        <Label text="Kompania" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <ComboBox fx:id="cmbKompania" promptText="Zgjidh kompaninë" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="1000"/>
+        <Label text="%adminShtoAvion.text.kompania" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="cmbKompania" promptText="%adminShtoAvion.promptText.zgjidh.kompanine" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="1000"/>
 
-        <Label text="Lloji i avionit" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-        <ComboBox fx:id="cmbLloji" promptText="Zgjidh llojin" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label text="%adminShtoAvion.text.lloji.i.avionit" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="cmbLloji" promptText="%adminShtoAvion.promptText.zgjidh.llojin" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-        <Label text="Numri i regjistrit" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-        <TextField fx:id="txtNumriRegjistrit" promptText="OE-LWA" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <Label text="%adminShtoAvion.text.numri.i.regjistrit" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtNumriRegjistrit" promptText="%adminShtoAvion.promptText.oe.lwa" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-        <Label text="Viti i prodhimit" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-        <TextField fx:id="txtVitiProdhimit" promptText="2019" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <Label text="%adminShtoAvion.text.viti.i.prodhimit" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtVitiProdhimit" promptText="%adminShtoAvion.promptText.2019" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
-        <Label text="Statusi" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <Label text="%adminShtoAvion.text.statusi" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
         <ComboBox fx:id="cmbStatusi" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
     </GridPane>
 
     <HBox spacing="12" alignment="CENTER_RIGHT">
-        <Button fx:id="btnAnulo" text="Anulo" style="-fx-background-color: transparent; -fx-border-color: #94A3B8; -fx-text-fill: #334155; -fx-font-weight: 700; -fx-background-radius: 8; -fx-border-radius: 8; -fx-padding: 10 18;"/>
-        <Button fx:id="btnRuaj" text="Ruaj avionin" style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 8; -fx-padding: 10 18;"/>
+        <Button fx:id="btnAnulo" text="%adminShtoAvion.text.anulo" style="-fx-background-color: transparent; -fx-border-color: #94A3B8; -fx-text-fill: #334155; -fx-font-weight: 700; -fx-background-radius: 8; -fx-border-radius: 8; -fx-padding: 10 18;"/>
+        <Button fx:id="btnRuaj" text="%adminShtoAvion.text.ruaj.avionin" style="-fx-background-color: #3A94F2; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 8; -fx-padding: 10 18;"/>
     </HBox>
 </VBox>

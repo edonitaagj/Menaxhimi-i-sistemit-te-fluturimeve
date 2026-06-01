@@ -23,13 +23,13 @@
                                   -fx-background-radius: 10;
                                   -fx-border-color: rgba(55, 138, 221, 0.3);
                                   -fx-border-radius: 10; -fx-border-width: 1.5;">
-                    <Label text="✈" style="-fx-text-fill: #3A94F2; -fx-font-size: 20;"/>
+                    <Label text="%signUp.text.symbol" style="-fx-text-fill: #3A94F2; -fx-font-size: 20;"/>
                 </StackPane>
                 <VBox spacing="1">
-                    <Label text="AEROPORTI ADEM JASHARI"
+                    <Label text="%signUp.text.aeroporti.adem.jashari"
                            style="-fx-text-fill: white; -fx-font-size: 12;
                                   -fx-font-weight: 900; -fx-letter-spacing: 0.05em; -fx-font-family: 'System';"/>
-                    <Label text="PRN · Pristina International"
+                    <Label text="%signUp.text.prn.pristina.international"
                            style="-fx-text-fill: rgba(133, 183, 235, 0.4);
                                   -fx-font-size: 11; -fx-font-weight: 600;"/>
                 </VBox>
@@ -37,7 +37,7 @@
 
             <Region VBox.vgrow="ALWAYS"/>
 
-            <Label text="PRN"
+            <Label text="%signUp.text.prn"
                    style="-fx-text-fill: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.002));
                           -fx-font-size: 110; -fx-font-weight: 900;
                           -fx-font-family: 'System';"
@@ -53,7 +53,7 @@
                          -fx-background-radius: 12; -fx-padding: 16;">
 
                 <HBox alignment="CENTER_LEFT">
-                    <Label text="FLUTURIMET LIVE"
+                    <Label text="%signUp.text.fluturimet.live"
                            style="-fx-text-fill: rgba(255, 255, 255, 0.6);
                                   -fx-font-size: 11; -fx-font-weight: 800;
                                   -fx-letter-spacing: 0.08em;"/>
@@ -61,7 +61,7 @@
                     <HBox alignment="CENTER" spacing="5"
                           style="-fx-background-color: rgba(16, 185, 129, 0.15); -fx-padding: 3 8 3 8; -fx-background-radius: 20;">
                         <Circle radius="3.5" fill="#10B981"/>
-                        <Label text="ONLINE"
+                        <Label text="%signUp.text.online"
                                style="-fx-text-fill: #10B981; -fx-font-size: 9;
                                       -fx-font-weight: 900; -fx-letter-spacing: 0.05em;"/>
                     </HBox>
@@ -70,12 +70,12 @@
                 <Region prefHeight="14"/>
 
                 <HBox alignment="CENTER_LEFT" spacing="0" style="-fx-padding: 8 0 8 0; -fx-border-color: rgba(255,255,255,0.05); -fx-border-width: 0 0 1 0;">
-                    <Label text="BT 241" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
-                    <Label text="PRN" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
-                    <Label text="  ➔  " style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
-                    <Label text="VIE" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%signUp.text.bt.241" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
+                    <Label text="%signUp.text.prn" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%signUp.text.symbol.2" style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
+                    <Label text="%signUp.text.vie" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
                     <Region HBox.hgrow="ALWAYS"/>
-                    <Label text="BOARDING"
+                    <Label text="%signUp.text.boarding"
                            style="-fx-text-fill: #3A94F2;
                                   -fx-background-color: rgba(58, 148, 242, 0.12);
                                   -fx-border-color: rgba(58, 148, 242, 0.25);
@@ -85,12 +85,12 @@
                 </HBox>
 
                 <HBox alignment="CENTER_LEFT" spacing="0" style="-fx-padding: 8 0 8 0; -fx-border-color: rgba(255,255,255,0.05); -fx-border-width: 0 0 1 0;">
-                    <Label text="W6 301" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
-                    <Label text="PRN" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
-                    <Label text="  ➔  " style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
-                    <Label text="LGW" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%signUp.text.w6.301" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
+                    <Label text="%signUp.text.prn" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%signUp.text.symbol.2" style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
+                    <Label text="%signUp.text.lgw" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
                     <Region HBox.hgrow="ALWAYS"/>
-                    <Label text="NË KOHË"
+                    <Label text="%signUp.text.ne.kohe"
                            style="-fx-text-fill: #10B981;
                                   -fx-background-color: rgba(16, 185, 129, 0.12);
                                   -fx-border-color: rgba(16, 185, 129, 0.25);
@@ -100,12 +100,12 @@
                 </HBox>
 
                 <HBox alignment="CENTER_LEFT" spacing="0" style="-fx-padding: 8 0 0 0;">
-                    <Label text="TK 412" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
-                    <Label text="PRN" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
-                    <Label text="  ➔  " style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
-                    <Label text="IST" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%signUp.text.tk.412" prefWidth="60" style="-fx-text-fill: #85B7EB; -fx-font-size: 12; -fx-font-weight: 700;"/>
+                    <Label text="%signUp.text.prn" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
+                    <Label text="%signUp.text.symbol.2" style="-fx-text-fill: rgba(255,255,255,0.2); -fx-font-size: 12;"/>
+                    <Label text="%signUp.text.ist" style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: 800;"/>
                     <Region HBox.hgrow="ALWAYS"/>
-                    <Label text="VONUAR"
+                    <Label text="%signUp.text.vonuar"
                            style="-fx-text-fill: #F59E0B;
                                   -fx-background-color: rgba(245, 158, 11, 0.12);
                                   -fx-border-color: rgba(245, 158, 11, 0.25);
@@ -124,7 +124,7 @@
                  -fx-padding: 42 50 42 50;"
           spacing="0">
 
-        <Label text="Krijo Llogari"
+        <Label text="%signUp.text.krijo.llogari"
                style="-fx-text-fill: #0F172A; -fx-font-size: 30;
                       -fx-font-weight: 900; -fx-font-family: 'System'"/>
         <Region prefHeight="4"/>
@@ -138,9 +138,9 @@
                      -fx-border-radius: 10; -fx-background-radius: 10;
                      -fx-padding: 12 16 12 16;"
               visible="false" managed="false">
-            <Label text="⚠️" style="-fx-text-fill: #DC2626; -fx-font-size: 14;"/>
+            <Label text="%signUp.text.symbol.3" style="-fx-text-fill: #DC2626; -fx-font-size: 14;"/>
             <Label fx:id="errLabel"
-                   text="Ndodhi një gabim gjatë regjistrimit."
+                   text="%signUp.text.ndodhi.nje.gabim.gjate.regjistrimit"
                    style="-fx-text-fill: #DC2626; -fx-font-size: 13; -fx-font-weight: 700;"/>
         </HBox>
         <Region fx:id="errSpacer" prefHeight="16" visible="false" managed="false"/>
@@ -148,13 +148,13 @@
         <!-- Emri + Mbiemri (side by side) -->
         <HBox spacing="12" maxWidth="Infinity">
             <VBox HBox.hgrow="ALWAYS" spacing="0">
-                <Label text="EMRI"
+                <Label text="%signUp.text.emri"
                        style="-fx-text-fill: #475569; -fx-font-size: 11;
                               -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
                 <Region prefHeight="8"/>
                 <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
                     <TextField fx:id="emriField"
-                               promptText="Emri"
+                               promptText="%signUp.promptText.emri"
                                style="-fx-background-color: #F8FAFC;
                                       -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
                                       -fx-border-radius: 10; -fx-background-radius: 10;
@@ -162,18 +162,18 @@
                                       -fx-font-size: 14; -fx-text-fill: #0F172A;
                                       -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
                                maxWidth="Infinity"/>
-                    <Label text="👤" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 14 0 0;"/>
+                    <Label text="%signUp.text.symbol.4" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 14 0 0;"/>
                 </StackPane>
             </VBox>
 
             <VBox HBox.hgrow="ALWAYS" spacing="0">
-                <Label text="MBIEMRI"
+                <Label text="%signUp.text.mbiemri"
                        style="-fx-text-fill: #475569; -fx-font-size: 11;
                               -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
                 <Region prefHeight="8"/>
                 <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
                     <TextField fx:id="mbiemriField"
-                               promptText="Mbiemri"
+                               promptText="%signUp.promptText.mbiemri"
                                style="-fx-background-color: #F8FAFC;
                                       -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
                                       -fx-border-radius: 10; -fx-background-radius: 10;
@@ -181,7 +181,7 @@
                                       -fx-font-size: 14; -fx-text-fill: #0F172A;
                                       -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
                                maxWidth="Infinity"/>
-                    <Label text="👤" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 14 0 0;"/>
+                    <Label text="%signUp.text.symbol.4" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 14 0 0;"/>
                 </StackPane>
             </VBox>
         </HBox>
@@ -189,13 +189,13 @@
         <Region prefHeight="18"/>
 
         <!-- Username -->
-        <Label text="USERNAME"
+        <Label text="%signUp.text.username"
                style="-fx-text-fill: #475569; -fx-font-size: 11;
                       -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
         <Region prefHeight="8"/>
         <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
             <TextField fx:id="usernameField"
-                       promptText="username"
+                       promptText="%signUp.promptText.username"
                        style="-fx-background-color: #F8FAFC;
                               -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
                               -fx-border-radius: 10; -fx-background-radius: 10;
@@ -203,19 +203,19 @@
                               -fx-font-size: 14; -fx-text-fill: #0F172A;
                               -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
                        maxWidth="Infinity"/>
-            <Label text="🪪" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
+            <Label text="%signUp.text.symbol.5" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
         </StackPane>
 
         <Region prefHeight="18"/>
 
         <!-- Email -->
-        <Label text="EMAIL"
+        <Label text="%signUp.text.email"
                style="-fx-text-fill: #475569; -fx-font-size: 11;
                       -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
         <Region prefHeight="8"/>
         <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
             <TextField fx:id="emailField"
-                       promptText="emri@shembull.com"
+                       promptText="%signUp.promptText.emri.shembull.com"
                        style="-fx-background-color: #F8FAFC;
                               -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
                               -fx-border-radius: 10; -fx-background-radius: 10;
@@ -223,19 +223,19 @@
                               -fx-font-size: 14; -fx-text-fill: #0F172A;
                               -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
                        maxWidth="Infinity"/>
-            <Label text="✉️" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
+            <Label text="%signUp.text.symbol.6" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
         </StackPane>
 
         <Region prefHeight="18"/>
 
         <!-- Password -->
-        <Label text="FJALËKALIMI"
+        <Label text="%signUp.text.fjalekalimi"
                style="-fx-text-fill: #475569; -fx-font-size: 11;
                       -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
         <Region prefHeight="8"/>
         <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
             <PasswordField fx:id="passField"
-                           promptText="••••••••••••"
+                           promptText="%signUp.promptText.symbol"
                            style="-fx-background-color: #F8FAFC;
                                   -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
                                   -fx-border-radius: 10; -fx-background-radius: 10;
@@ -243,19 +243,19 @@
                                   -fx-font-size: 14; -fx-text-fill: #0F172A;
                                   -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
                            maxWidth="Infinity"/>
-            <Label text="🔒" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
+            <Label text="%signUp.text.symbol.7" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
         </StackPane>
 
         <Region prefHeight="18"/>
 
         <!-- Confirm Password -->
-        <Label text="KONFIRMO FJALËKALIMIN"
+        <Label text="%signUp.text.konfirmo.fjalekalimin"
                style="-fx-text-fill: #475569; -fx-font-size: 11;
                       -fx-font-weight: 800; -fx-letter-spacing: 0.06em;"/>
         <Region prefHeight="8"/>
         <StackPane alignment="CENTER_RIGHT" maxWidth="Infinity">
             <PasswordField fx:id="confirmPassField"
-                           promptText="••••••••••••"
+                           promptText="%signUp.promptText.symbol"
                            style="-fx-background-color: #F8FAFC;
                                   -fx-border-color: #E2E8F0; -fx-border-width: 1.5;
                                   -fx-border-radius: 10; -fx-background-radius: 10;
@@ -263,16 +263,16 @@
                                   -fx-font-size: 14; -fx-text-fill: #0F172A;
                                   -fx-prompt-text-fill: #94A3B8; -fx-font-weight: 800;"
                            maxWidth="Infinity"/>
-            <Label text="🔑" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
+            <Label text="%signUp.text.symbol.8" style="-fx-text-fill: #94A3B8; -fx-font-size: 16; -fx-padding: 0 16 0 0;"/>
         </StackPane>
 
         <Region prefHeight="8"/>
 
         <!-- Password hint -->
         <HBox alignment="CENTER_LEFT" spacing="6">
-            <Label text="ℹ"
+            <Label text="%signUp.text.i"
                    style="-fx-text-fill: #94A3B8; -fx-font-size: 11;"/>
-            <Label text="Minimumi 8 karaktere, të paktën 1 numër."
+            <Label text="%signUp.text.minimumi.8.karaktere.te.pakten.1.numer"
                    style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 500;"/>
         </HBox>
 
@@ -280,7 +280,7 @@
 
         <!-- Register Button -->
         <Button fx:id="signupBtn"
-                text="Krijo llogarinë"
+                text="%signUp.text.krijo.llogarine"
                 onAction="#handleSignUp"
                 maxWidth="Infinity"
                 style="-fx-background-color: linear-gradient(to right, #091E36, #122D4F);
@@ -295,7 +295,7 @@
 
         <!-- Back to Login Button -->
         <Button fx:id="loginBtn"
-                text="Keni tashmë llogari? Hyni këtu"
+                text="%signUp.text.keni.tashme.llogari.hyni.ketu"
                 onAction="#handleBackToLogin"
                 maxWidth="Infinity"
                 style="-fx-background-color: transparent;

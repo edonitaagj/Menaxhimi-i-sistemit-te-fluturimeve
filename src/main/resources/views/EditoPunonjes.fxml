@@ -4,59 +4,59 @@
 
 <VBox prefHeight="600" prefWidth="520" spacing="0" style="-fx-background-color: #F1F5F9;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditoPunonjesController">
     <VBox style="-fx-background-color: white; -fx-padding: 24 32 20 32; -fx-border-color: #E2E8F0; -fx-border-width: 0 0 1 0;">
-        <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800;" text="MODIFIKO PROFILIN" />
-        <Label style="-fx-text-fill: #0F172A; -fx-font-size: 20; -fx-font-weight: 900;" text="Përditësimi i të Dhënave të Punonjësit" />
+        <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 11; -fx-font-weight: 800;" text="%editoPunonjes.text.modifiko.profilin" />
+        <Label style="-fx-text-fill: #0F172A; -fx-font-size: 20; -fx-font-weight: 900;" text="%editoPunonjes.text.perditesimi.i.te.dhenave.te.punonjesit" />
     </VBox>
 
     <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #F1F5F9; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
         <VBox spacing="18" style="-fx-padding: 32;">
             <HBox spacing="16">
                 <VBox spacing="6" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Emri *" />
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%editoPunonjes.text.emri" />
                     <TextField fx:id="txtEmri" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
                 </VBox>
                 <VBox spacing="6" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Mbiemri *" />
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%editoPunonjes.text.mbiemri" />
                     <TextField fx:id="txtMbiemri" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
                 </VBox>
             </HBox>
 
             <VBox spacing="6">
-                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="E-mail *" />
+                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%editoPunonjes.text.e.mail" />
                 <TextField fx:id="txtEmail" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
             </VBox>
 
             <VBox spacing="6">
-                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Numri i Telefonit" />
+                <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%editoPunonjes.text.numri.i.telefonit" />
                 <TextField fx:id="txtTelefoni" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
             </VBox>
 
             <HBox spacing="16">
                 <VBox spacing="6" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Departamenti *" />
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%editoPunonjes.text.departamenti" />
                     <ComboBox fx:id="cmbDepartamenti" maxWidth="Infinity" style="-fx-background-radius: 6; -fx-padding: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
                 </VBox>
                 <VBox spacing="6" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Roli / Pozita *" />
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%editoPunonjes.text.roli.pozita" />
                     <TextField fx:id="txtRoli" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
                 </VBox>
             </HBox>
 
             <HBox spacing="16" alignment="CENTER_LEFT">
                 <VBox spacing="6" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="Paga Neto (€) *" />
+                    <Label style="-fx-text-fill: #64748B; -fx-font-size: 12; -fx-font-weight: 700;" text="%editoPunonjes.text.paga.neto" />
                     <TextField fx:id="txtPaga" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
                 </VBox>
                 <!-- ZGJIDHJA PËR STATUSIN -->
                 <VBox spacing="6" HBox.hgrow="ALWAYS" style="-fx-padding: 20 0 0 0;">
-                    <CheckBox fx:id="chkAktiv" text="Punonjësi është Aktiv" style="-fx-font-weight: 700; -fx-text-fill: #0F172A; -fx-cursor: hand;"/>
+                    <CheckBox fx:id="chkAktiv" text="%editoPunonjes.text.punonjesi.eshte.aktiv" style="-fx-font-weight: 700; -fx-text-fill: #0F172A; -fx-cursor: hand;"/>
                 </VBox>
             </HBox>
         </VBox>
     </ScrollPane>
 
     <HBox alignment="CENTER_RIGHT" spacing="12" style="-fx-background-color: white; -fx-padding: 16 32; -fx-border-color: #E2E8F0; -fx-border-width: 1 0 0 0;">
-        <Button onAction="#handleAnulo" style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-cursor: hand;" text="Anulo" />
-        <Button onAction="#handleRuajNdryshimet" style="-fx-background-color: #10B981; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 8; -fx-padding: 10 24; -fx-cursor: hand;" text="💾 Ruaj Ndryshimet" />
+        <Button onAction="#handleAnulo" style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-cursor: hand;" text="%editoPunonjes.text.anulo" />
+        <Button onAction="#handleRuajNdryshimet" style="-fx-background-color: #10B981; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 8; -fx-padding: 10 24; -fx-cursor: hand;" text="%editoPunonjes.text.ruaj.ndryshimet" />
     </HBox>
 </VBox>

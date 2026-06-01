@@ -1,5 +1,6 @@
 package controllers;
 
+import app.I18n;
 import app.Router;
 import app.ViewsEnum;
 import models.dto.StafiTableDTO;
@@ -121,7 +122,7 @@ public class AdminStafiController {
     @FXML
     private void handleAddNewStaffModal() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ShtoPunonjes.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ShtoPunonjes.fxml"), I18n.getResourceBundle());
             Parent root = loader.load();
 
             Stage modalStage = new Stage();
@@ -170,7 +171,7 @@ public class AdminStafiController {
     }
     private void handleHapModalEditimi(StafiTableDTO punonjesZgjedhur) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EditoPunonjes.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/EditoPunonjes.fxml"), I18n.getResourceBundle());
             Parent root = loader.load();
 
             // Marrim kontrollorin e dritares së editimit dhe ia pasojmë punonjësin e klikuar

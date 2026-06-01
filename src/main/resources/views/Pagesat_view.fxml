@@ -9,23 +9,23 @@
 
     <VBox spacing="4">
         <HBox alignment="CENTER_LEFT" spacing="8">
-            <Label style="-fx-font-size: 18;" text="💳" />
-            <Label style="-fx-text-fill: #0F172A; -fx-font-size: 18; -fx-font-weight: 900;" text="Procesimi i Pagesës" />
+            <Label style="-fx-font-size: 18;" text="%pagesat.text.symbol" />
+            <Label style="-fx-text-fill: #0F172A; -fx-font-size: 18; -fx-font-weight: 900;" text="%pagesat.text.procesimi.i.pageses" />
         </HBox>
-        <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 12; -fx-font-weight: 600;" text="Ju lutem plotësoni të dhënat për të përfunduar blerjen" />
+        <Label style="-fx-text-fill: #94A3B8; -fx-font-size: 12; -fx-font-weight: 600;" text="%pagesat.text.ju.lutem.plotesoni.te.dhenat.per.te.perfunduar.b" />
         <Separator style="-fx-padding: 6 0 0 0;" />
     </VBox>
 
     <HBox style="-fx-background-color: #F8FAFC; -fx-padding: 14; -fx-background-radius: 8; -fx-border-color: #E2E8F0; -fx-border-width: 1; -fx-border-radius: 8;">
         <VBox spacing="4" HBox.hgrow="ALWAYS">
-            <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="KODI I REZERVIMIT" />
-            <Label fx:id="lblKodiRezervimit" style="-fx-text-fill: #0F172A; -fx-font-size: 14; -fx-font-weight: 800;" text="PRNOS011" />
+            <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%pagesat.text.kodi.i.rezervimit" />
+            <Label fx:id="lblKodiRezervimit" style="-fx-text-fill: #0F172A; -fx-font-size: 14; -fx-font-weight: 800;" text="%pagesat.text.prnos011" />
         </VBox>
         <VBox alignment="TOP_RIGHT" spacing="4">
-            <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="SHUMA PËR PAGESË" />
+            <Label style="-fx-text-fill: #64748B; -fx-font-size: 11; -fx-font-weight: 700;" text="%pagesat.text.shuma.per.pagese" />
             <HBox alignment="CENTER_RIGHT" spacing="4">
-                <Label fx:id="lblShuma" style="-fx-text-fill: #10B981; -fx-font-size: 18; -fx-font-weight: 900;" text="189.00" />
-                <Label fx:id="lblMonedha" style="-fx-text-fill: #10B981; -fx-font-size: 14; -fx-font-weight: 700;" text="EUR" />
+                <Label fx:id="lblShuma" style="-fx-text-fill: #10B981; -fx-font-size: 18; -fx-font-weight: 900;" text="%pagesat.text.189.00" />
+                <Label fx:id="lblMonedha" style="-fx-text-fill: #10B981; -fx-font-size: 14; -fx-font-weight: 700;" text="%pagesat.text.eur" />
             </HBox>
         </VBox>
     </HBox>
@@ -33,8 +33,8 @@
     <VBox spacing="14">
 
         <VBox spacing="6">
-            <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="Metoda e Pagesës *" />
-            <ComboBox fx:id="cmbMetodaPageses" maxWidth="Infinity" onAction="#handleMetodaChange" promptText="Zgjidhni mënyrën e pagesës..." style="-fx-background-radius: 6; -fx-padding: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6;">
+            <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="%pagesat.text.metoda.e.pageses" />
+            <ComboBox fx:id="cmbMetodaPageses" maxWidth="Infinity" onAction="#handleMetodaChange" promptText="%pagesat.promptText.zgjidhni.menyren.e.pageses" style="-fx-background-radius: 6; -fx-padding: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6;">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="karte" />
@@ -49,33 +49,33 @@
 
         <VBox fx:id="vboxDetajetKartes" spacing="12" style="-fx-padding: 6 0 0 0;">
             <VBox spacing="6">
-                <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="Numri i Kartës / ID e Transaksionit Online" />
-                <TextField fx:id="txtDetajetPageses" promptText="4000 1234 5678 9010" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
+                <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="%pagesat.text.numri.i.kartes.id.e.transaksionit.online" />
+                <TextField fx:id="txtDetajetPageses" promptText="%pagesat.promptText.4000.1234.5678.9010" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
             </VBox>
 
             <HBox spacing="12">
                 <VBox HBox.hgrow="ALWAYS" spacing="6">
-                    <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="Data e Skadencës" />
-                    <TextField promptText="MM/VVA" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
+                    <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="%pagesat.text.data.e.skadences" />
+                    <TextField promptText="%pagesat.promptText.mm.vva" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
                 </VBox>
                 <VBox prefWidth="120" spacing="6">
-                    <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="CVV" />
-                    <PasswordField promptText="123" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
+                    <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="%pagesat.text.cvv" />
+                    <PasswordField promptText="%pagesat.promptText.123" style="-fx-background-radius: 6; -fx-padding: 10; -fx-border-color: #CBD5E1; -fx-border-radius: 6;" />
                 </VBox>
             </HBox>
         </VBox>
 
         <VBox spacing="6">
-            <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="Shënime shtesë për transaksionin" />
-            <TextArea fx:id="txtShenimetPageses" prefHeight="55" promptText="Shkruani ndonjë detaj nëse është e nevojshme..." style="-fx-background-radius: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-font-size: 12;" wrapText="true" />
+            <Label style="-fx-text-fill: #475569; -fx-font-size: 12; -fx-font-weight: 700;" text="%pagesat.text.shenime.shtese.per.transaksionin" />
+            <TextArea fx:id="txtShenimetPageses" prefHeight="55" promptText="%pagesat.promptText.shkruani.ndonje.detaj.nese.eshte.e.nevojshme" style="-fx-background-radius: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-font-size: 12;" wrapText="true" />
         </VBox>
 
     </VBox>
 
     <HBox alignment="CENTER_RIGHT" spacing="12" style="-fx-padding: 6 0 0 0;">
-        <Button onAction="#handleAnuloPagesen" style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-cursor: hand; -fx-padding: 10 16;" text="Paguaj më vonë" />
+        <Button onAction="#handleAnuloPagesen" style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-cursor: hand; -fx-padding: 10 16;" text="%pagesat.text.paguaj.me.vone" />
 
-        <Button onAction="#handleKryejPagesen" style="-fx-background-color: #10B981; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 6; -fx-padding: 11 24; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(16,185,129,0.2), 6, 0, 0, 2);" text="Autorizo Pagesën" />
+        <Button onAction="#handleKryejPagesen" style="-fx-background-color: #10B981; -fx-text-fill: white; -fx-font-weight: 800; -fx-background-radius: 6; -fx-padding: 11 24; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(16,185,129,0.2), 6, 0, 0, 2);" text="%pagesat.text.autorizo.pagesen" />
     </HBox>
 
 </VBox>
